@@ -141,7 +141,8 @@ const StudentPage = () => {
           )
         }
        
-      </div>
+      </div >
+    
       <p
           
             >Dear Students,
@@ -154,16 +155,16 @@ const StudentPage = () => {
             process.
           </p>
 
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '400px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', }}>
+  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '1100px',marginLeft:'8rem',marginBottom:'12rem', }}>
     <div
       style={{
         width: '200px',
-        height: '100px',
+        height: '30px',
         backgroundColor: "rgba(240, 212, 117, 0.75)",
         marginBottom: '100rem',
         display: 'flex',
-        alignItems: 'flex start',
+        alignItems: 'center',
         justifyContent: 'center',
         marginRight:'5rem',
         padding:'4rem',
@@ -181,10 +182,10 @@ const StudentPage = () => {
     <div
       style={{
         padding:'4rem',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         marginRight:'5rem',
         width: '200px',
-        height: '100px',
+        height: '30px',
         backgroundColor: "rgba(101, 185, 166, 0.75)",
         display: 'flex',
         justifyContent: 'center',
@@ -202,12 +203,12 @@ const StudentPage = () => {
       style={{
         padding:'4rem',
         width: '200px',
-        height: '100px',
+        height: '30px',
         backgroundColor: "rgba(2, 149, 169, 0.75)",
         overflow:'hidden',
         display: 'flex',
         borderRadius:'20px',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'center',
         marginTop:'-100rem',
         boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",

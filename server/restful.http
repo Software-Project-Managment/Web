@@ -1,0 +1,37 @@
+@BASE_URL=http://localhost:3000
+
+GET {{BASE_URL}}/api/users
+
+
+
+###
+POST {{BASE_URL}}/api/users
+Content-Type: application/json
+
+{
+    "name":"Career",
+    "surname":"Admin",
+    "username":"careeradmin",
+    "password":"test1234",
+    "role":"career center"
+    
+     
+    
+}
+
+###
+POST {{BASE_URL}}/api/auth/login
+Content-Type: application/json
+
+{
+   
+    "username":"190209018",
+    "password":"test123",
+    "role":"student"
+    
+    
+    
+}
+
+### 
+DELETE {{BASE_URL}}/api/users/6431e1f8ba341fea31122f6c
