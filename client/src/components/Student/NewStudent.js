@@ -95,7 +95,7 @@ const NewStudent = () => {
         width: '200px',
         height: '30px',
         backgroundColor: "rgba(240, 212, 117, 0.75)",
-        marginBottom: '100rem',
+        marginBottom: '101rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
