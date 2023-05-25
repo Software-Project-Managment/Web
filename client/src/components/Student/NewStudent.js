@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate,useLocation,NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faUsers,faGraduationCap,faFileCircleCheck,faArrowRightFromBracket,faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUsers,faGraduationCap,faFileCircleCheck,faArrowRightFromBracket,faEnvelope,faUser} from '@fortawesome/free-solid-svg-icons'
 import { useLogout } from '../../hooks/useLogout';
 const NewStudent = () => {
   const history = useNavigate()
@@ -21,6 +21,7 @@ const NewStudent = () => {
             </div>
             <div style={{marginRight:"9px"}}>
                 ICONS
+                <FontAwesomeIcon icon={faUser } style={{fontSize:"2.5rem"}} />
             </div>
         </nav>
         <div style={{display:"flex"}}>
@@ -95,7 +96,7 @@ const NewStudent = () => {
         width: '200px',
         height: '30px',
         backgroundColor: "rgba(240, 212, 117, 0.75)",
-        marginBottom: '50rem',
+        marginTop: '-15rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -122,7 +123,7 @@ const NewStudent = () => {
         backgroundColor: "rgba(101, 185, 166, 0.75)",
         display: 'flex',
         justifyContent: 'center',
-        marginTop:'-100rem',
+        marginTop: '-15rem',
         boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
         overflow:'hidden',
         borderRadius:'20px',
@@ -143,7 +144,7 @@ const NewStudent = () => {
         borderRadius:'20px',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop:'-100rem',
+        marginTop: '-15rem',
         boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       }}
     ><FontAwesomeIcon icon={faFileCircleCheck} 
