@@ -26,6 +26,7 @@ import CareerPage from "./components/CareerCenter/CareerPage";
 import CareerCenterLoginPage from "./components/CareerCenterLoginPage";
 import ApprovedForms from "./components/CareerCenter/ApprovedForms";
 import IncomingMessage from "./components/Student/IncomingMessage";
+import NewStudent from "./components/Student/NewStudent";
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -48,7 +49,7 @@ function App() {
 
             
           
-           <Route path='/student' element={  <StudentPage/>  }  />
+           <Route path='/student' element={  <NewStudent/>  }  />
            
 
             <Route path='/student/downint' element={<DownloadInt/> }  />

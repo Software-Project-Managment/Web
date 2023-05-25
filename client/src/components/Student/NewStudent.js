@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate,useLocation,NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome} from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUsers,faGraduationCap,faFileCircleCheck,faArrowRightFromBracket,faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import { useLogout } from '../../hooks/useLogout';
 const NewStudent = () => {
   const history = useNavigate()
@@ -19,7 +19,7 @@ const NewStudent = () => {
             <div style={{marginLeft:"5vw"}} >
             <NavLink to='/student'>LOGO</NavLink>
             </div>
-            <div style={{marginRight:"10px"}}>
+            <div style={{marginRight:"9px"}}>
                 ICONS
             </div>
         </nav>
@@ -76,8 +76,8 @@ const NewStudent = () => {
                   
 
                    
-                   <FontAwesomeIcon icon={faHome }  onClick={handleClick} 
-                    style={{cursor:"pointer" , fontSize:"2.5rem",color:"black" ,marginTop:"50px"}} />
+                    <FontAwesomeIcon icon={faArrowRightFromBracket } onClick={handleClick}  style={{cursor:"pointer" , fontSize:"2.5rem",color:"black",marginTop:"50px" }} />
+                    
                    
           
                    
@@ -89,7 +89,69 @@ const NewStudent = () => {
 
 
             <div  style={{display:"flex" , alignItems:"center",justifyContent:"center",  width:"92vw"}}>
-                BURASI DEĞİŞECEK OLAN CONTENT
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
+    <div
+      style={{
+        width: '200px',
+        height: '30px',
+        backgroundColor: "rgba(240, 212, 117, 0.75)",
+        marginBottom: '100rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight:'5rem',
+        padding:'4rem',
+        borderRadius:'20PX',
+        boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+        overflow:'hidden',
+      }}
+    > <FontAwesomeIcon icon={faGraduationCap} 
+    style={{cursor:"pointer" , fontSize:"2.5rem",color:"black" }} /> Education Information
+    Software Engineering (English)
+    3.Class
+      
+    </div>
+    
+    <div
+      style={{
+        padding:'4rem',
+        alignItems: 'center',
+        marginRight:'5rem',
+        width: '200px',
+        height: '30px',
+        backgroundColor: "rgba(101, 185, 166, 0.75)",
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop:'-100rem',
+        boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+        overflow:'hidden',
+        borderRadius:'20px',
+      }}
+    ><FontAwesomeIcon icon={faUsers} 
+    style={{cursor:"pointer" , fontSize:"2.5rem",color:"black" }} />
+      Internship Coordinator:
+      Kristin Surpuhi Benli
+    </div>
+    <div
+      style={{
+        padding:'4rem',
+        width: '200px',
+        height: '30px',
+        backgroundColor: "rgba(2, 149, 169, 0.75)",
+        overflow:'hidden',
+        display: 'flex',
+        borderRadius:'20px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop:'-100rem',
+        boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+      }}
+    ><FontAwesomeIcon icon={faFileCircleCheck} 
+    style={{cursor:"pointer" , fontSize:"2.5rem",color:"black" }} />
+      Compulsory Internship 1/2
+      Voluntarily Internship 0 
+    </div>
+  </div>
             </div>
 
          
