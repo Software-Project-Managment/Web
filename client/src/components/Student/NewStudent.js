@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate,useLocation,NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faUsers,faGraduationCap,faFileCircleCheck,faArrowRightFromBracket,faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUsers,faGraduationCap,faFileCircleCheck,faArrowRightFromBracket,faEnvelope, faUpload, faBell, faUser} from '@fortawesome/free-solid-svg-icons'
 import { useLogout } from '../../hooks/useLogout';
 const NewStudent = () => {
   const history = useNavigate()
@@ -17,10 +17,10 @@ const NewStudent = () => {
         <div>
         <nav style={{width:"100vw",height:"7vh",backgroundColor:"#8C949D",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
             <div style={{marginLeft:"5vw"}} >
-            <NavLink to='/student'>LOGO</NavLink>
+            <NavLink to='/student'><img src="assets/logo.png"style={{width:'50px',marginLeft:'-3.5rem',marginTop:'0.5rem'}}/></NavLink>
             </div>
             <div style={{marginRight:"9px"}}>
-                ICONS
+            <FontAwesomeIcon icon={faBell } style={{fontSize:'2.5rem',marginRight:'10rem'}}/><FontAwesomeIcon icon={faUser } style={{fontSize:'2.5rem',}}/>
             </div>
         </nav>
         <div style={{display:"flex"}}>
@@ -31,8 +31,8 @@ const NewStudent = () => {
                     <div  style={{display:"flex" ,flexDirection:"column"}}>
                     <NavLink to= "/student" style={({isActive})=>({
                           cursor:"pointer",
-                          border:(isActive && location.pathname==="/student" )  ? '1px solid black' : '',
-                          backgroundColor:(isActive && location.pathname==="/student" )  ? 'white' : '',
+                          border:(isActive && location.pathname==="/student" )  ? '0px solid black' : '',
+                          backgroundColor:(isActive && location.pathname==="/student" )  ? '#8C949D' : '',
                           borderRadius:(isActive && location.pathname==="/student" ) ? '10px' : '',
                           fontSize:"2.5rem",
                           marginTop:"50px",
@@ -45,29 +45,29 @@ const NewStudent = () => {
                     
                      <NavLink to= "/student/deneme2" style={({isActive})=>({
                           cursor:"pointer",
-                          border:(isActive && location.pathname==="/student/deneme2" )  ? '1px solid black' : '',
-                          backgroundColor:(isActive && location.pathname==="/student/deneme2" )  ? 'white' : '',
+                          border:(isActive && location.pathname==="/student/deneme2" )  ? '0px solid black' : '',
+                          backgroundColor:(isActive && location.pathname==="/student/deneme2" )  ? '#8C949D' : '',
                           borderRadius:(isActive && location.pathname==="/student/deneme2" ) ? '10px' : '',
                           fontSize:"2.5rem",
                           marginTop:"50px",
                           color:"black"
                      })}>
  
-                         <FontAwesomeIcon  icon={faHome } />
+                         <FontAwesomeIcon  icon={faEnvelope } />
                          
                      </NavLink>
                      
                      <NavLink to= "/student/deneme3" style={({isActive})=>({
                           cursor:"pointer",
-                          border:(isActive && location.pathname==="/student/deneme3" )  ? '1px solid black' : '',
-                          backgroundColor:(isActive && location.pathname==="/student/deneme3" )  ? 'white' : '',
+                          border:(isActive && location.pathname==="/student/deneme3" )  ? '0px solid black' : '',
+                          backgroundColor:(isActive && location.pathname==="/student/deneme3" )  ? '#8C949D' : '',
                           borderRadius:(isActive && location.pathname==="/student/deneme3" ) ? '10px' : '',
                           fontSize:"2.5rem",
                           marginTop:"50px",
                           color:"black"
                      })}>
  
-                         <FontAwesomeIcon  icon={faHome } />
+                         <FontAwesomeIcon  icon={faUpload } />
                          
                      </NavLink>
                     
@@ -89,13 +89,31 @@ const NewStudent = () => {
 
 
             <div  style={{display:"flex" , alignItems:"center",justifyContent:"center",  width:"92vw"}}>
+            <div
+      style={{
+        width: '200px',
+        height: '75px',
+        backgroundColor: "rgba(240, 212, 117, 0.75)",
+        marginTop: '-35rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius:'20PX',
+        boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+        overflow:'hidden',
+      }}
+    > <FontAwesomeIcon icon={faGraduationCap} 
+    style={{cursor:"pointer" , fontSize:"2.5rem",color:"black" }} /> aaaaa
+      
+    </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
+              
     <div
       style={{
         width: '200px',
         height: '30px',
         backgroundColor: "rgba(240, 212, 117, 0.75)",
-        marginBottom: '50rem',
+        marginTop: '-15rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -122,10 +140,10 @@ const NewStudent = () => {
         backgroundColor: "rgba(101, 185, 166, 0.75)",
         display: 'flex',
         justifyContent: 'center',
-        marginTop:'-100rem',
         boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
         overflow:'hidden',
         borderRadius:'20px',
+        marginTop: '-15rem',
       }}
     ><FontAwesomeIcon icon={faUsers} 
     style={{cursor:"pointer" , fontSize:"2.5rem",color:"black" }} />
@@ -135,6 +153,7 @@ const NewStudent = () => {
     <div
       style={{
         padding:'4rem',
+        marginTop: '-15rem',
         width: '200px',
         height: '30px',
         backgroundColor: "rgba(2, 149, 169, 0.75)",
@@ -143,7 +162,6 @@ const NewStudent = () => {
         borderRadius:'20px',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop:'-100rem',
         boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       }}
     ><FontAwesomeIcon icon={faFileCircleCheck} 
