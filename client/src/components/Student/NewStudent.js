@@ -1,7 +1,11 @@
 import React from 'react'
 import { useNavigate,useLocation,NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+<<<<<<< HEAD
 import { faHome, faUsers,faGraduationCap,faFileCircleCheck,faArrowRightFromBracket,faEnvelope, faUpload, faBell, faUser} from '@fortawesome/free-solid-svg-icons'
+=======
+import { faHome, faUsers,faGraduationCap,faFileCircleCheck,faArrowRightFromBracket,faEnvelope,faUser} from '@fortawesome/free-solid-svg-icons'
+>>>>>>> aa3da2c4ab208e097295eebd6a620b045755e6e6
 import { useLogout } from '../../hooks/useLogout';
 const NewStudent = () => {
   const history = useNavigate()
@@ -20,7 +24,12 @@ const NewStudent = () => {
             <NavLink to='/student'><img src="assets/logo.png"style={{width:'50px',marginLeft:'-3.5rem',marginTop:'0.5rem'}}/></NavLink>
             </div>
             <div style={{marginRight:"9px"}}>
+<<<<<<< HEAD
             <FontAwesomeIcon icon={faBell } style={{fontSize:'2.5rem',marginRight:'10rem'}}/><FontAwesomeIcon icon={faUser } style={{fontSize:'2.5rem',}}/>
+=======
+                ICONS
+                <FontAwesomeIcon icon={faUser } style={{fontSize:"2.5rem"}} />
+>>>>>>> aa3da2c4ab208e097295eebd6a620b045755e6e6
             </div>
         </nav>
         <div style={{display:"flex"}}>
@@ -140,6 +149,10 @@ const NewStudent = () => {
         backgroundColor: "rgba(101, 185, 166, 0.75)",
         display: 'flex',
         justifyContent: 'center',
+<<<<<<< HEAD
+=======
+        marginTop: '-15rem',
+>>>>>>> aa3da2c4ab208e097295eebd6a620b045755e6e6
         boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
         overflow:'hidden',
         borderRadius:'20px',
@@ -162,6 +175,10 @@ const NewStudent = () => {
         borderRadius:'20px',
         alignItems: 'center',
         justifyContent: 'center',
+<<<<<<< HEAD
+=======
+        marginTop: '-15rem',
+>>>>>>> aa3da2c4ab208e097295eebd6a620b045755e6e6
         boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       }}
     ><FontAwesomeIcon icon={faFileCircleCheck} 
