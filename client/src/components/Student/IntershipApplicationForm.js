@@ -13,7 +13,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-const NewStudent = () => {
+const IntershipApplicationForm = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -157,126 +157,58 @@ const NewStudent = () => {
           {/* Burada */}
           <div
             style={{
-              paddingTop: "2rem",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "92vw",
+              width: "80vw",
+              position: "fixed",
+              top: "20%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
             }}
           >
-            <div
+            <p
               style={{
-                display: "flex",
-                backgroundColor: "rgba(63, 167, 144, 0.75)",
-                alignItems: "center",
-                justifyContent: "center",
-                justifySelf: "center",
-                textJustify: "center",
-                width: "80%",
-                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                textDecoration: "underline",
               }}
             >
-              {" "}
-              <div>
-                <h3>Dear students,</h3>
-              </div>
-              <div>
-                <p>
-                  Intership regardless of your current education level or
-                  desired career path: Is is very important for your
-                  professional development and acquiring new skills. As Üsküdar
-                  University . We wish success to all our students in this
-                  process.
-                </p>
-              </div>
-            </div>
-
+              Intership Application Form
+            </p>
             <div
               style={{
-                paddingTop: "2rem",
-                display: "flex",
+                alignSelf: "center",
                 alignItems: "center",
-                justifyContent: "center",
+                alignContent: "center",
+                display: "flex",
+                padding: "0.5rem",
+                backgroundColor: "#D9D9D9",
+                borderRadius: "8px",
               }}
             >
-              <div
+              <button
                 style={{
-                  width: "200px",
-                  height: "30px",
-                  backgroundColor: "rgba(240, 212, 117, 0.75)",
-
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginRight: "5rem",
-                  padding: "4rem",
-                  borderRadius: "20PX",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                  overflow: "hidden",
+                  height: "1.5rem",
+                  width: "90px",
+                  border: "none",
+                  borderRadius: "2rem",
+                  backgroundColor: "#0295A9",
                 }}
               >
-                {" "}
-                <FontAwesomeIcon
-                  icon={faGraduationCap}
-                  style={{
-                    cursor: "pointer",
-                    fontSize: "2.5rem",
-                    color: "black",
-                  }}
-                />{" "}
-                Education Information Software Engineering (English) 3.Class
-              </div>
-
-              <div
-                style={{
-                  padding: "4rem",
-                  alignItems: "center",
-                  marginRight: "5rem",
-                  width: "200px",
-                  height: "30px",
-                  backgroundColor: "rgba(101, 185, 166, 0.75)",
-                  display: "flex",
-                  justifyContent: "center",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                  overflow: "hidden",
-                  borderRadius: "20px",
-                }}
-              >
-                <FontAwesomeIcon
-                  icon={faUsers}
-                  style={{
-                    cursor: "pointer",
-                    fontSize: "2.5rem",
-                    color: "black",
-                  }}
-                />
-                Internship Coordinator: Kristin Surpuhi Benli
-              </div>
-              <div
-                style={{
-                  padding: "4rem",
-
-                  width: "200px",
-                  height: "30px",
-                  backgroundColor: "rgba(2, 149, 169, 0.75)",
-                  overflow: "hidden",
-                  display: "flex",
-                  borderRadius: "20px",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                }}
-              >
-                <FontAwesomeIcon
-                  icon={faFileCircleCheck}
-                  style={{
-                    cursor: "pointer",
-                    fontSize: "2.5rem",
-                    color: "black",
-                  }}
-                />
-                Compulsory Internship 1/2 Voluntarily Internship 0
-              </div>
+                File
+              </button>
             </div>
+            <button
+              style={{
+                marginTop: "1.5rem",
+                position: "fixed",
+                left: "100%",
+                transform: "translate(-100% ,-50%)",
+                height: "1.5rem",
+                width: "90px",
+                border: "none",
+                borderRadius: "2rem",
+                backgroundColor: "#65B9A6",
+              }}
+            >
+              Send
+            </button>
           </div>
           {/* Buraya */}
         </div>
@@ -288,4 +220,4 @@ const NewStudent = () => {
   );
 };
 
-export default NewStudent;
+export default IntershipApplicationForm;

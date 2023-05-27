@@ -13,7 +13,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-const NewStudent = () => {
+const NewUploaded = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -157,125 +157,158 @@ const NewStudent = () => {
           {/* Burada */}
           <div
             style={{
-              paddingTop: "2rem",
-              alignItems: "center",
+              width: "80vh",
+              position: "fixed",
+              top: "40%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              backgroundColor: "#D9D9D9",
               justifyContent: "center",
-              width: "92vw",
+              padding: "3rem",
             }}
           >
             <div
               style={{
+                textAlign: "Center",
+                alignItems: "start",
                 display: "flex",
-                backgroundColor: "rgba(63, 167, 144, 0.75)",
-                alignItems: "center",
-                justifyContent: "center",
-                justifySelf: "center",
-                textJustify: "center",
-                width: "80%",
-                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                justifyContent: "space-between",
               }}
             >
-              {" "}
-              <div>
-                <h3>Dear students,</h3>
-              </div>
-              <div>
-                <p>
-                  Intership regardless of your current education level or
-                  desired career path: Is is very important for your
-                  professional development and acquiring new skills. As Üsküdar
-                  University . We wish success to all our students in this
-                  process.
-                </p>
-              </div>
+              <p
+                style={{
+                  textDecoration: "underline",
+                }}
+              >
+                Intership Application Form
+              </p>
+              <NavLink to="/student/intershipApplicationForm">
+                <button
+                  to="/student"
+                  style={{
+                    backgroundColor: "#65B9A6",
+                    width: "240px",
+                    height: "40px",
+                    borderRadius: "32px",
+                    border: "none",
+                    fontSize: "18px",
+                  }}
+                >
+                  File
+                </button>
+              </NavLink>
             </div>
-
             <div
               style={{
-                paddingTop: "2rem",
+                textAlign: "Center",
+                alignItems: "start",
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                justifyContent: "space-between",
               }}
             >
-              <div
+              <p
                 style={{
-                  width: "200px",
-                  height: "30px",
-                  backgroundColor: "rgba(240, 212, 117, 0.75)",
-
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginRight: "5rem",
-                  padding: "4rem",
-                  borderRadius: "20PX",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                  overflow: "hidden",
+                  textDecoration: "underline",
                 }}
               >
-                {" "}
-                <FontAwesomeIcon
-                  icon={faGraduationCap}
-                  style={{
-                    cursor: "pointer",
-                    fontSize: "2.5rem",
-                    color: "black",
-                  }}
-                />{" "}
-                Education Information Software Engineering (English) 3.Class
-              </div>
-
-              <div
+                Intership Report Template
+              </p>
+              <button
                 style={{
-                  padding: "4rem",
-                  alignItems: "center",
-                  marginRight: "5rem",
-                  width: "200px",
-                  height: "30px",
-                  backgroundColor: "rgba(101, 185, 166, 0.75)",
-                  display: "flex",
-                  justifyContent: "center",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                  overflow: "hidden",
-                  borderRadius: "20px",
+                  backgroundColor: "#65B9A6",
+                  width: "240px",
+                  height: "40px",
+                  borderRadius: "32px",
+                  border: "none",
+                  fontSize: "18px",
                 }}
               >
-                <FontAwesomeIcon
-                  icon={faUsers}
-                  style={{
-                    cursor: "pointer",
-                    fontSize: "2.5rem",
-                    color: "black",
-                  }}
-                />
-                Internship Coordinator: Kristin Surpuhi Benli
-              </div>
-              <div
+                File
+              </button>
+            </div>{" "}
+            <div
+              style={{
+                textAlign: "Center",
+                alignItems: "start",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <p
                 style={{
-                  padding: "4rem",
-
-                  width: "200px",
-                  height: "30px",
-                  backgroundColor: "rgba(2, 149, 169, 0.75)",
-                  overflow: "hidden",
-                  display: "flex",
-                  borderRadius: "20px",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                  textDecoration: "underline",
                 }}
               >
-                <FontAwesomeIcon
-                  icon={faFileCircleCheck}
-                  style={{
-                    cursor: "pointer",
-                    fontSize: "2.5rem",
-                    color: "black",
-                  }}
-                />
-                Compulsory Internship 1/2 Voluntarily Internship 0
-              </div>
+                Upload Transcript
+              </p>
+              <button
+                style={{
+                  backgroundColor: "#65B9A6",
+                  width: "240px",
+                  height: "40px",
+                  borderRadius: "32px",
+                  border: "none",
+                  fontSize: "18px",
+                }}
+              >
+                File
+              </button>
+            </div>{" "}
+            <div
+              style={{
+                textAlign: "Center",
+                alignItems: "start",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <p
+                style={{
+                  textDecoration: "underline",
+                }}
+              >
+                SGK Document
+              </p>
+              <button
+                style={{
+                  backgroundColor: "#65B9A6",
+                  width: "240px",
+                  height: "40px",
+                  borderRadius: "32px",
+                  border: "none",
+                  fontSize: "18px",
+                }}
+              >
+                File
+              </button>
+            </div>
+            <div
+              style={{
+                textAlign: "Center",
+                alignItems: "start",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <p
+                style={{
+                  textDecoration: "underline",
+                }}
+              >
+                Uploaded Documents
+              </p>
+              <button
+                style={{
+                  backgroundColor: "#65B9A6",
+                  width: "240px",
+                  height: "40px",
+                  borderRadius: "32px",
+                  border: "none",
+                  fontSize: "18px",
+                }}
+              >
+                File
+              </button>
             </div>
           </div>
           {/* Buraya */}
@@ -288,4 +321,4 @@ const NewStudent = () => {
   );
 };
 
-export default NewStudent;
+export default NewUploaded;
