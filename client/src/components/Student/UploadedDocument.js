@@ -13,7 +13,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-const NewUploaded = () => {
+const UploadedDocument = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -157,166 +157,64 @@ const NewUploaded = () => {
           {/* Burada */}
           <div
             style={{
-              width: "80vh",
+              width: "80vw",
               position: "fixed",
-              top: "40%",
+              top: "20%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              backgroundColor: "#D9D9D9",
-              justifyContent: "center",
-              padding: "3rem",
             }}
           >
+            <h2
+              style={{
+                textDecoration: "underline",
+                textAlign: "start",
+              }}
+            >
+              Uploaded Documents
+            </h2>
             <div
               style={{
-                textAlign: "Center",
-                alignItems: "start",
                 display: "flex",
+                alignItems: "center",
                 justifyContent: "space-between",
+                padding: "0.5rem",
+                backgroundColor: "#D9D9D9",
+                borderRadius: "8px",
+                textAlign: "center",
               }}
             >
               <p
                 style={{
-                  textDecoration: "underline",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "22px",
                 }}
               >
-                Intership Application Form
+                Date
               </p>
-              <NavLink to="/student/intershipApplicationForm">
-                <button
-                  to="/student"
-                  style={{
-                    backgroundColor: "#65B9A6",
-                    width: "240px",
-                    height: "40px",
-                    borderRadius: "32px",
-                    border: "none",
-                    fontSize: "18px",
-                  }}
-                >
-                  File
-                </button>
-              </NavLink>
-            </div>
-            <div
-              style={{
-                textAlign: "Center",
-                alignItems: "start",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
               <p
                 style={{
-                  textDecoration: "underline",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "22px",
                 }}
               >
-                Intership Report Template
+                Uploaded Transcript
               </p>
-              <NavLink to="/student/intershipReportTemplate">
-                <button
-                  style={{
-                    backgroundColor: "#65B9A6",
-                    width: "240px",
-                    height: "40px",
-                    borderRadius: "32px",
-                    border: "none",
-                    fontSize: "18px",
-                  }}
-                >
-                  File
-                </button>
-              </NavLink>
-            </div>{" "}
-            <div
-              style={{
-                textAlign: "Center",
-                alignItems: "start",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <p
+              <button
                 style={{
-                  textDecoration: "underline",
+                  height: "2.5rem",
+                  width: "20%",
+                  border: "none",
+                  borderRadius: "2rem",
+                  backgroundColor: "#65B9A6",
+                  fontSize: "22px",
                 }}
               >
-                Upload Transcript
-              </p>
-              <NavLink to="/student/uploadTranscript">
-                <button
-                  style={{
-                    backgroundColor: "#65B9A6",
-                    width: "240px",
-                    height: "40px",
-                    borderRadius: "32px",
-                    border: "none",
-                    fontSize: "18px",
-                  }}
-                >
-                  File
-                </button>
-              </NavLink>
-            </div>{" "}
-            <div
-              style={{
-                textAlign: "Center",
-                alignItems: "start",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <p
-                style={{
-                  textDecoration: "underline",
-                }}
-              >
-                SGK Document
-              </p>
-              <NavLink to="/student/sgkDocument">
-                <button
-                  style={{
-                    backgroundColor: "#65B9A6",
-                    width: "240px",
-                    height: "40px",
-                    borderRadius: "32px",
-                    border: "none",
-                    fontSize: "18px",
-                  }}
-                >
-                  File
-                </button>
-              </NavLink>
-            </div>
-            <div
-              style={{
-                textAlign: "Center",
-                alignItems: "start",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <p
-                style={{
-                  textDecoration: "underline",
-                }}
-              >
-                Uploaded Documents
-              </p>
-              <NavLink to="/student/uploadedDocuments">
-                <button
-                  style={{
-                    backgroundColor: "#65B9A6",
-                    width: "240px",
-                    height: "40px",
-                    borderRadius: "32px",
-                    border: "none",
-                    fontSize: "18px",
-                  }}
-                >
-                  File
-                </button>
-              </NavLink>
+                Download
+              </button>
             </div>
           </div>
           {/* Buraya */}
@@ -329,4 +227,4 @@ const NewUploaded = () => {
   );
 };
 
-export default NewUploaded;
+export default UploadedDocument;

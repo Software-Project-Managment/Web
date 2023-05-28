@@ -27,6 +27,12 @@ import NewStudent from "./components/Student/NewStudent";
 import NewInbox from "./components/Student/NewInbox";
 import NewUploaded from "./components/Student/NewUploaded";
 import IntershipApplicationForm from "./components/Student/IntershipApplicationForm";
+import IntershipReportTemplate from "./components/Student/IntershipReportTemplate.js";
+import NewUploadTranscript from "./components/Student/NewUploadTranscript";
+import SgkDocument from "./components/Student/SgkDocument";
+import UploadedDocuments from "./components/Student/UploadedDocument";
+import NewCoordinator from "./components/Coordinator/NewCoordinator";
+import StudentInformation from "./components/Coordinator/StudentInformation";
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -36,7 +42,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<PreLoginPage />} />
-
           <Route
             path="/login/student"
             element={
@@ -47,7 +52,6 @@ function App() {
               />
             }
           />
-
           <Route
             path="/login/coordinator"
             element={
@@ -58,7 +62,6 @@ function App() {
               />
             }
           />
-
           <Route
             path="/login/career"
             element={
@@ -69,9 +72,7 @@ function App() {
               />
             }
           />
-
           <Route path="/student" element={<NewStudent />} />
-
           <Route path="/student/downint" element={<DownloadInt />} />
           <Route path="/student/upint" element={<UploadInt />} />
           <Route path="/student/uptranscript" element={<UploadTranscript />} />
@@ -83,12 +84,28 @@ function App() {
           <Route path="/student/profile" element={<Profile />} />
           <Route path="/student/inbox" element={<NewInbox />} />
           <Route path="/student/uploaded" element={<NewUploaded />} />
+          <Route path="/student/sgkDocument" element={<SgkDocument />} />
+          <Route
+            path="/student/uploadedDocuments"
+            element={<UploadedDocuments />}
+          />
+          <Route
+            path="/student/uploadTranscript"
+            element={<NewUploadTranscript />}
+          />
+          <Route
+            path="/student/intershipReportTemplate"
+            element={<IntershipReportTemplate />}
+          />
           <Route
             path="/student/intershipApplicationForm"
             element={<IntershipApplicationForm />}
           />
-
-          <Route path="/coordinator" element={<CoordinatorPage />} />
+          <Route path="/coordinator" element={<NewCoordinator />} />
+          <Route
+            path="/coordinator/studentInformation"
+            element={<StudentInformation />}
+          />
           <Route
             path="/coordinator/studentsforms"
             element={<StudentsForms />}
@@ -107,7 +124,6 @@ function App() {
             element={<CoordinatorNotification />}
           />
           <Route path="/coordinator/profile" element={<CoordinatorProfile />} />
-
           <Route path="/career" element={<CareerPage />} />
           <Route path="/career/approvedforms" element={<ApprovedForms />} />
         </Routes>

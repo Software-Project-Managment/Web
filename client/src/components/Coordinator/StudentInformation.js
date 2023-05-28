@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReactDataGrid from "react-data-grid";
+
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+
 import {
   faHome,
   faUsers,
@@ -11,9 +16,28 @@ import {
   faUpload,
   faBell,
   faUser,
+  faTriangleExclamation,
+  faPerson,
+  faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-const IntershipApplicationForm = () => {
+// eslint-disable-next-line react-hooks/rules-of-hooks
+
+const StudentInformation = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("https://rickandmortyapi.com/api/episode/")
+      .then((res) => res.json())
+      .then((data) => setData(data.results));
+  }, []);
+
+  const columns = [
+    { key: "id", name: "ID", width: 50 },
+    { key: "name", name: "Name" },
+    { key: "air_date", name: "Air Date" },
+    { key: "episode", name: "Episode" },
+  ];
+
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -70,19 +94,19 @@ const IntershipApplicationForm = () => {
             >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <NavLink
-                  to="/student"
+                  to="/coordinator"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/coordinator"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/coordinator"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/coordinator"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -94,19 +118,19 @@ const IntershipApplicationForm = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/student/inbox"
+                  to="/coordinator/inbox"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/coordinator/inbox"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/coordinator/inbox"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/coordinator/inbox"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -118,19 +142,22 @@ const IntershipApplicationForm = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/student/uploaded"
+                  to="/coordinator/studentInformation"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/student/uploaded"
+                      isActive &&
+                      location.pathname === "/coordinator/studentInformation"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/student/uploaded"
+                      isActive &&
+                      location.pathname === "/coordinator/studentInformation"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/student/uploaded"
+                      isActive &&
+                      location.pathname === "/coordinator/studentInformation"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -138,7 +165,7 @@ const IntershipApplicationForm = () => {
                     color: "black",
                   })}
                 >
-                  <FontAwesomeIcon icon={faUpload} />
+                  <FontAwesomeIcon icon={faUserGraduate} />
                 </NavLink>
               </div>
 
@@ -155,64 +182,12 @@ const IntershipApplicationForm = () => {
             </div>
           </div>
           {/* Burada */}
-          <div
-            style={{
-              width: "80vw",
-              position: "fixed",
-              top: "20%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          >
-            <h2
-              style={{
-                textDecoration: "underline",
-                textAlign: "start",
-              }}
-            >
-              Intership Application Form
-            </h2>
-            <div
-              style={{
-                alignSelf: "center",
-                alignItems: "center",
-                alignContent: "center",
-                display: "flex",
-                padding: "0.5rem",
-                backgroundColor: "#D9D9D9",
-                borderRadius: "8px",
-              }}
-            >
-              <button
-                style={{
-                  height: "2.5rem",
-                  width: "20%",
-                  border: "none",
-                  borderRadius: "2rem",
-                  backgroundColor: "#0295A9",
-                  fontSize: "22px",
-                }}
-              >
-                File
-              </button>
-            </div>
-            <button
-              style={{
-                marginTop: "2rem",
-                position: "fixed",
-                left: "100%",
-                transform: "translate(-100% ,-50%)",
-                height: "2.5rem",
-                width: "20%",
-                border: "none",
-                borderRadius: "2rem",
-                backgroundColor: "#65B9A6",
-                fontSize: "22px",
-              }}
-            >
-              Send
-            </button>
-          </div>
+          <ReactDataGrid
+            columns={columns}
+            rowGetter={(i) => data[i]}
+            rowsCount={data.length}
+            minHeight={700}
+          />
           {/* Buraya */}
         </div>
       </div>
@@ -223,4 +198,4 @@ const IntershipApplicationForm = () => {
   );
 };
 
-export default IntershipApplicationForm;
+export default StudentInformation;

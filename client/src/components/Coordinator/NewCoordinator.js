@@ -11,9 +11,12 @@ import {
   faUpload,
   faBell,
   faUser,
+  faTriangleExclamation,
+  faPerson,
+  faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-const IntershipApplicationForm = () => {
+const NewCoordinator = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -70,19 +73,19 @@ const IntershipApplicationForm = () => {
             >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <NavLink
-                  to="/student"
+                  to="/coordinator"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/coordinator"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/coordinator"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/coordinator"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -94,19 +97,19 @@ const IntershipApplicationForm = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/student/inbox"
+                  to="/coordinator/inbox"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/coordinator/inbox"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/coordinator/inbox"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/coordinator/inbox"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -118,19 +121,22 @@ const IntershipApplicationForm = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/student/uploaded"
+                  to="/coordinator/studentInformation"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/student/uploaded"
+                      isActive &&
+                      location.pathname === "/coordinator/studentInformation"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/student/uploaded"
+                      isActive &&
+                      location.pathname === "/coordinator/studentInformation"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/student/uploaded"
+                      isActive &&
+                      location.pathname === "/coordinator/studentInformation"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -138,7 +144,7 @@ const IntershipApplicationForm = () => {
                     color: "black",
                   })}
                 >
-                  <FontAwesomeIcon icon={faUpload} />
+                  <FontAwesomeIcon icon={faUserGraduate} />
                 </NavLink>
               </div>
 
@@ -157,61 +163,57 @@ const IntershipApplicationForm = () => {
           {/* Burada */}
           <div
             style={{
-              width: "80vw",
+              textAlign: "center",
+              paddingTop: "2rem",
+              alignItems: "end",
+              justifyContent: "end",
+              width: "92vw",
               position: "fixed",
-              top: "20%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
+              left: "17%",
             }}
           >
-            <h2
-              style={{
-                textDecoration: "underline",
-                textAlign: "start",
-              }}
-            >
-              Intership Application Form
-            </h2>
             <div
               style={{
-                alignSelf: "center",
-                alignItems: "center",
-                alignContent: "center",
                 display: "flex",
-                padding: "0.5rem",
-                backgroundColor: "#D9D9D9",
-                borderRadius: "8px",
+                backgroundColor: "pink",
+                alignItems: "center",
+                justifyContent: "start",
+                justifySelf: "center",
+                textJustify: "center",
+                width: "80%",
+                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
               }}
             >
-              <button
-                style={{
-                  height: "2.5rem",
-                  width: "20%",
-                  border: "none",
-                  borderRadius: "2rem",
-                  backgroundColor: "#0295A9",
-                  fontSize: "22px",
-                }}
-              >
-                File
-              </button>
+              {" "}
+              <FontAwesomeIcon
+                icon={faBell}
+                style={{ paddingRight: "1rem", fontSize: "2.5rem" }}
+              />
+              <p>2 New SGK request!</p>
             </div>
-            <button
+            <div
               style={{
-                marginTop: "2rem",
-                position: "fixed",
-                left: "100%",
-                transform: "translate(-100% ,-50%)",
-                height: "2.5rem",
-                width: "20%",
-                border: "none",
-                borderRadius: "2rem",
-                backgroundColor: "#65B9A6",
-                fontSize: "22px",
+                marginTop: "1rem",
+                display: "flex",
+                backgroundColor: "rgba(63, 167, 144, 0.75)",
+                alignItems: "center",
+                justifyContent: "start",
+                justifySelf: "start",
+                textJustify: "start",
+                width: "80%",
+                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
               }}
             >
-              Send
-            </button>
+              {" "}
+              <FontAwesomeIcon
+                icon={faTriangleExclamation}
+                style={{ paddingRight: "1rem", fontSize: "2.5rem" }}
+              />
+              <p>
+                Please be sure that the Student fill the Intership Report
+                rightly and correct befor you sent the SGK Document !!!
+              </p>
+            </div>
           </div>
           {/* Buraya */}
         </div>
@@ -223,4 +225,4 @@ const IntershipApplicationForm = () => {
   );
 };
 
-export default IntershipApplicationForm;
+export default NewCoordinator;

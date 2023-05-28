@@ -13,7 +13,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-const NewUploaded = () => {
+const NewUploadTranscript = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -157,167 +157,61 @@ const NewUploaded = () => {
           {/* Burada */}
           <div
             style={{
-              width: "80vh",
+              width: "80vw",
               position: "fixed",
-              top: "40%",
+              top: "20%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              backgroundColor: "#D9D9D9",
-              justifyContent: "center",
-              padding: "3rem",
             }}
           >
-            <div
+            <h2
               style={{
-                textAlign: "Center",
-                alignItems: "start",
-                display: "flex",
-                justifyContent: "space-between",
+                textDecoration: "underline",
+                textAlign: "start",
               }}
             >
-              <p
+              Upload Transcript in Pdf, jpg, zip
+            </h2>
+            <div
+              style={{
+                alignSelf: "center",
+                alignItems: "center",
+                alignContent: "center",
+                display: "flex",
+                padding: "1.5rem",
+                backgroundColor: "#D9D9D9",
+                borderRadius: "8px",
+              }}
+            >
+              <button
                 style={{
-                  textDecoration: "underline",
+                  height: "2.5rem",
+                  width: "20%",
+                  border: "none",
+                  borderRadius: "2rem",
+                  backgroundColor: "#0295A9",
+                  fontSize: "22px",
                 }}
               >
-                Intership Application Form
-              </p>
-              <NavLink to="/student/intershipApplicationForm">
-                <button
-                  to="/student"
-                  style={{
-                    backgroundColor: "#65B9A6",
-                    width: "240px",
-                    height: "40px",
-                    borderRadius: "32px",
-                    border: "none",
-                    fontSize: "18px",
-                  }}
-                >
-                  File
-                </button>
-              </NavLink>
+                File
+              </button>
             </div>
-            <div
+            <button
               style={{
-                textAlign: "Center",
-                alignItems: "start",
-                display: "flex",
-                justifyContent: "space-between",
+                marginTop: "2rem",
+                position: "fixed",
+                left: "100%",
+                transform: "translate(-100% ,-50%)",
+                height: "2.5rem",
+                width: "20%",
+                border: "none",
+                borderRadius: "2rem",
+                backgroundColor: "#65B9A6",
+                fontSize: "22px",
               }}
             >
-              <p
-                style={{
-                  textDecoration: "underline",
-                }}
-              >
-                Intership Report Template
-              </p>
-              <NavLink to="/student/intershipReportTemplate">
-                <button
-                  style={{
-                    backgroundColor: "#65B9A6",
-                    width: "240px",
-                    height: "40px",
-                    borderRadius: "32px",
-                    border: "none",
-                    fontSize: "18px",
-                  }}
-                >
-                  File
-                </button>
-              </NavLink>
-            </div>{" "}
-            <div
-              style={{
-                textAlign: "Center",
-                alignItems: "start",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <p
-                style={{
-                  textDecoration: "underline",
-                }}
-              >
-                Upload Transcript
-              </p>
-              <NavLink to="/student/uploadTranscript">
-                <button
-                  style={{
-                    backgroundColor: "#65B9A6",
-                    width: "240px",
-                    height: "40px",
-                    borderRadius: "32px",
-                    border: "none",
-                    fontSize: "18px",
-                  }}
-                >
-                  File
-                </button>
-              </NavLink>
-            </div>{" "}
-            <div
-              style={{
-                textAlign: "Center",
-                alignItems: "start",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <p
-                style={{
-                  textDecoration: "underline",
-                }}
-              >
-                SGK Document
-              </p>
-              <NavLink to="/student/sgkDocument">
-                <button
-                  style={{
-                    backgroundColor: "#65B9A6",
-                    width: "240px",
-                    height: "40px",
-                    borderRadius: "32px",
-                    border: "none",
-                    fontSize: "18px",
-                  }}
-                >
-                  File
-                </button>
-              </NavLink>
-            </div>
-            <div
-              style={{
-                textAlign: "Center",
-                alignItems: "start",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <p
-                style={{
-                  textDecoration: "underline",
-                }}
-              >
-                Uploaded Documents
-              </p>
-              <NavLink to="/student/uploadedDocuments">
-                <button
-                  style={{
-                    backgroundColor: "#65B9A6",
-                    width: "240px",
-                    height: "40px",
-                    borderRadius: "32px",
-                    border: "none",
-                    fontSize: "18px",
-                  }}
-                >
-                  File
-                </button>
-              </NavLink>
-            </div>
+              Send
+            </button>
           </div>
           {/* Buraya */}
         </div>
@@ -329,4 +223,4 @@ const NewUploaded = () => {
   );
 };
 
-export default NewUploaded;
+export default NewUploadTranscript;
