@@ -1,4 +1,4 @@
-import React from "react";
+import {useState,useEffect} from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,15 +13,85 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
+
 const IntershipApplicationForm = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
-
+  const [file,setFile]=useState()
+  const [items,setItems]=useState([])
+  // const [fileName, setFileName] = useState('Staj Formu Seçiniz');
+  const user = JSON.parse(localStorage.getItem('user'))
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+   
+  };
   const handleClick = () => {
     logout();
     history("/");
   };
+
+  const handleSubmit = (e)=>{
+    try {
+    const data =new FormData()
+    data.append("file",file)
+    data.append("id",user.data._id)
+    data.append("imza",true)
+    data.append("name",user.data.name)
+    data.append("surname",user.data.surname)
+    data.append("no",user.data.username)
+
+     console.log(data);
+     const res =axios.post('http://localhost:3000/student/upload/internship',data)
+     console.log(res);
+     alert('file upload successful')
+     
+
+   
+    } catch (error) {
+      console.log(error);
+    }
+    
+
+  }
+
+
+  
+  const getItems= async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/coordinator`)
+      
+      setItems(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+  
+  const downloadFile = async (id)=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/coordinator/download/${id}` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${items[0].fileName}`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    getItems()
+  },[])
   return (
     <div>
       <div>
@@ -47,11 +117,46 @@ const IntershipApplicationForm = () => {
               />
             </NavLink>
           </div>
-          <div style={{ marginRight: "9px" }}>
+          <div style={{  display:"flex" , alignItems:"center",justifyContent:"space-around",width:"200px"}}>
             <FontAwesomeIcon
               icon={faBell}
-              style={{ fontSize: "2.5rem", marginRight: "10rem" }}
+              style={{ fontSize: "2.5rem" }}
             />
+               <div
+        style={{
+          fontFamily:'montserrat',
+            display: "flex",
+            flexDirection: "column"
+        }}>
+          
+        <p
+          style={{
+            color:"black",
+            fontFamily:'montserrat',
+            margin: 0,
+            fontFamily:'montserrat',
+            fontSize: "1.3rem",
+            color:"black",
+            textTransform:"capitalize"
+          }}
+        >
+          {user.data.name} {user.data.surname}
+           
+        </p>
+        <p style={{
+            fontFamily:'montserrat',
+            margin: 0,
+            fontSize: "1.3rem",
+            color:"black",
+            
+          }}>
+
+           {user.data.role==="student" && user.data.username}
+        </p>
+        
+        
+        </div>
+            
             <FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" }} />
           </div>
         </nav>
@@ -183,7 +288,7 @@ const IntershipApplicationForm = () => {
                 borderRadius: "8px",
               }}
             >
-              <button
+              {/* <button type="file"
                 style={{
                   height: "2.5rem",
                   width: "20%",
@@ -191,10 +296,31 @@ const IntershipApplicationForm = () => {
                   borderRadius: "2rem",
                   backgroundColor: "#0295A9",
                   fontSize: "22px",
+                 
+                  
                 }}
               >
+                
                 File
-              </button>
+              </button> */}
+              <div style={{ height: "2.5rem",
+                  width: "20%",
+                  border: "none",
+                  borderRadius: "2rem",
+                  backgroundColor: "#0295A9",
+                  fontSize: "22px",
+                  textAlign:"center",
+                 
+                  
+
+
+                  }}>
+  <label htmlFor="file-input" style={{display:"flex",alignItems:"center",justifyContent:"center",width:"100%",height:"100%"}} className="btn">File</label>
+  <input id="file-input" style={{visibility:"hidden"}} type="file"  onChange={handleFileChange} />
+</div>
+
+              
+              
             </div>
             <button
               style={{
@@ -208,10 +334,55 @@ const IntershipApplicationForm = () => {
                 borderRadius: "2rem",
                 backgroundColor: "#65B9A6",
                 fontSize: "22px",
-              }}
+              }} 
+              onClick={handleSubmit}
             >
               Send
             </button>
+            <button
+              style={{
+                marginTop: "2rem",
+                position: "fixed",
+                right: "100%",
+                transform: "translate(100% ,-50%)",
+                height: "2.5rem",
+                width: "20%",
+                border: "none",
+                borderRadius: "2rem",
+                backgroundColor: "#65B9A6",
+                fontSize: "22px",
+              }} 
+              onClick={()=>downloadFile(items.CoordinatorID)}
+            >
+              Download
+            </button>
+
+            
+              
+              {items && items.map((item)=>(
+          
+        
+        
+          
+            <button style={{
+                marginTop: "2rem",
+                position: "fixed",
+                right: "100%",
+                transform: "translate(100% ,-50%)",
+                height: "2.5rem",
+                width: "20%",
+                border: "none",
+                borderRadius: "2rem",
+                backgroundColor: "#65B9A6",
+                fontSize: "22px",
+              }}  onClick={()=>downloadFile(item.CoordinatorID)}>Download file</button>
+         
+         
+         
+        )
+
+         ) }
+          
           </div>
           {/* Buraya */}
         </div>

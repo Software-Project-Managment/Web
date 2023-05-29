@@ -28,6 +28,6 @@ const reportTemplateSchema = new Schema({
 },{timestamps:true})
 
 
-const ReportTemplateModel = mongoose.model('reportTemplate',reportTemplateSchema)
+const ReportTemplateModel = mongoose.model('reporttemplate',reportTemplateSchema)
 
 module.exports=ReportTemplateModel

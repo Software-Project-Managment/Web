@@ -3,8 +3,7 @@ import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactDataGrid from "react-data-grid";
 
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
+
 
 import {
   faHome,

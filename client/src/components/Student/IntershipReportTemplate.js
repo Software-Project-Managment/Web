@@ -1,4 +1,4 @@
-import React from "react";
+import {useState,useEffect} from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,15 +13,87 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
+
 const IntershipReportTemplate = () => {
+  const user = JSON.parse(localStorage.getItem('user'))
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [items,setItems]=useState([])
+
+  // const [file,setFile]=useState()
+  // const user = JSON.parse(localStorage.getItem('user'))
+
+
 
   const handleClick = () => {
     logout();
     history("/");
   };
+
+  const getItems= async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/reporttemplate`)
+      
+      setItems(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+
+  const downloadFile = async (id)=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/student/reporttemplate/download/${id}` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${items[0].reportTemplateUrl}`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    getItems()
+  },[])
+
+  // const handleSubmit = (e)=>{
+  //   try {
+  //   const data =new FormData()
+  //   data.append("file",file)
+  //   data.append("id",user.data._id)
+
+  //   data.append("name",user.data.name)
+  //   data.append("surname",user.data.surname)
+  //   data.append("no",user.data.username)
+
+  //    console.log(data);
+  //    const res =axios.post('http://localhost:3000/student/upload/reporttemplate',data)
+  //    console.log(res);
+  //    alert('file upload successful')
+     
+
+   
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+    
+
+  // }
+  // const handleFileChange = (event) => {
+  //   const selectedFile = event.target.files[0];
+  //   setFile(selectedFile);
+   
+  // };
   return (
     <div>
       <div>
@@ -47,11 +119,46 @@ const IntershipReportTemplate = () => {
               />
             </NavLink>
           </div>
-          <div style={{ marginRight: "9px" }}>
+          <div style={{  display:"flex" , alignItems:"center",justifyContent:"space-around",width:"200px"}}>
             <FontAwesomeIcon
               icon={faBell}
-              style={{ fontSize: "2.5rem", marginRight: "10rem" }}
+              style={{ fontSize: "2.5rem" }}
             />
+               <div
+        style={{
+          fontFamily:'montserrat',
+            display: "flex",
+            flexDirection: "column"
+        }}>
+          
+        <p
+          style={{
+            color:"black",
+            fontFamily:'montserrat',
+            margin: 0,
+            fontFamily:'montserrat',
+            fontSize: "1.3rem",
+            color:"black",
+            textTransform:"capitalize"
+          }}
+        >
+          {user.data.name} {user.data.surname}
+           
+        </p>
+        <p style={{
+            fontFamily:'montserrat',
+            margin: 0,
+            fontSize: "1.3rem",
+            color:"black",
+            
+          }}>
+
+           {user.data.role==="student" && user.data.username}
+        </p>
+        
+        
+        </div>
+            
             <FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" }} />
           </div>
         </nav>
@@ -205,11 +312,47 @@ const IntershipReportTemplate = () => {
                 border: "none",
                 borderRadius: "2rem",
                 backgroundColor: "#65B9A6",
-                fontSize: "22px",
-              }}
+                fontSize: "22px"
+                
+              } 
+            }
+            onClick={()=>downloadFile("644c71ba51cced213d1cbf0e")}
+
             >
               Download
             </button>
+            {/* <div style={{ height: "2.5rem",
+                  width: "20%",
+                  border: "none",
+                  borderRadius: "2rem",
+                  backgroundColor: "#0295A9",
+                  fontSize: "22px",
+                  textAlign:"center",
+                 
+                  
+
+
+                  }}>
+  <label htmlFor="file-input" style={{display:"flex",alignItems:"center",justifyContent:"center",width:"100%",height:"100%"}} className="btn">File</label>
+  <input id="file-input" style={{visibility:"hidden"}} type="file"  onChange={handleFileChange}  />
+</div> */}
+{/* <button
+              style={{
+                marginTop: "2rem",
+                position: "fixed",
+                left: "100%",
+                transform: "translate(-100% ,-50%)",
+                height: "2.5rem",
+                width: "20%",
+                border: "none",
+                borderRadius: "2rem",
+                backgroundColor: "#65B9A6",
+                fontSize: "22px",
+              }} 
+              onClick={handleSubmit}
+            >
+              Send
+            </button> */}
           </div>
           {/* Buraya */}
         </div>

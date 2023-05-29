@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,11 +13,39 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
+
 const NewUploadTranscript = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [transcript,setTranscript]=useState()
+  const user = JSON.parse(localStorage.getItem('user'))
 
+
+
+  const handleSubmit = (e)=>{
+    try {
+    const data =new FormData()
+    data.append("file",transcript)
+    data.append("id",user.data._id)
+    data.append("name",user.data.name)
+    data.append("surname",user.data.surname)
+    data.append("no",user.data.username)
+
+     console.log(data);
+     const res =axios.post('http://localhost:3000/student/upload/transcript',data)
+     console.log(res);
+     alert('file upload successful')
+
+
+   
+    } catch (error) {
+      console.log(error);
+    }
+    
+
+  }
   const handleClick = () => {
     logout();
     history("/");
@@ -47,11 +75,46 @@ const NewUploadTranscript = () => {
               />
             </NavLink>
           </div>
-          <div style={{ marginRight: "9px" }}>
+          <div style={{  display:"flex" , alignItems:"center",justifyContent:"space-around",width:"200px"}}>
             <FontAwesomeIcon
               icon={faBell}
-              style={{ fontSize: "2.5rem", marginRight: "10rem" }}
+              style={{ fontSize: "2.5rem" }}
             />
+               <div
+        style={{
+          fontFamily:'montserrat',
+            display: "flex",
+            flexDirection: "column"
+        }}>
+          
+        <p
+          style={{
+            color:"black",
+            fontFamily:'montserrat',
+            margin: 0,
+            fontFamily:'montserrat',
+            fontSize: "1.3rem",
+            color:"black",
+            textTransform:"capitalize"
+          }}
+        >
+          {user.data.name} {user.data.surname}
+           
+        </p>
+        <p style={{
+            fontFamily:'montserrat',
+            margin: 0,
+            fontSize: "1.3rem",
+            color:"black",
+            
+          }}>
+
+           {user.data.role==="student" && user.data.username}
+        </p>
+        
+        
+        </div>
+            
             <FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" }} />
           </div>
         </nav>
@@ -183,7 +246,7 @@ const NewUploadTranscript = () => {
                 borderRadius: "8px",
               }}
             >
-              <button
+              {/* <button
                 style={{
                   height: "2.5rem",
                   width: "20%",
@@ -194,7 +257,25 @@ const NewUploadTranscript = () => {
                 }}
               >
                 File
-              </button>
+              </button> */}
+                  <div style={{ height: "2.5rem",
+                  width: "20%",
+                  border: "none",
+                  borderRadius: "2rem",
+                  backgroundColor: "#0295A9",
+                  fontSize: "22px",
+                  textAlign:"center",
+                 
+                  
+
+
+                  }}>
+  <label htmlFor="file-input" style={{display:"flex",alignItems:"center",justifyContent:"center",width:"100%",height:"100%"}} className="btn">File</label>
+  <input id="file-input" style={{visibility:"hidden"}} type="file"   onChange={e=>{
+              setTranscript(e.target.files[0]);
+             
+           }}/>
+</div>
             </div>
             <button
               style={{
@@ -208,7 +289,8 @@ const NewUploadTranscript = () => {
                 borderRadius: "2rem",
                 backgroundColor: "#65B9A6",
                 fontSize: "22px",
-              }}
+              }} 
+              onClick={handleSubmit}
             >
               Send
             </button>

@@ -2,6 +2,8 @@ const internshipFileModel = require('../models/internshipFileModel')
 const transcriptModel = require('../models/transcriptModel')
 const messageModel = require('../models/messageModel')
 const SGKModel = require('../models/SgkModel')
+const reportTemplateModel = require('../models/reportTemplateModel')
+const notificaitonModel = require('../models/notificationModel')
 const path = require('path')
 const createError = require('../utils/createError')
 
