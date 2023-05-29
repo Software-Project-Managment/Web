@@ -258,6 +258,39 @@ const downloadReportTemplate = async(req,res,next)=>{
 
 }
 
+//GET NOTIFICATION
+const getNotifications = async (req,res,next)=>{
+    const {aliciID} = req.params
+    try {
+        const notifications = await notificaitonModel.find({alici:aliciID})
+        res.status(200).json(notifications)
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+//UPLOAD NOTIFICATION
+const uploadNotification =  async (req,res,next)=>{
+    try {
+        
+        const {name} = req.body
+        const {aliciID} = req.body
+        const {subject} = req.body
+     
+      
+       
+        const notification = await notificaitonModel.create({gonderen:name,alici:aliciID,subject:subject});
+
+        await notification.save()
+        res.status(200).json(notification)
+        
+        
+
+    } catch (error) {
+        next(error)
+    }
+}
 module.exports={
     upload,
     getFiles,
@@ -276,5 +309,7 @@ module.exports={
     downloadSGKFile,
     uploadReportTemplate,
     getReportTemplate,
-    downloadReportTemplate
+    downloadReportTemplate,
+    getNotifications,
+    uploadNotification
 }

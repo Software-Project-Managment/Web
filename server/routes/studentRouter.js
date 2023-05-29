@@ -26,6 +26,10 @@ router.post('/upload/reporttemplate',reportTemplateMulter.single('file'),student
 router.get('/reporttemplate',studentController.getReportTemplate)
 router.get('/reporttemplate/download/:id',studentController.downloadReportTemplate)
 
+//NOTIFICATONS
+router.post('/upload/notification',studentController.uploadNotification)
+router.get('/notification/:aliciID',studentController.getNotifications)
+
 router.post('/upload/message',uploadMessage.single('file'),studentController.uploadMessage)
 router.get('/message/:aliciID',studentController.getMessages)
 router.get('/message/download/:id',studentController.downloadMessageFile)
