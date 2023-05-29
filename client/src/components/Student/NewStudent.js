@@ -201,23 +201,24 @@ const NewStudent = () => {
           >
             <div
               style={{
+              
                 display: "flex",
                 backgroundColor: "rgba(63, 167, 144, 0.75)",
                 alignItems: "center",
                 justifyContent: "center",
-                justifySelf: "center",
-                textJustify: "center",
-                width: "64%",
+                // justifySelf: "center",
+                // textJustify: "center",
+                width: "86%",
                 boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
                 borderRadius:"0.5rem",
-                marginLeft:"19.7rem"
+                marginLeft:"5.7rem",
+                
               }}
             >
               {" "}
-              <div>
-                <h3>Dear students,</h3>
-              </div>
-              <div>
+              
+              <div >
+              <h3>Dear students,</h3>
                 <p>
                   Intership regardless of your current education level or
                   desired career path: Is is very important for your
