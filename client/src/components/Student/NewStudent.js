@@ -171,8 +171,10 @@ const NewStudent = () => {
                 justifyContent: "center",
                 justifySelf: "center",
                 textJustify: "center",
-                width: "80%",
+                width: "64%",
                 boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                borderRadius:"0.5rem",
+                marginLeft:"19.7rem"
               }}
             >
               {" "}
