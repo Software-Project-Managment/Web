@@ -16,6 +16,8 @@ try {
      }
 
     }
+
+    
     
     if(req.body.role==="coordinator"){
         const controlDep = req.body.username.slice(0,11)
@@ -72,6 +74,8 @@ const logout = async (req,res)=>{
         "message":"User has been logged out"
     })
 }
+
+
 
 
 module.exports={

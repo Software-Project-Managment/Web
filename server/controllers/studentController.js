@@ -217,7 +217,46 @@ const downloadMessageFile = async(req,res,next)=>{
 
 }
 
+const uploadReportTemplate =  async (req,res,next)=>{
+    try {
+        const {id} = req.body
+        const {name} = req.body
+        const {surname} = req.body
+        const {no} = req.body
+        const file = req.file.filename
+       
+        const reportTemplateFormu = await reportTemplateModel.create({studentId:id,studentName:name,studentSurname:surname,studentNo:no,reportTemplateUrl:file});
 
+        await reportTemplateFormu.save()
+        res.status(200).json({reportTemplateFormu})
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+const getReportTemplate = async (req,res,next)=>{
+    try {
+        const templates = await reportTemplateModel.find()
+        res.status(200).json(templates)
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+const downloadReportTemplate = async(req,res,next)=>{
+    const {id} = req.params
+    
+    const template = await reportTemplateModel.findOne({studentId:id})
+    if(!template){
+        return next(createError(404,"No item found"))
+    }
+    const downloadedFile = template.reportTemplateUrl
+    const filePath = path.join(__dirname,`../uploads/reportTemplateFiles/${downloadedFile}`)
+    res.download(filePath)
+
+}
 
 module.exports={
     upload,
@@ -234,5 +273,8 @@ module.exports={
     updateApprove,
     uploadSGK,
     getSGKByStudentID,
-    downloadSGKFile
+    downloadSGKFile,
+    uploadReportTemplate,
+    getReportTemplate,
+    downloadReportTemplate
 }
