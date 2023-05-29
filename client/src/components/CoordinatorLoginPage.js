@@ -61,24 +61,24 @@ function CoordinatorLoginPage({FirstInput,entry,type}) {
         }}
       ></div>
       <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "12.5%",
-          backgroundColor: "#121e2d",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "0 2rem",
-          boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
-          boxSizing: "border-box",
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "7%",
+      backgroundColor: "#929AA3",
+      opacity: "0.9",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+      boxSizing: "border-box",
         }}
       >
         <div
           style={{
-            backgroundColor: "#121e2d",
+            
             display: "flex",
             alignItems: "center",
           }}
@@ -88,7 +88,16 @@ function CoordinatorLoginPage({FirstInput,entry,type}) {
             alt="Uskudar University Logo"
             style={{ width: "50px", marginRight: "1rem" }}
           />
-          <h1 style={{color:"white",fontFamily:'montserrat', margin: 0 }}>Üsküdar University</h1>
+          <h1
+            style={{
+              color: "black",
+              fontFamily: "montserrat",
+              margin: 0,
+              fontSize: "18px",
+            }}
+          >
+            Üsküdar University
+          </h1>
         </div>
         <div
         style={{
@@ -98,9 +107,9 @@ function CoordinatorLoginPage({FirstInput,entry,type}) {
         <p
           style={{
             margin: 0,
-            fontSize: "24px",
+            fontSize: "18px",
             fontWeight: "bold",
-            color: "white"
+            color: "black",
             
           }}
         >
@@ -109,9 +118,9 @@ function CoordinatorLoginPage({FirstInput,entry,type}) {
         </p>
         <p style={{
             margin: 0,
-            fontSize: "24px",
+            fontSize: "19px",
             fontWeight: "bold",
-            color: "white",
+            color: "black",
           }}>
             {entry}
         </p>
@@ -119,19 +128,19 @@ function CoordinatorLoginPage({FirstInput,entry,type}) {
       </div>
       <div
         style={{
-          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          backgroundColor: "rgba(146, 154, 163, 0.6)",
           padding: "2rem",
           borderRadius: "1rem",
-          boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+
           maxWidth: "500px",
           width: "100%",
-          marginTop: "2rem",
+          marginTop: "0rem",
         }}
       >
-        <h2>Login</h2>
+         <h2 style={{ fontSize: "24px", fontWeight: "initial" }}>LOGIN</h2>
         {error && <p style={{color:'red'}}>{error}</p>}
         <form onSubmit={handleSubmit}>
-          <label style={{ fontSize: "21px" }}>
+          <label style={{ fontSize: "15px", fontWeight: "normal",marginBottom:'0px',display:'block' }}>
         
             {FirstInput}
             <input
@@ -141,7 +150,7 @@ function CoordinatorLoginPage({FirstInput,entry,type}) {
             />
           </label>
           <br />
-          <label style={{ fontSize: "21px" }}>
+          <label sstyle={{ fontSize: "15px" ,marginTop:'7px',display:'block',marginBottom:'0rem'}}>
             Password:
             <input
               type="password"
@@ -150,8 +159,20 @@ function CoordinatorLoginPage({FirstInput,entry,type}) {
             />
           </label>
           <br />
-          <button type="submit" disabled={isLoading}>Login</button>
-          <button type="button"  ><Link style={{color:'white',textDecoration:'none'}} to='https://teksifre.uskudar.edu.tr/' >Forgot Password?</Link></button>
+          <Link
+  style={{ color: "black", textDecoration: "none", cursor: "pointer",marginTop:'0px'}}
+  to="https://teksifre.uskudar.edu.tr/"
+>
+  <span style={{  }}>Forgot Password?</span>
+</Link>
+          <button
+
+            style={{ justifyContent: "flex-end",marginLeft:'24rem',fontSize:'20px',backgroundColor:'#0e7f94',borderRadius:'40px',width:'125px', }}
+            type="submit"
+            disabled={isLoading}
+          >
+            LOGIN
+          </button>
         </form>
       </div>
     </div>
