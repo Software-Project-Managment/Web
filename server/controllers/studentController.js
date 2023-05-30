@@ -4,6 +4,7 @@ const messageModel = require('../models/messageModel')
 const SGKModel = require('../models/SgkModel')
 const reportTemplateModel = require('../models/reportTemplateModel')
 const notificaitonModel = require('../models/notificationModel')
+const studentUploadedModel = require('../models/studentUploadedModel')
 const path = require('path')
 const createError = require('../utils/createError')
 
@@ -219,6 +220,7 @@ const downloadMessageFile = async(req,res,next)=>{
 
 }
 
+//REPORT TEMPLATE
 const uploadReportTemplate =  async (req,res,next)=>{
     try {
         const {id} = req.body
@@ -259,6 +261,49 @@ const downloadReportTemplate = async(req,res,next)=>{
     res.download(filePath)
 
 }
+
+//ALL FORMS 
+const uploadAllForms =  async (req,res,next)=>{
+    try {
+        const {id} = req.body
+        const {FileName} = req.body
+        const file = req.file.filename
+       
+        const studentUploadedForms = await studentUploadedModel.create({studentId:id,FileName:FileName,uploadedFormUrl:file});
+
+        await studentUploadedForms.save()
+        res.status(200).json({studentUploadedForms})
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+const getAllForms = async (req,res,next)=>{
+    try {
+        const allForms = await studentUploadedModel.find()
+        res.status(200).json(allForms)
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+const downloadAllForms = async(req,res,next)=>{
+    const {id} = req.params
+    const {idx} = req.params
+    
+    const allforms = await studentUploadedModel.find({studentId:id})
+    if(!allforms){
+        return next(createError(404,"No item found"))
+    }
+    const downloadedFile = allforms[idx].uploadedFormUrl
+    const filePath = path.join(__dirname,`../uploads/studentUploadedFiles/${downloadedFile}`)
+    res.download(filePath)
+
+}
+
+
 
 //GET NOTIFICATION
 const getNotifications = async (req,res,next)=>{
@@ -313,5 +358,9 @@ module.exports={
     getReportTemplate,
     downloadReportTemplate,
     getNotifications,
-    uploadNotification
+    uploadNotification,
+    uploadAllForms,
+    getAllForms,
+    downloadAllForms
+
 }

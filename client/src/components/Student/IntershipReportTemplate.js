@@ -23,7 +23,7 @@ const IntershipReportTemplate = () => {
   const [items,setItems]=useState([])
 
   // const [file,setFile]=useState()
-  // const user = JSON.parse(localStorage.getItem('user'))
+ 
 
 
 

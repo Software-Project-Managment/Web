@@ -6,6 +6,7 @@ const uploadMessage = require('../middleware/messageMulter')
 const transcriptMulter = require('../middleware/transcriptMulter')
 const SGKMulter = require('../middleware/sgkMulter')
 const reportTemplateMulter = require('../middleware/reportTemplateMulter')
+const studentUploadMulter = require('../middleware/studentUploadedMulter')
 
 
 
@@ -29,6 +30,11 @@ router.get('/reporttemplate/download/:id',studentController.downloadReportTempla
 //NOTIFICATONS
 router.post('/upload/notification',studentController.uploadNotification)
 router.get('/notification/:aliciID',studentController.getNotifications)
+
+//UPLOADEDS
+router.post('/upload/studentuploadeds',studentUploadMulter.single('file'),studentController.uploadAllForms)
+router.get('/uploadeds',studentController.getAllForms)
+router.get('/uploadeds/download/:id/:idx',studentController.downloadAllForms)
 
 router.post('/upload/message',uploadMessage.single('file'),studentController.uploadMessage)
 router.get('/message/:aliciID',studentController.getMessages)

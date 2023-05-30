@@ -216,7 +216,9 @@ const UploadedDocument = () => {
                 Download
               </button>
             </div>
+            
           </div>
+          
           {/* Buraya */}
         </div>
       </div>
