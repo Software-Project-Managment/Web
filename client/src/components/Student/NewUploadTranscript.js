@@ -27,14 +27,23 @@ const NewUploadTranscript = () => {
   const handleSubmit = (e)=>{
     try {
     const data =new FormData()
+    const allFormsData =new FormData()
+
     data.append("file",transcript)
     data.append("id",user.data._id)
     data.append("name",user.data.name)
     data.append("surname",user.data.surname)
     data.append("no",user.data.username)
 
+    allFormsData.append("file",transcript)
+    allFormsData.append("id",user.data._id)
+    allFormsData.append("FileName","Transcript Form")
+
      console.log(data);
      const res =axios.post('http://localhost:3000/student/upload/transcript',data)
+     const res2 =axios.post('http://localhost:3000/student/upload/studentuploadeds',allFormsData)
+     
+     console.log(res2);
      console.log(res);
      alert('file upload successful')
 

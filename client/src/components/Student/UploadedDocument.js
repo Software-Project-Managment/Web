@@ -1,4 +1,4 @@
-import React from "react";
+import {useState,useEffect} from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,15 +13,59 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios  from "axios"
 const UploadedDocument = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [files,setFiles]=useState()
+  const user = JSON.parse(localStorage.getItem('user'))
 
   const handleClick = () => {
     logout();
     history("/");
   };
+
+  const getItems= async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/uploadeds/${user.data._id}`)
+      
+      setFiles(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+  const downloadFile = async (id,idx)=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/student/uploadeds/download/${id}/${idx}` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${files[idx].FileName}`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+  
+      getItems()
+    
+   
+  },[])
+const date = new Date("2023-05-30T21:18:38.026+00:00")
+const d = date.getDate()
+const m = date.getMonth()+1
+const y = date.getFullYear()
+
   return (
     <div>
       <div>
@@ -46,14 +90,52 @@ const UploadedDocument = () => {
                 }}
               />
             </NavLink>
+            
           </div>
-          <div style={{ marginRight: "9px" }}>
+         
+          <div style={{  display:"flex" , alignItems:"center",justifyContent:"space-around",width:"200px"}}>
             <FontAwesomeIcon
               icon={faBell}
-              style={{ fontSize: "2.5rem", marginRight: "10rem" }}
+              style={{ fontSize: "2.5rem" }}
             />
+               <div
+        style={{
+          fontFamily:'montserrat',
+            display: "flex",
+            flexDirection: "column"
+        }}>
+          
+        <p
+          style={{
+            color:"black",
+            fontFamily:'montserrat',
+            margin: 0,
+            fontFamily:'montserrat',
+            fontSize: "1.3rem",
+            color:"black",
+            textTransform:"capitalize"
+          }}
+        >
+          {user.data.name} {user.data.surname}
+           
+        </p>
+        <p style={{
+            fontFamily:'montserrat',
+            margin: 0,
+            fontSize: "1.3rem",
+            color:"black",
+            
+          }}>
+
+           {user.data.role==="student" && user.data.username}
+        </p>
+        
+        
+        </div>
+            
             <FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" }} />
           </div>
+      
         </nav>
         <div style={{ display: "flex" }}>
           <div
@@ -157,11 +239,15 @@ const UploadedDocument = () => {
           {/* Burada */}
           <div
             style={{
-              width: "80vw",
-              position: "fixed",
+             
+              display:"flex",
+              flexDirection:"column",
+              marginLeft:"1.5rem",
+              width: "90vw",
+              // position: "fixed",
               top: "20%",
               left: "50%",
-              transform: "translate(-50%, -50%)",
+              // transform: "translate(-50%, -50%)",
             }}
           >
             <h2
@@ -172,7 +258,124 @@ const UploadedDocument = () => {
             >
               Uploaded Documents
             </h2>
-            <div
+
+            <div style={{
+              
+                display: "flex",
+                flexDirection:"column"
+
+              }}>
+
+              {files && files.map((file)=>(
+                <div
+                style={{
+              
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: "0.5rem",
+                  backgroundColor: "#D9D9D9",
+                  borderRadius: "8px",
+                  textAlign: "center",
+                  marginBottom:"1rem"
+                }}
+              >
+                <p
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "22px",
+                  }}
+                >
+                  { 
+                  <>
+                  {d} {m} {y}
+                  
+                  </>
+               
+                  }
+                </p>
+                <p
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "22px",
+                  }}
+                >
+                  {file.FileName}
+                </p>
+                <button
+                  style={{
+                    height: "2.5rem",
+                    width: "20%",
+                    border: "none",
+                    borderRadius: "2rem",
+                    backgroundColor: "#65B9A6",
+                    fontSize: "22px",
+                  }}
+                  onClick={()=>downloadFile(file.studentId,file.itemIndex)}
+                >
+                  Download
+                </button>
+              </div>
+              ))}
+
+            {/* <div
+              style={{
+            
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "0.5rem",
+                backgroundColor: "#D9D9D9",
+                borderRadius: "8px",
+                textAlign: "center",
+                marginBottom:"1rem"
+              }}
+            >
+              <p
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "22px",
+                }}
+              >
+                Date
+              </p>
+              <p
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "22px",
+                }}
+              >
+                Uploaded Transcript
+              </p>
+              <button
+                style={{
+                  height: "2.5rem",
+                  width: "20%",
+                  border: "none",
+                  borderRadius: "2rem",
+                  backgroundColor: "#65B9A6",
+                  fontSize: "22px",
+                }}
+              >
+                Download
+              </button>
+            </div> */}
+
+       
+
+        
+            
+            
+            </div>
+            {/* <div
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -215,7 +418,7 @@ const UploadedDocument = () => {
               >
                 Download
               </button>
-            </div>
+            </div> */}
             
           </div>
           

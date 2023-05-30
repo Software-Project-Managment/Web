@@ -33,7 +33,7 @@ router.get('/notification/:aliciID',studentController.getNotifications)
 
 //UPLOADEDS
 router.post('/upload/studentuploadeds',studentUploadMulter.single('file'),studentController.uploadAllForms)
-router.get('/uploadeds',studentController.getAllForms)
+router.get('/uploadeds/:id',studentController.getAllForms)
 router.get('/uploadeds/download/:id/:idx',studentController.downloadAllForms)
 
 router.post('/upload/message',uploadMessage.single('file'),studentController.uploadMessage)

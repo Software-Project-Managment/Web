@@ -37,6 +37,7 @@ const DownloadInt = () => {
        link.download=`${items[0].fileName}`
        link.click()
     } catch (error) {
+    
       console.log(error);
     }
   }

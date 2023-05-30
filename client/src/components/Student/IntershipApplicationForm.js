@@ -36,6 +36,7 @@ const IntershipApplicationForm = () => {
   const handleSubmit = (e)=>{
     try {
     const data =new FormData()
+    const allFormsData =new FormData()
     data.append("file",file)
     data.append("id",user.data._id)
     data.append("imza",true)
@@ -43,9 +44,15 @@ const IntershipApplicationForm = () => {
     data.append("surname",user.data.surname)
     data.append("no",user.data.username)
 
+    allFormsData.append("file",file)
+    allFormsData.append("id",user.data._id)
+    allFormsData.append("FileName","Internship Application Form")
+
      console.log(data);
      const res =axios.post('http://localhost:3000/student/upload/internship',data)
+     const res2 =axios.post('http://localhost:3000/student/upload/studentuploadeds',allFormsData)
      console.log(res);
+     console.log(res2);
      alert('file upload successful')
      
 

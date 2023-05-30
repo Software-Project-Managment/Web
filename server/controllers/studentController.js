@@ -5,6 +5,7 @@ const SGKModel = require('../models/SgkModel')
 const reportTemplateModel = require('../models/reportTemplateModel')
 const notificaitonModel = require('../models/notificationModel')
 const studentUploadedModel = require('../models/studentUploadedModel')
+const counterModel = require('../models/counterModel')
 const path = require('path')
 const createError = require('../utils/createError')
 
@@ -265,13 +266,42 @@ const downloadReportTemplate = async(req,res,next)=>{
 //ALL FORMS 
 const uploadAllForms =  async (req,res,next)=>{
     try {
-        const {id} = req.body
-        const {FileName} = req.body
-        const file = req.file.filename
-       
-        const studentUploadedForms = await studentUploadedModel.create({studentId:id,FileName:FileName,uploadedFormUrl:file});
+       await counterModel.findOneAndUpdate(
+            {id:"autoval"},
+            {"$inc":{"seq":1}},
+            {new:true}
+        ).then(async (cd)=>{
+                let seqId
+                if(cd==null){
+                    const newval = await  counterModel.create({id:"autoval"});
+                    await   newval.save()
+                    seqId=0
+                }else{
+                    seqId=cd.seq
 
-        await studentUploadedForms.save()
+                }
+
+
+                const {id} = req.body
+                const {FileName} = req.body
+                const file = req.file.filename
+               
+                const studentUploadedForms = await studentUploadedModel.create({studentId:id,itemIndex:seqId,FileName:FileName,uploadedFormUrl:file});
+        
+                await studentUploadedForms.save()
+              
+
+            
+        })
+
+
+        // const {id} = req.body
+        // const {FileName} = req.body
+        // const file = req.file.filename
+       
+        // const studentUploadedForms = await studentUploadedModel.create({studentId:id,FileName:FileName,uploadedFormUrl:file});
+
+        // await studentUploadedForms.save()
         res.status(200).json({studentUploadedForms})
 
     } catch (error) {
@@ -280,8 +310,9 @@ const uploadAllForms =  async (req,res,next)=>{
 }
 
 const getAllForms = async (req,res,next)=>{
+    const {id} = req.params
     try {
-        const allForms = await studentUploadedModel.find()
+        const allForms = await studentUploadedModel.find({studentId:id})
         res.status(200).json(allForms)
     } catch (error) {
         next(error)
@@ -292,12 +323,12 @@ const getAllForms = async (req,res,next)=>{
 const downloadAllForms = async(req,res,next)=>{
     const {id} = req.params
     const {idx} = req.params
-    
-    const allforms = await studentUploadedModel.find({studentId:id})
+    console.log(id,idx);
+    const allforms = await studentUploadedModel.findOne({studentId:id,itemIndex:idx})
     if(!allforms){
         return next(createError(404,"No item found"))
     }
-    const downloadedFile = allforms[idx].uploadedFormUrl
+    const downloadedFile = allforms.uploadedFormUrl
     const filePath = path.join(__dirname,`../uploads/studentUploadedFiles/${downloadedFile}`)
     res.download(filePath)
 

@@ -9,7 +9,7 @@ const studentUploadedSchema = new Schema({
       },
      itemIndex: {
         type: Number,
-        required: true
+        required: false
       },
     FileName:{
         type:String,
