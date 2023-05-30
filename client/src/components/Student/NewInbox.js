@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, useLocation, NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -94,19 +94,19 @@ const NewInbox = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/student/inbox"
+                  to="/student/newMessage"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/student/newMessage"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/student/newMessage"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/student/newMessage"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -155,7 +155,97 @@ const NewInbox = () => {
             </div>
           </div>
           {/* Burada */}
-                    
+          <div
+            style={{
+              display: "flex",
+            }}
+          >
+            <div
+              style={{
+                height: "80vh",
+                width: "20vW",
+                textAlign: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <p
+                style={{
+                  textDecoration: "underline",
+                  marginTop: "4rem",
+                  fontSize: "2.5rem",
+                }}
+              >
+                My Messages
+              </p>
+              <NavLink to="/student/newMessage" style={{ color: "black" }}>
+                <p
+                  style={{
+                    marginTop: "2rem",
+                    fontSize: "20px",
+                  }}
+                >
+                  New Message
+                </p>
+              </NavLink>
+              <NavLink to="/student/incomingMessage" style={{ color: "black" }}>
+                <p
+                  style={{
+                    marginTop: "2rem",
+                    fontSize: "20px",
+                  }}
+                >
+                  Incoming Message
+                </p>
+              </NavLink>
+              <NavLink to="/student/outgoingMessage" style={{ color: "black" }}>
+                <p
+                  style={{
+                    marginTop: "2rem",
+                    fontSize: "20px",
+                  }}
+                >
+                  Outgoing Message
+                </p>
+              </NavLink>
+            </div>
+            <div
+              style={{
+                height: "80vh",
+                width: "60vW",
+              }}
+            >
+              <p>Contact (Search with Student ID)</p>
+              <form>
+                <label
+                  style={{
+                    fontSize: "15px",
+                    fontWeight: "normal",
+                    marginBottom: "0px",
+                    display: "block",
+                  }}
+                >
+                  <input type="text" />
+                </label>
+
+                <label
+                  style={{
+                    fontSize: "15px",
+                    marginTop: "7px",
+                    display: "block",
+                    marginBottom: "0rem",
+                  }}
+                >
+                  <p>Regard</p>
+                  <input type="text" />
+                </label>
+                <p>Message</p>
+                <input
+                  type="text"
+                  style={{ height: "10rem", lineHeight: "normal" }}
+                />
+              </form>
+            </div>
+          </div>
           {/* Buraya */}
         </div>
       </div>

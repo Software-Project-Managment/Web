@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
 const NewUploaded = () => {
-  const user = JSON.parse(localStorage.getItem('user'))
+  const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -48,46 +48,47 @@ const NewUploaded = () => {
               />
             </NavLink>
           </div>
-          <div style={{  display:"flex" , alignItems:"center",justifyContent:"space-around",width:"200px"}}>
-            <FontAwesomeIcon
-              icon={faBell}
-              style={{ fontSize: "2.5rem" }}
-            />
-               <div
-        style={{
-          fontFamily:'montserrat',
-            display: "flex",
-            flexDirection: "column"
-        }}>
-          
-        <p
-          style={{
-            color:"black",
-            fontFamily:'montserrat',
-            margin: 0,
-            fontFamily:'montserrat',
-            fontSize: "1.3rem",
-            color:"black",
-            textTransform:"capitalize"
-          }}
-        >
-          {user.data.name} {user.data.surname}
-           
-        </p>
-        <p style={{
-            fontFamily:'montserrat',
-            margin: 0,
-            fontSize: "1.3rem",
-            color:"black",
-            
-          }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-around",
+              width: "200px",
+            }}
+          >
+            <FontAwesomeIcon icon={faBell} style={{ fontSize: "2.5rem" }} />
+            <div
+              style={{
+                fontFamily: "montserrat",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <p
+                style={{
+                  color: "black",
+                  fontFamily: "montserrat",
+                  margin: 0,
+                  fontFamily: "montserrat",
+                  fontSize: "1.3rem",
+                  color: "black",
+                  textTransform: "capitalize",
+                }}
+              >
+                {user.data.name} {user.data.surname}
+              </p>
+              <p
+                style={{
+                  fontFamily: "montserrat",
+                  margin: 0,
+                  fontSize: "1.3rem",
+                  color: "black",
+                }}
+              >
+                {user.data.role === "student" && user.data.username}
+              </p>
+            </div>
 
-           {user.data.role==="student" && user.data.username}
-        </p>
-        
-        
-        </div>
-            
             <FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" }} />
           </div>
         </nav>
@@ -130,19 +131,19 @@ const NewUploaded = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/student/inbox"
+                  to="/student/newMessage"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/student/newMessage"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/student/newMessage"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/student/inbox"
+                      isActive && location.pathname === "/student/newMessage"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",

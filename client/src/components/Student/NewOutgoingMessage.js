@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, useLocation, NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -11,10 +11,10 @@ import {
   faUpload,
   faBell,
   faUser,
+  faPerson,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-const NewStudent = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+const NewOutgoingMessage = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -48,47 +48,11 @@ const NewStudent = () => {
               />
             </NavLink>
           </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-around",
-              width: "200px",
-            }}
-          >
-            <FontAwesomeIcon icon={faBell} style={{ fontSize: "2.5rem" }} />
-            <div
-              style={{
-                fontFamily: "montserrat",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <p
-                style={{
-                  color: "black",
-                  fontFamily: "montserrat",
-                  margin: 0,
-                  fontFamily: "montserrat",
-                  fontSize: "1.3rem",
-                  color: "black",
-                  textTransform: "capitalize",
-                }}
-              >
-                {user.data.name} {user.data.surname}
-              </p>
-              <p
-                style={{
-                  fontFamily: "montserrat",
-                  margin: 0,
-                  fontSize: "1.3rem",
-                  color: "black",
-                }}
-              >
-                {user.data.role === "student" && user.data.username}
-              </p>
-            </div>
-
+          <div style={{ marginRight: "9px" }}>
+            <FontAwesomeIcon
+              icon={faBell}
+              style={{ fontSize: "2.5rem", marginRight: "10rem" }}
+            />
             <FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" }} />
           </div>
         </nav>
@@ -194,124 +158,138 @@ const NewStudent = () => {
           {/* Burada */}
           <div
             style={{
-              paddingTop: "2rem",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "92vw",
+              display: "flex",
             }}
           >
             <div
               style={{
-                display: "flex",
-                backgroundColor: "rgba(63, 167, 144, 0.75)",
-                alignItems: "center",
-                justifyContent: "center",
-                // justifySelf: "center",
-                // textJustify: "center",
-                width: "86%",
-                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                borderRadius: "0.5rem",
-                marginLeft: "5.7rem",
+                height: "80vh",
+                width: "20vW",
+                textAlign: "center",
+                justifyContent: "space-between",
               }}
             >
-              {" "}
-              <div>
-                <h3>Dear students,</h3>
-                <p>
-                  Intership regardless of your current education level or
-                  desired career path: Is is very important for your
-                  professional development and acquiring new skills. As Üsküdar
-                  University . We wish success to all our students in this
-                  process.
+              <p
+                style={{
+                  textDecoration: "underline",
+                  marginTop: "4rem",
+                  fontSize: "2.5rem",
+                }}
+              >
+                My Messages
+              </p>
+              <NavLink to="/student/newMessage" style={{ color: "black" }}>
+                <p
+                  style={{
+                    marginTop: "2rem",
+                    fontSize: "20px",
+                  }}
+                >
+                  New Message
                 </p>
-              </div>
+              </NavLink>
+              <NavLink to="/student/incomingMessage" style={{ color: "black" }}>
+                <p
+                  style={{
+                    marginTop: "2rem",
+                    fontSize: "20px",
+                  }}
+                >
+                  Incoming Message
+                </p>
+              </NavLink>
+              <NavLink to="/student/outgoingMessage" style={{ color: "black" }}>
+                <p
+                  style={{
+                    marginTop: "2rem",
+                    fontSize: "20px",
+                  }}
+                >
+                  Outgoing Message
+                </p>
+              </NavLink>
             </div>
-
-            <div
-              style={{
-                paddingTop: "2rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <div>
+              <p style={{ fontSize: "2rem" }}>Outgoing Messages</p>
+              <input
+                style={{
+                  width: "60vw",
+                  height: "2rem",
+                  fontSize: "2rem",
+                }}
+                placeholder="Ara"
+              ></input>
+              <div style={{ height: "4rem" }}></div>
               <div
                 style={{
-                  width: "200px",
-                  height: "30px",
-                  backgroundColor: "rgba(240, 212, 117, 0.75)",
-
                   display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginRight: "5rem",
-                  padding: "4rem",
-                  borderRadius: "20PX",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                  overflow: "hidden",
+                  backgroundColor: "#8C949D",
+                  justifyContent: "space-between",
+                  width: "70vw",
                 }}
               >
-                {" "}
-                <FontAwesomeIcon
-                  icon={faGraduationCap}
+                <div
                   style={{
-                    cursor: "pointer",
-                    fontSize: "2.5rem",
-                    color: "black",
+                    display: "flex",
+                    backgroundColor: "#8C949D",
+                    textAlign: "center",
                   }}
-                />{" "}
-                Education Information Software Engineering (English) 3.Class
+                >
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ fontSize: "2.5rem" }}
+                  />
+                  <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
+                </div>
+                <p style={{ fontSize: "1.5rem" }}>190209051</p>
               </div>
-
+              <div style={{ height: "2rem" }}></div>
               <div
                 style={{
-                  padding: "4rem",
-                  alignItems: "center",
-                  marginRight: "5rem",
-                  width: "200px",
-                  height: "30px",
-                  backgroundColor: "rgba(101, 185, 166, 0.75)",
                   display: "flex",
-                  justifyContent: "center",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                  overflow: "hidden",
-                  borderRadius: "20px",
+                  backgroundColor: "#8C949D",
+                  justifyContent: "space-between",
+                  width: "70vw",
                 }}
               >
-                <FontAwesomeIcon
-                  icon={faUsers}
+                <div
                   style={{
-                    cursor: "pointer",
-                    fontSize: "2.5rem",
-                    color: "black",
+                    display: "flex",
+                    backgroundColor: "#8C949D",
+                    textAlign: "center",
                   }}
-                />
-                Internship Coordinator: Kristin Surpuhi Benli
+                >
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ fontSize: "2.5rem" }}
+                  />
+                  <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
+                </div>
+                <p style={{ fontSize: "1.5rem" }}>190209051</p>
               </div>
+              <div style={{ height: "2rem" }}></div>
               <div
                 style={{
-                  padding: "4rem",
-
-                  width: "200px",
-                  height: "30px",
-                  backgroundColor: "rgba(2, 149, 169, 0.75)",
-                  overflow: "hidden",
                   display: "flex",
-                  borderRadius: "20px",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                  backgroundColor: "#8C949D",
+                  justifyContent: "space-between",
+                  width: "70vw",
                 }}
               >
-                <FontAwesomeIcon
-                  icon={faFileCircleCheck}
+                <div
                   style={{
-                    cursor: "pointer",
-                    fontSize: "2.5rem",
-                    color: "black",
+                    display: "flex",
+                    backgroundColor: "#8C949D",
+                    textAlign: "center",
                   }}
-                />
-                Compulsory Internship 1/2 Voluntarily Internship 0
+                >
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ fontSize: "2.5rem" }}
+                  />
+                  <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
+                </div>
+                <p style={{ fontSize: "1.5rem" }}>190209051</p>
               </div>
             </div>
           </div>
@@ -325,4 +303,4 @@ const NewStudent = () => {
   );
 };
 
-export default NewStudent;
+export default NewOutgoingMessage;

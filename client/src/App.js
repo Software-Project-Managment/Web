@@ -33,6 +33,8 @@ import SgkDocument from "./components/Student/SgkDocument";
 import UploadedDocuments from "./components/Student/UploadedDocument";
 import NewCoordinator from "./components/Coordinator/NewCoordinator";
 import StudentInformation from "./components/Coordinator/StudentInformation";
+import NewIncomingMessage from "./components/Student/NewIncomingMessage";
+import NewOutgoingMessage from "./components/Student/NewOutgoingMessage";
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -82,7 +84,15 @@ function App() {
           <Route path="/student/uppermessage" element={<UpperMessage />} />
           <Route path="/student/incoming" element={<IncomingMessage />} />
           <Route path="/student/profile" element={<Profile />} />
-          <Route path="/student/inbox" element={<NewInbox />} />
+          <Route path="/student/newMessage" element={<NewInbox />} />
+          <Route
+            path="/student/outgoingMessage"
+            element={<NewOutgoingMessage />}
+          />
+          <Route
+            path="/student/incomingMessage"
+            element={<NewIncomingMessage />}
+          />
           <Route path="/student/uploaded" element={<NewUploaded />} />
           <Route path="/student/sgkDocument" element={<SgkDocument />} />
           <Route
