@@ -18,7 +18,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useLogout } from '../../hooks/useLogout';
 
-const NewStudentInformation = () => {
+const NewStudentInformation1 = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const history = useNavigate();
   const location = useLocation();
@@ -175,28 +175,13 @@ const NewStudentInformation = () => {
             style={{
               textAlign: 'center',
               paddingTop: '2rem',
-              alignItems: 'end',
-              justifyContent: 'end',
               width: '92vw',
               position: 'fixed',
-              left: '17%',
+              left: '9%',
             }}
-          ><div style={{ display: 'flex', alignItems: 'center', padding: '0.5rem', width: '40rem', borderRadius: '4px',justifyContent:'center',    position: 'fixed',
-          top: '11%',
-          left: '57%',
-          transform: 'translate(-50%, -50%)',}}>
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search"
-            style={{ marginRight: '0.5rem', borderRadius: '1rem' }}
-          />
-          <FontAwesomeIcon icon={faSearch }  onClick={()=>handleSearch} style={{cursor:'pointer'}} />
-        </div>
+          >
             <div
               style={{
-                marginTop: '2rem',
                 display: 'flex',
                 backgroundColor: '#D9D9D9',
                 alignItems: 'center',
@@ -204,22 +189,136 @@ const NewStudentInformation = () => {
                 justifySelf: 'start',
                 textJustify: 'start',
                 width: '85%',
+                height: '35vh',
                 boxShadow: '0 4px 4px  0 rgba(0, 0, 0, 0.25) inset',
+                borderRadius:'20px'
               }}
             >
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem',}}>
 
-                  <div style={{width: '70rem', border: '1px solid #ccc', borderRadius: '4px', padding: '1rem' }}>
-                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem',border:'2px solid black',borderRadius:'20px' }}>
-                 <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>Student Name</span>
-                 <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>Student ID</span>
+                  <div style={{width: '70rem', borderRadius: '4px', padding: '1rem',marginLeft:'3rem' }}>
+                 <div style={{ display: 'flex', justifyContent: 'flex-start',marginBottom:'1rem',marginLeft:'3rem',}}>
+                 <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px'}}>Student Name</span>
+                 <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>:Selin Bekar</span>
                 </div>
-                <div style={{ marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}><FontAwesomeIcon icon ={faUserGraduate}/> Ulaş Beyaz</span>
-                <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>190209018</span>
+                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' ,marginBottom:'1rem',marginLeft:'3rem'}}>
+                <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>Student ID:</span>
+                <span style={{fontFamily:'Montserrat',fontSize:'25px', marginRight:'30px'}}>:2048044</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '2rem',marginBottom:'1rem',marginLeft:'3rem'}}>
+                 <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px'}}>Department</span>{'   '}
+                 <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>:Software Engineering</span>
+                 
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' ,marginBottom:'1rem',marginLeft:'3rem'}}>
+                <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>Compulsory Internship</span>
+                <span style={{fontFamily:'Montserrat',fontSize:'25px', marginRight:'30px'}}>:1/2</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' ,marginBottom:'1rem',marginLeft:'3rem'}}>
+                <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>Voluntarily Internship:</span>
+                <span style={{fontFamily:'Montserrat',fontSize:'25px', marginRight:'30px'}}>:0</span>
+                </div>
+                <div style={{position:'fixed',top:'%50',left:'%50',transform:'translate:(-50%, -50%)',justifyContent:'center',alignItems:'center'}}>
+                <div
+  style={{
+    paddingTop: "2rem",
+    display: "flex",
+    alignItems: "center",
+    marginRight:"1rem",
+    width:'100%',
+    
+  }}
+>
+  <div
+    style={{
+      width: "70px",
+      height: "5px",
+      backgroundColor: "rgba(240, 212, 117, 0.75)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      marginRight: "5rem",
+      padding: "4rem",
+      borderRadius: "20px",
+      boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+      overflow: "hidden",
+    }}
+  >
+    View Transcript
   </div>
+  <div
+    style={{
+      padding: "4rem",
+      alignItems: "center",
+      marginRight: "5rem",
+      width: "70px",
+      height: "5px",
+      backgroundColor: "rgba(101, 185, 166, 0.75)",
+      display: "flex",
+      justifyContent: "center",
+      boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+      overflow: "hidden",
+      borderRadius: "20px",
+    }}
+  >
+    View SGK
+  </div>
+  <div
+    style={{
+      padding: "4rem",
+      alignItems: "center",
+      marginRight: "5rem",
+      width: "70px",
+      height: "5px",
+      backgroundColor: "rgba(101, 185, 166, 0.75)",
+      display: "flex",
+      justifyContent: "center",
+      boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+      overflow: "hidden",
+      borderRadius: "20px",
+    }}
+  >
+    View Internship Formular
+  </div>
+  <div
+    style={{
+      padding: "4rem",
+      alignItems: "center",
+      marginRight: "5rem",
+      width: "70px",
+      height: "5px",
+      backgroundColor: "rgba(101, 185, 166, 0.75)",
+      display: "flex",
+      justifyContent: "center",
+      boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+      overflow: "hidden",
+      borderRadius: "20px",
+    }}
+  >
+    View Report Template
+  </div>
+  <div
+    style={{
+      padding: "4rem",
+      width: "70px",
+      height: "5px",
+      backgroundColor: "rgba(2, 149, 169, 0.75)",
+      overflow: "hidden",
+      display: "flex",
+      borderRadius: "20px",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+    }}
+  >
+    Send Request For SGK Document to Career Center
+  </div>             
+</div>
+            </div>
+            
+
                       {/* Diğer öğrencilerin listesi */}
                     </div>
                   </div>
@@ -234,4 +333,4 @@ const NewStudentInformation = () => {
   );
 };
 
-export default NewStudentInformation;
+export default NewStudentInformation1;

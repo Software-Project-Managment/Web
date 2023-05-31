@@ -39,6 +39,7 @@ import CoordinatorInbox from "./components/Coordinator/CoordinatorInbox";
 import NewStudentInformation from "./components/Coordinator/NewStudentInformation";
 import CoordinatorincomingMessage from "./components/Coordinator/CoordinatorincomingMessage";
 import Coordinatoroutgoingmessage from "./components/Coordinator/Coordinatoroutgoingmessage";
+import NewStudentInformation1 from "./components/Coordinator/NewStudentInformation1";
 
 
 function App() {
@@ -90,6 +91,7 @@ function App() {
           <Route path="/student/incoming" element={<IncomingMessage />} />
           <Route path="/student/profile" element={<Profile />} />
           <Route path="/student/newMessage" element={<NewInbox />} />
+          
 
           <Route
             path="/student/outgoingMessage"
@@ -132,6 +134,7 @@ function App() {
             path="/coordinator/uploadform"
             element={<CoordinatorUploadInt />}
           />
+          <Route path="/coordinator/NewStudentInformation1" element={<NewStudentInformation1/>}/>
           
           <Route path="/coordinator/incomingMessage" element={<CoordinatorincomingMessage/>}/>
           <Route path="/coordinator/outgoingMessage" element={<Coordinatoroutgoingmessage/>}/>
