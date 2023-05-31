@@ -50,7 +50,7 @@ const NewStudentInformation1 = () => {
           <div style={{ marginLeft: '5vw' }}>
             <NavLink to="/coordinator">
               <img
-                src="assets/logo.png"
+                src="../assets/logo.png"
                 style={{
                   width: '50px',
                   marginLeft: '-3.5rem',
@@ -195,7 +195,7 @@ const NewStudentInformation1 = () => {
               }}
             >
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'  }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem',}}>
 
                   <div style={{width: '70rem', borderRadius: '4px', padding: '1rem',marginLeft:'3rem' }}>
@@ -220,7 +220,8 @@ const NewStudentInformation1 = () => {
                 <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>Voluntarily Internship:</span>
                 <span style={{fontFamily:'Montserrat',fontSize:'25px', marginRight:'30px'}}>:0</span>
                 </div>
-                <div style={{position:'fixed',top:'%50',left:'%50',transform:'translate:(-50%, -50%)',justifyContent:'center',alignItems:'center'}}>
+                
+                <div style={{position:'absolute', top:"100%", right:"0", }}>
                 <div
   style={{
     paddingTop: "2rem",
@@ -228,6 +229,7 @@ const NewStudentInformation1 = () => {
     alignItems: "center",
     marginRight:"1rem",
     width:'100%',
+    
     
   }}
 >
