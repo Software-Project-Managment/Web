@@ -35,6 +35,9 @@ import NewCoordinator from "./components/Coordinator/NewCoordinator";
 import StudentInformation from "./components/Coordinator/StudentInformation";
 import NewIncomingMessage from "./components/Student/NewIncomingMessage";
 import NewOutgoingMessage from "./components/Student/NewOutgoingMessage";
+import CoordinatorInbox from "./components/Coordinator/CoordinatorInbox";
+import NewStudentInformation from "./components/Coordinator/NewStudentInformation";
+
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -85,6 +88,7 @@ function App() {
           <Route path="/student/incoming" element={<IncomingMessage />} />
           <Route path="/student/profile" element={<Profile />} />
           <Route path="/student/newMessage" element={<NewInbox />} />
+
           <Route
             path="/student/outgoingMessage"
             element={<NewOutgoingMessage />}
@@ -116,6 +120,8 @@ function App() {
             path="/coordinator/studentInformation"
             element={<StudentInformation />}
           />
+          <Route path="/coordinator/CoordinatorInbox" element={<CoordinatorInbox/>}/>
+          <Route path="/coordinator/NewStudentInformation" element={<NewStudentInformation/>}/>
           <Route
             path="/coordinator/studentsforms"
             element={<StudentsForms />}

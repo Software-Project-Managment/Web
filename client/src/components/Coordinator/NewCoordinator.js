@@ -54,7 +54,7 @@ const NewCoordinator = () => {
           <div style={{  display:"flex" , alignItems:"center",justifyContent:"space-around",width:"200px"}}>
             <FontAwesomeIcon
               icon={faBell}
-              style={{ fontSize: "2.5rem" }}
+              style={{ fontSize: "2.5rem",fontWeight:"lighter" }}
             />
                <div
         style={{
@@ -106,7 +106,68 @@ const NewCoordinator = () => {
                 alignItems: "center",
                 justifyContent: "space-between",
               }}
-            >
+              >
+              <div
+                style={{
+                  width: "200px",
+                  height: "30px",
+                  backgroundColor: "#65B9A6",
+                  position: 'fixed',
+                  top: '35%',
+                  left: '28%',
+                  transform: 'translate(-50%, -50%)',
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: "5rem",
+                  padding: "4rem",
+                  borderRadius: "10PX",
+                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                  overflow: "hidden",
+                }}
+              >
+                {" "}
+                <FontAwesomeIcon
+                  icon={faUsers}
+                  style={{
+                    cursor: "pointer",
+                    fontSize: "2.5rem",
+                    color: "black",
+                  }}
+                />{" "}
+                Active Students:200
+              </div>
+              
+              <div
+                style={{
+                  width: "200px",
+                  height: "30px",
+                  backgroundColor: "#0295A9",
+                  position: 'fixed',
+                  top: '35%',
+                  left: '53%',
+                  transform: 'translate(-50%, -50%)',
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: "5rem",
+                  padding: "4rem",
+                  borderRadius: "10PX",
+                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                  overflow: "hidden",
+                }}
+              >
+                {" "}
+                <FontAwesomeIcon
+                  icon={faFileCircleCheck}
+                  style={{
+                    cursor: "pointer",
+                    fontSize: "2.5rem",
+                    color: "black",
+                  }}
+                />{" "}
+                Internship Coordinator: Kristin Surpuhi Benli
+              </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <NavLink
                   to="/coordinator"
@@ -133,19 +194,19 @@ const NewCoordinator = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/coordinator/inbox"
+                  to="/Coordinator/CoordinatorInbox"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/coordinator/inbox"
+                      isActive && location.pathname === "/Coordinator/CoordinatorInbox"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/coordinator/inbox"
+                      isActive && location.pathname === "/Coordinator/CoordinatorInbox"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/coordinator/inbox"
+                      isActive && location.pathname === "/Coordinator/CoordinatorInbox"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -157,7 +218,7 @@ const NewCoordinator = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/coordinator/studentInformation"
+                  to="/coordinator/NewStudentInformation"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
@@ -218,14 +279,13 @@ const NewCoordinator = () => {
                 textJustify: "center",
                 width: "80%",
                 boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                borderRadius:"10px"
               }}
             >
               {" "}
-              <FontAwesomeIcon
-                icon={faBell}
-                style={{ paddingRight: "1rem", fontSize: "2.5rem" }}
-              />
-              <p>2 New SGK request!</p>
+              
+              
+              <p>Dear Internship Coordinator please ensure that all students fill out the forms correctly and turn them on time.</p>
             </div>
             <div
               style={{
@@ -240,15 +300,7 @@ const NewCoordinator = () => {
                 boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
               }}
             >
-              {" "}
-              <FontAwesomeIcon
-                icon={faTriangleExclamation}
-                style={{ paddingRight: "1rem", fontSize: "2.5rem" }}
-              />
-              <p>
-                Please be sure that the Student fill the Intership Report
-                rightly and correct befor you sent the SGK Document !!!
-              </p>
+
             </div>
           </div>
           {/* Buraya */}
