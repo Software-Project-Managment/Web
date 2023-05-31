@@ -50,7 +50,7 @@ const NewStudentInformation = () => {
           <div style={{ marginLeft: '5vw' }}>
             <NavLink to="/coordinator">
               <img
-                src="assets/logo.png"
+                src="../assets/logo.png"
                 style={{
                   width: '50px',
                   marginLeft: '-3.5rem',
