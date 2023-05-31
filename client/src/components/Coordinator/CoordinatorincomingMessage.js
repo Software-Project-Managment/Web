@@ -1,4 +1,4 @@
-import {useState,useEffect} from "react";
+import React from "react";
 import { useNavigate, useLocation, NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,77 +11,21 @@ import {
   faUpload,
   faBell,
   faUser,
+  faPerson,
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-import axios from 'axios'
-const CoordinatorInbox = () => {
-  const user = JSON.parse(localStorage.getItem('user'))
+
+const Coordinatorincomingmessage = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
-  const [coords,setCoords]=useState([])
-  const [msg,setMsg]=useState("")
-  const [selectedCoord,setselectedCoord]=useState('')
-  const [file,setFile]=useState()
-  const [subject,setSubject]=useState('')
-
-
-
-
-  const getCoordinators= async ()=>{
-    try {
-      const res = await axios.get(`http://localhost:3000/api/users`)
-      
-      setCoords(res.data)
-      console.log(res.data);
-      
-    } catch (error) {
-      console.log(error);
-    }
-   
-  }
-
+  const user = JSON.parse(localStorage.getItem('user'))
 
   const handleClick = () => {
     logout();
     history("/");
   };
-  const handleFileChange = (event) => {
-    const selectedFile = event.target.files[0];
-    setFile(selectedFile);
-   
-  };
-
-  
-  const handleSubmit = (e)=>{
-    try {
-    const data =new FormData()
-  
-    data.append("gonderenID",user.data._id)
-    data.append("aliciID",selectedCoord)
-    data.append("subject",subject)
-    data.append("message",msg)
-    if(file){
-      data.append("file",file)
-    }
-    
-  
-    
-     console.log(data);
-     const res =axios.post('http://localhost:3000/student/upload/message',data)
-     console.log(res);
-     alert('Message has been sent')
-   
-    } catch (error) {
-      console.log(error);
-    }
-    
-
-  }
-  useEffect(()=>{
-    getCoordinators()
-  },[])
   return (
     <div>
       <div>
@@ -97,8 +41,8 @@ const CoordinatorInbox = () => {
         >
           <div style={{ marginLeft: "5vw" }}>
             <NavLink to="/student">
-            <img
-                src="../assets/logo.png"
+              <img
+                  src="../assets/logo.png"
                 style={{
                   width: "50px",
                   marginLeft: "-3.5rem",
@@ -305,130 +249,79 @@ const CoordinatorInbox = () => {
                 </p>
               </NavLink>
             </div>
-            <div
-              style={{
-                height: "80vh",
-                width: "60vW",
-              }}
-            >
-              <p>Contact (Search with Student ID)</p>
-           
-              <form>
-                <label
-                 
-                >
-                  {/* <input type="text" /> */}
-                  <select style={{
-                    fontSize: "15px",
-                    fontWeight: "normal",
-                    marginBottom: "0px",
-                    display: "block",
-                    width:"100%",
-                    height:"35px",
-                    outline:"none"
-                  }} id='a' value={selectedCoord} onChange={(e)=>setselectedCoord(e.target.value)}>
-            <option value="" key="1">Select</option>
-            { coords && coords.map((coord)=>(
-              <option value={coord._id} key={coord._id}>{coord.name.toUpperCase()} {coord.surname.toUpperCase()}</option>
-            ))}
-          
-        </select>
-                </label>
-
-                <label
-                  style={{
-                    fontSize: "15px",
-                    marginTop: "7px",
-                    display: "block",
-                    marginBottom: "0rem",
-                  }}
-                >
-                  <p>Regard</p>
-                  <input type="text" value={subject} onChange={(e)=>setSubject(e.target.value)}/>
-                </label>
-                <p>Message</p>
-                {/* <input
-                  type="text"
-                  style={{ height: "10rem", lineHeight: "normal" }}
-                /> */}
-                <textarea name="message" id="message" style={{width:"100%" , height:"10rem"}} placeholder="Your message" value={msg} onChange={(e)=>setMsg(e.target.value)} ></textarea>
-              </form>
-
-
-                <div style={{
-               marginTop:"4rem"
-               
-              }}>
-                <div style={{fontSize:"1.2rem"}}>File (Adding files is not mandatory) </div>
-                <div
-              style={{
-                alignSelf: "center",
-                alignItems: "center",
-                alignContent: "center",
-                display: "flex",
-                padding: "0.5rem",
-                backgroundColor: "#D9D9D9",
-                borderRadius: "8px",
-               
-              }}
-            >
-              {/* <button type="file"
+            <div>
+              <p style={{ fontSize: "2rem" }}>Incoming Messages</p>
+              <div
                 style={{
-                  height: "2.5rem",
-                  width: "20%",
-                  border: "none",
-                  borderRadius: "2rem",
-                  backgroundColor: "#0295A9",
-                  fontSize: "22px",
-                 
-                  
+                  display: "flex",
+                  backgroundColor: "#8C949D",
+                  justifyContent: "space-between",
+                  width: "70vw",
                 }}
               >
-                
-                File
-              </button> */}
-              <div style={{ height: "2.5rem",
-                  width: "20%",
-                  border: "none",
-                  borderRadius: "2rem",
-                  backgroundColor: "#0295A9",
-                  fontSize: "22px",
-                  textAlign:"center",
-                 
-                 
-                  
-
-
-                  }}>
-  <label htmlFor="file-input" style={{display:"flex",alignItems:"center",justifyContent:"center",width:"100%",height:"100%"}} className="btn">File</label>
-  <input id="file-input" style={{visibility:"hidden"}} type="file"  onChange={handleFileChange} />
-</div>
-
-              
-              
-            </div>
-
-            <button
-              style={{
-                marginTop: "2rem",
-                position: "fixed",
-                left: "86%",
-                transform: "translate(-100% ,-50%)",
-                height: "2.5rem",
-                width: "20%",
-                border: "none",
-                borderRadius: "2rem",
-                backgroundColor: "#65B9A6",
-                fontSize: "22px",
-              }} 
-            onClick={handleSubmit}
-            >
-              Send
-            </button>
+                <div
+                  style={{
+                    display: "flex",
+                    backgroundColor: "#8C949D",
+                    textAlign: "center",
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ fontSize: "2.5rem" }}
+                  />
+                  <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
                 </div>
-           
-
-
+                <p style={{ fontSize: "1.5rem" }}>Intership formular</p>
+              </div>
+              <div style={{ height: "2rem" }}></div>
+              <div
+                style={{
+                  display: "flex",
+                  backgroundColor: "#8C949D",
+                  justifyContent: "space-between",
+                  width: "70vw",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    backgroundColor: "#8C949D",
+                    textAlign: "center",
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ fontSize: "2.5rem" }}
+                  />
+                  <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
+                </div>
+                <p style={{ fontSize: "1.5rem" }}>Intership formular</p>
+              </div>
+              <div style={{ height: "2rem" }}></div>
+              <div
+                style={{
+                  display: "flex",
+                  backgroundColor: "#8C949D",
+                  justifyContent: "space-between",
+                  width: "70vw",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    backgroundColor: "#8C949D",
+                    textAlign: "center",
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ fontSize: "2.5rem" }}
+                  />
+                  <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
+                </div>
+                <p style={{ fontSize: "1.5rem" }}>Intership formular</p>
+              </div>
             </div>
           </div>
           {/* Buraya */}
@@ -441,4 +334,4 @@ const CoordinatorInbox = () => {
   );
 };
 
-export default CoordinatorInbox;
+export default Coordinatorincomingmessage;
