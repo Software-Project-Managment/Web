@@ -342,7 +342,7 @@ const NewInbox = () => {
                     marginBottom: "0rem",
                   }}
                 >
-                  <p>Subject</p>
+                  <p>Regard</p>
                   <input type="text" value={subject} onChange={(e)=>setSubject(e.target.value)}/>
                 </label>
                 <p>Message</p>
