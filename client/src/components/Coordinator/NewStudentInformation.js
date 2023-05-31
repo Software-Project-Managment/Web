@@ -166,7 +166,7 @@ const NewStudentInformation = () => {
                   cursor: 'pointer',
                   fontSize: '2.5rem',
                   color: 'black',
-                  marginTop: '50px',
+                  marginTop: '51px',
                 }}
               />
             </div>
