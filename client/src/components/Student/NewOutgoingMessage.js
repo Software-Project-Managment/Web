@@ -1,4 +1,4 @@
-import React from "react";
+import {useState,useEffect} from "react";
 import { useNavigate, useLocation, NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,11 +14,37 @@ import {
   faPerson,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
 const NewOutgoingMessage = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
   const user = JSON.parse(localStorage.getItem('user'))
+
+  const [messages,setMessages] = useState([])
+  const [sender,setSender] = useState('')
+
+  const getMessages = async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/message/out/${user.data._id}`)
+      
+      setMessages(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+
+  useEffect(()=>{
+    getMessages()
+    
+    
+  },[])
+ 
+
 
   const handleClick = () => {
     logout();
@@ -258,77 +284,42 @@ const NewOutgoingMessage = () => {
                 placeholder="Ara"
               ></input>
               <div style={{ height: "4rem" }}></div>
-              <div
-                style={{
-                  display: "flex",
-                  backgroundColor: "#8C949D",
-                  justifyContent: "space-between",
-                  width: "70vw",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    backgroundColor: "#8C949D",
-                    textAlign: "center",
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    style={{ fontSize: "2.5rem" }}
-                  />
-                  <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
-                </div>
-                <p style={{ fontSize: "1.5rem" }}>190209051</p>
-              </div>
-              <div style={{ height: "2rem" }}></div>
-              <div
-                style={{
-                  display: "flex",
-                  backgroundColor: "#8C949D",
-                  justifyContent: "space-between",
-                  width: "70vw",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    backgroundColor: "#8C949D",
-                    textAlign: "center",
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    style={{ fontSize: "2.5rem" }}
-                  />
-                  <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
-                </div>
-                <p style={{ fontSize: "1.5rem" }}>190209051</p>
-              </div>
-              <div style={{ height: "2rem" }}></div>
-              <div
-                style={{
-                  display: "flex",
-                  backgroundColor: "#8C949D",
-                  justifyContent: "space-between",
-                  width: "70vw",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    backgroundColor: "#8C949D",
-                    textAlign: "center",
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    style={{ fontSize: "2.5rem" }}
-                  />
-                  <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
-                </div>
-                <p style={{ fontSize: "1.5rem" }}>190209051</p>
-              </div>
+        
+              {messages && messages.map((message,idx)=>(
+          
+          <div
+          style={{
+            display: "flex",
+            backgroundColor: "#8C949D",
+            justifyContent: "space-between",
+            width: "70vw",
+            marginBottom:"1rem"
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              backgroundColor: "#8C949D",
+              textAlign: "center",
+              alignItems:"center"
+            }}
+           
+          >
+            <FontAwesomeIcon
+              icon={faUser}
+              style={{ fontSize: "2.5rem" }}
+            />
+            <p style={{ fontSize: "1.5rem" }}>{user.data.name} {user.data.surname}</p>
+          </div>
+          <p style={{ fontSize: "1.5rem" }}>{message.subject}</p>
+        
+        </div>
+        
+        
+    ))}
+            
+          
+
             </div>
           </div>
           {/* Buraya */}

@@ -31,7 +31,7 @@ const CoordinatorInbox = () => {
 
   const getCoordinators= async ()=>{
     try {
-      const res = await axios.get(`http://localhost:3000/api/users`)
+      const res = await axios.get(`http://localhost:3000/api/users/getstudents`)
       
       setCoords(res.data)
       console.log(res.data);
