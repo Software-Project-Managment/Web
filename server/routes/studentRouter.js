@@ -38,10 +38,11 @@ router.get('/uploadeds/download/:id/:idx',studentController.downloadAllForms)
 
 router.post('/upload/message',uploadMessage.single('file'),studentController.uploadMessage)
 router.get('/message/:aliciID',studentController.getMessages)
+router.get('/message/out/:gonderen',studentController.getGonderenMessages)
 router.get('/message/download/:id',studentController.downloadMessageFile)
 
 
-router.post('/upload/sgk',SGKMulter.single('file'),studentController.uploadSGK)
+router.post('/upload/sgk',SGKMulter.single('file'),studentController.uploadSGK) 
 router.get('/sgk/:id',studentController.getSGKByStudentID)
 router.get('/sgk/download/:id',studentController.downloadSGKFile)
 

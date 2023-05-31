@@ -206,7 +206,7 @@ const IntershipApplicationForm = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/student/inbox"
+                  to="/student/newMessage"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:

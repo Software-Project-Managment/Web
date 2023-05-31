@@ -10,6 +10,11 @@ const allUsers = async (req,res,next)=>{
    res.json(users)
 }
 
+const allStudents = async (req,res,next)=>{
+   const users = await User.find({role:"student"})
+
+   res.json(users)
+}
 const findUser = async(req,res,next)=>{
    const {id} = req.params
    const user = await User.findOne({_id:id})
@@ -70,5 +75,6 @@ module.exports={
     postUser,
     deleteUser,
     findUser,
-    findCoordinators
+    findCoordinators,
+    allStudents
 }

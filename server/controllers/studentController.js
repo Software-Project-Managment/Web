@@ -207,6 +207,16 @@ const getMessages = async (req,res,next)=>{
     }
 
 }
+const getGonderenMessages = async (req,res,next)=>{
+    const {gonderen} = req.params
+    try {
+        const messages = await messageModel.find({gonderen:gonderen})
+        res.status(200).json(messages)
+    } catch (error) {
+        next(error)
+    }
+
+}
 
 const downloadMessageFile = async(req,res,next)=>{
     const {gonderenID} = req.params
@@ -392,6 +402,7 @@ module.exports={
     uploadNotification,
     uploadAllForms,
     getAllForms,
-    downloadAllForms
+    downloadAllForms,
+    getGonderenMessages
 
 }

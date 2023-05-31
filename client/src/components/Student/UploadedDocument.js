@@ -176,7 +176,7 @@ const y = date.getFullYear()
                 </NavLink>
 
                 <NavLink
-                  to="/student/inbox"
+                  to="/student/newMessage"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:

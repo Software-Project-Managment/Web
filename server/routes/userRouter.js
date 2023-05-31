@@ -7,6 +7,7 @@ const requireAuth = require('../middleware/requireAuth')
 
 
 router.get('/',userController.allUsers)
+router.get('/getstudents',userController.allStudents)
 //router.get('/:id',userController.getByID)
 router.post('/',userController.postUser)
 //router.patch('/:id',userController.patchUser)

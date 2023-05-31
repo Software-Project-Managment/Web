@@ -1,4 +1,4 @@
-import React from "react";
+import {useState,useEffect} from "react";
 import { useNavigate, useLocation, NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,12 +15,51 @@ import {
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
 
 const Coordinatorincomingmessage = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
   const user = JSON.parse(localStorage.getItem('user'))
+  const [messages,setMessages] = useState([])
+  const [sender,setSender] = useState('')
+
+
+
+  const getMessages = async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/message/${user.data._id}`)
+      
+      setMessages(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+  const getSender = async (idx)=>{
+    try {
+        const sender = await axios.get(`http://localhost:3000/api/users/${messages[idx].gonderen}`)
+        
+        return setSender(sender.data)
+      
+        
+      } catch (error) {
+        return  console.log(error);
+      }
+  }
+  useEffect(()=>{
+    getMessages()
+    
+    
+  },[])
+  for (let index = 0; index < messages.length; index++) {
+    getSender(index)
+    
+  }
 
   const handleClick = () => {
     logout();
@@ -251,6 +290,40 @@ const Coordinatorincomingmessage = () => {
             </div>
             <div>
               <p style={{ fontSize: "2rem" }}>Incoming Messages</p>
+            
+     
+              {messages && messages.map((message,idx)=>(
+          
+          <div
+          style={{
+            display: "flex",
+            backgroundColor: "#8C949D",
+            justifyContent: "space-between",
+            width: "70vw",
+            marginBottom:"1rem"
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              backgroundColor: "#8C949D",
+              textAlign: "center",
+              alignItems:"center"
+            }}
+           
+          >
+            <FontAwesomeIcon
+              icon={faUser}
+              style={{ fontSize: "2.5rem" }}
+            />
+            <p style={{ fontSize: "1.5rem" }}>{sender.name} {sender.surname}</p>
+          </div>
+          <p style={{ fontSize: "1.5rem" }}>{message.subject}</p>
+        </div>
+        
+        
+    ))}
+              {/* <div style={{ height: "2rem" }}></div>
               <div
                 style={{
                   display: "flex",
@@ -273,9 +346,9 @@ const Coordinatorincomingmessage = () => {
                   <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
                 </div>
                 <p style={{ fontSize: "1.5rem" }}>Intership formular</p>
-              </div>
-              <div style={{ height: "2rem" }}></div>
-              <div
+              </div> */}
+              {/* <div style={{ height: "2rem" }}></div> */}
+              {/* <div
                 style={{
                   display: "flex",
                   backgroundColor: "#8C949D",
@@ -297,31 +370,9 @@ const Coordinatorincomingmessage = () => {
                   <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
                 </div>
                 <p style={{ fontSize: "1.5rem" }}>Intership formular</p>
-              </div>
-              <div style={{ height: "2rem" }}></div>
-              <div
-                style={{
-                  display: "flex",
-                  backgroundColor: "#8C949D",
-                  justifyContent: "space-between",
-                  width: "70vw",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    backgroundColor: "#8C949D",
-                    textAlign: "center",
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    style={{ fontSize: "2.5rem" }}
-                  />
-                  <p style={{ fontSize: "1.5rem" }}>Mert Yomralıoğlu</p>
-                </div>
-                <p style={{ fontSize: "1.5rem" }}>Intership formular</p>
-              </div>
+              </div> */}
+
+
             </div>
           </div>
           {/* Buraya */}
