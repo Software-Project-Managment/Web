@@ -96,8 +96,8 @@ const NewInbox = () => {
         >
           <div style={{ marginLeft: "5vw" }}>
             <NavLink to="/student">
-              <img
-                src="assets/logo.png"
+            <img
+                src="../assets/logo.png"
                 style={{
                   width: "50px",
                   marginLeft: "-3.5rem",
@@ -107,11 +107,48 @@ const NewInbox = () => {
             </NavLink>
           </div>
           <div style={{ marginRight: "9px" }}>
+          <div style={{  display:"flex" , alignItems:"center",justifyContent:"space-around",width:"200px"}}>
             <FontAwesomeIcon
               icon={faBell}
-              style={{ fontSize: "2.5rem", marginRight: "10rem" }}
+              style={{ fontSize: "2.5rem" }}
             />
+               <div
+        style={{
+          fontFamily:'montserrat',
+            display: "flex",
+            flexDirection: "column"
+        }}>
+          
+        <p
+          style={{
+            color:"black",
+            fontFamily:'montserrat',
+            margin: 0,
+            fontFamily:'montserrat',
+            fontSize: "1.3rem",
+            color:"black",
+            textTransform:"capitalize"
+          }}
+        >
+          {user.data.name} {user.data.surname}
+           
+        </p>
+        <p style={{
+            fontFamily:'montserrat',
+            margin: 0,
+            fontSize: "1.3rem",
+            color:"black",
+            
+          }}>
+
+           {user.data.role==="student" && user.data.username}
+        </p>
+        
+        
+        </div>
+            
             <FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" }} />
+          </div>
           </div>
         </nav>
         <div style={{ display: "flex" }}>
