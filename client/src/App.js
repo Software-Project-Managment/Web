@@ -83,6 +83,7 @@ function App() {
               />
             }
           />
+        
           <Route path="/student" element={<NewStudent />} />
           <Route path="/student/downint" element={<DownloadInt />} />
           <Route path="/student/upint" element={<UploadInt />} />

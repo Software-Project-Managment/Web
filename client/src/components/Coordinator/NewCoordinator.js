@@ -1,4 +1,4 @@
-import React from "react";
+import {useState,useEffect} from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,12 +16,17 @@ import {
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
 const NewCoordinator = () => {
   const user = JSON.parse(localStorage.getItem('user'))
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
 
+
+ 
+
+  
   const handleClick = () => {
     logout();
     history("/");
@@ -257,6 +262,7 @@ const NewCoordinator = () => {
               />
             </div>
           </div>
+      
           {/* Burada */}
           <div
             style={{
@@ -303,6 +309,8 @@ const NewCoordinator = () => {
 
             </div>
           </div>
+     
+
           {/* Buraya */}
         </div>
       </div>

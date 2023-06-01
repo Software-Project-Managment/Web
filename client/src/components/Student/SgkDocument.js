@@ -1,4 +1,4 @@
-import React from "react";
+import {useState,useEffect} from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,17 +13,92 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
 const SgkDocument = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
   const user = JSON.parse(localStorage.getItem('user'))
+  const [items,setItems]=useState([])
+  const [file,setFile]=useState()
 
+
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+   
+  };
 
   const handleClick = () => {
     logout();
     history("/");
   };
+
+  const handleSubmit = (e)=>{
+    try {
+    const data =new FormData()
+    const allFormsData =new FormData()
+    data.append("file",file)
+    data.append("id",user.data._id)
+    data.append("name",user.data.name)
+    data.append("surname",user.data.surname)
+    data.append("no",user.data.username)
+
+    allFormsData.append("file",file)
+    allFormsData.append("id",user.data._id)
+    allFormsData.append("FileName","SGK Document")
+
+     console.log(data);
+     const res =axios.post('http://localhost:3000/student/upload/sgk',data)
+     const res2 =axios.post('http://localhost:3000/student/upload/studentuploadeds',allFormsData)
+     console.log(res);
+     console.log(res2);
+     alert('file upload successful')
+     
+
+   
+    } catch (error) {
+      console.log(error);
+    }
+    
+
+  }
+
+
+
+  const getItems= async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/coordinator/sgk`)
+      
+      setItems(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+
+  const downloadFile = async (id)=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/coordinator/sgk/download/${id}` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${items[0].fileName}`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    getItems()
+  },[])
   return (
     <div>
       <div>
@@ -213,25 +288,32 @@ const SgkDocument = () => {
             </h2>
             <div
               style={{
-                display: "flex",
+                alignSelf: "center",
                 alignItems: "center",
-                justifyContent: "center",
+                alignContent: "center",
+                display: "flex",
                 padding: "0.5rem",
                 backgroundColor: "#D9D9D9",
                 borderRadius: "8px",
-                textAlign: "center",
+                
+                
               }}
             >
-              <p
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+              <div style={{ height: "2.5rem",
+                  width: "20%",
+                  border: "none",
+                  borderRadius: "2rem",
+                  backgroundColor: "#0295A9",
                   fontSize: "22px",
-                }}
-              >
-                (Please fill it Correctly)
-              </p>
+                  textAlign:"center",
+                 
+                  
+
+
+                  }}>
+  <label htmlFor="file-input" style={{display:"flex",alignItems:"center",justifyContent:"center",width:"100%",height:"100%"}} className="btn">File</label>
+  <input id="file-input" style={{visibility:"hidden"}} type="file"  onChange={handleFileChange} />
+</div>
             </div>
             <button
               style={{
@@ -246,9 +328,33 @@ const SgkDocument = () => {
                 backgroundColor: "#65B9A6",
                 fontSize: "22px",
               }}
+              onClick={handleSubmit}
             >
               Send
             </button>
+            {items && items.map((item)=>(
+          
+        
+        
+          
+          <button style={{
+              marginTop: "2rem",
+              position: "fixed",
+              right: "100%",
+              transform: "translate(100% ,-50%)",
+              height: "2.5rem",
+              width: "20%",
+              border: "none",
+              borderRadius: "2rem",
+              backgroundColor: "#65B9A6",
+              fontSize: "22px",
+            }}  onClick={()=>downloadFile(item.CoordinatorID)}>Download file</button>
+       
+       
+       
+      )
+
+       ) }
           </div>
           {/* Buraya */}
         </div>

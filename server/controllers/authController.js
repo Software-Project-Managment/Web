@@ -37,6 +37,16 @@ try {
    
     }
 
+    
+    if(req.body.role==="admin"){
+        const controlDep = req.body.username.slice(0,5)
+       console.log(controlDep);
+        if(controlDep!=="admin"){
+           return next(createError(401,"This entry is only for Admin!"))
+        }
+   
+    }
+
    const user = await User.findOne({username:req.body.username})
  
    if(!user){

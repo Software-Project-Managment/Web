@@ -48,15 +48,7 @@ const getFileByID = async (req,res,next)=>{
     }
 }
 
-const getSGKByStudentID = async (req,res,next)=>{
-    const {id} = req.params
-    try {
-        const files = await SGKModel.find({studentId:id})
-        res.status(200).json(files)
-    } catch (error) {
-        next(error)
-    }
-}
+
 
 const updateApprove = async(req,res,next)=>{
     const {id} = req.params
@@ -92,18 +84,7 @@ const downloadFile = async(req,res,next)=>{
 
 }
 
-const downloadSGKFile = async(req,res,next)=>{
-    const {id} = req.params
-    
-    const file = await SGKModel.findOne({studentId:id})
-    if(!file){
-        return next(createError(404,"No item found"))
-    }
-    const downloadedFile = file.SGKUrl
-    const filePath = path.join(__dirname,`../uploads/SGKFiles/${downloadedFile}`)
-    res.download(filePath)
 
-}
 
 const uploadTranscript =  async (req,res,next)=>{
     try {
@@ -136,6 +117,29 @@ const uploadSGK = async(req,res,next)=>{
         await SGKFormu.save()
         res.status(200).json({SGKFormu})
 
+    } catch (error) {
+        next(error)
+    }
+}
+
+const downloadSGKFile = async(req,res,next)=>{
+    const {id} = req.params
+    
+    const file = await SGKModel.findOne({studentId:id})
+    if(!file){
+        return next(createError(404,"No item found"))
+    }
+    const downloadedFile = file.SGKUrl
+    const filePath = path.join(__dirname,`../uploads/SGKFiles/${downloadedFile}`)
+    res.download(filePath)
+
+}
+
+const getSGKByStudentID = async (req,res,next)=>{
+    const {id} = req.params
+    try {
+        const files = await SGKModel.find({studentId:id})
+        res.status(200).json(files)
     } catch (error) {
         next(error)
     }

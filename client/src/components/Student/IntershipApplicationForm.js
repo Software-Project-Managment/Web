@@ -346,7 +346,7 @@ const IntershipApplicationForm = () => {
             >
               Send
             </button>
-            <button
+            {/* <button
               style={{
                 marginTop: "2rem",
                 position: "fixed",
@@ -362,7 +362,7 @@ const IntershipApplicationForm = () => {
               onClick={()=>downloadFile(items.CoordinatorID)}
             >
               Download
-            </button>
+            </button> */}
 
             
               
