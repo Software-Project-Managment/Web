@@ -40,7 +40,10 @@ import NewStudentInformation from "./components/Coordinator/NewStudentInformatio
 import CoordinatorincomingMessage from "./components/Coordinator/CoordinatorincomingMessage";
 import Coordinatoroutgoingmessage from "./components/Coordinator/Coordinatoroutgoingmessage";
 import NewStudentInformation1 from "./components/Coordinator/NewStudentInformation1";
-
+import CareerInbox from "./components/CareerCenter/CareerInbox";
+import CareerIncomingmessage from "./components/CareerCenter/CareerIncomingmessage";
+import CareerOutgoingmessage from "./components/CareerCenter/CareerOutgoingmessage";
+import CareerStudent from "./components/CareerCenter/CareerStudent";
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -149,6 +152,10 @@ function App() {
           />
           <Route path="/coordinator/profile" element={<CoordinatorProfile />} />
           <Route path="/career" element={<CareerPage />} />
+          <Route path="/career/CareerInbox" element={<CareerInbox/>}/>
+          <Route path="/career/CareerIncomingmessage" element={<CareerIncomingmessage/>}/>
+          <Route path="/career/CareerOutgoingmessage" element={<CareerOutgoingmessage/>}/>
+          <Route path="/career/CareerStudent" element={<CareerStudent/>}/>
           <Route path="/career/approvedforms" element={<ApprovedForms />} />
         </Routes>
       </Router>

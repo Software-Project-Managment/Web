@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import {useState,useEffect} from "react";
+import { useNavigate, useLocation, NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -11,17 +11,39 @@ import {
   faUpload,
   faBell,
   faUser,
-  faTriangleExclamation,
   faPerson,
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-const CareerPage = () => {
-  const user = JSON.parse(localStorage.getItem('user'))
+import axios from 'axios'
+const CareerOutgoingmessage = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const user = JSON.parse(localStorage.getItem('user'))
+  const [messages,setMessages] = useState([])
+  const [sender,setSender] = useState('')
 
+  const getMessages = async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/message/out/${user.data._id}`)
+      
+      setMessages(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+
+  useEffect(()=>{
+    getMessages()
+    
+    
+  },[])
+ 
   const handleClick = () => {
     logout();
     history("/");
@@ -42,7 +64,7 @@ const CareerPage = () => {
           <div style={{ marginLeft: "5vw" }}>
             <NavLink to="/career">
               <img
-                src="../assets/logo.png"
+                  src="../assets/logo.png"
                 style={{
                   width: "50px",
                   marginLeft: "-3.5rem",
@@ -51,10 +73,11 @@ const CareerPage = () => {
               />
             </NavLink>
           </div>
+          <div style={{ marginRight: "9px" }}>
           <div style={{  display:"flex" , alignItems:"center",justifyContent:"space-around",width:"200px"}}>
             <FontAwesomeIcon
               icon={faBell}
-              style={{ fontSize: "2.5rem",fontWeight:"lighter" }}
+              style={{ fontSize: "2.5rem" }}
             />
                <div
         style={{
@@ -93,6 +116,7 @@ const CareerPage = () => {
             
             <FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" }} />
           </div>
+          </div>
         </nav>
         <div style={{ display: "flex" }}>
           <div
@@ -106,22 +130,22 @@ const CareerPage = () => {
                 alignItems: "center",
                 justifyContent: "space-between",
               }}
-              >
+            >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <NavLink
                   to="/career"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/coordinator"
+                      isActive && location.pathname === "/student"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/coordinator"
+                      isActive && location.pathname === "/student"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/coordinator"
+                      isActive && location.pathname === "/student"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -133,19 +157,19 @@ const CareerPage = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/career/CareerIncomingmessage"
+                  to="/career/CareerInbox"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/Coordinator/CoordinatorInbox"
+                      isActive && location.pathname === "/student/newMessage"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/Coordinator/CoordinatorInbox"
+                      isActive && location.pathname === "/student/newMessage"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/Coordinator/CoordinatorInbox"
+                      isActive && location.pathname === "/student/newMessage"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -161,18 +185,15 @@ const CareerPage = () => {
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive &&
-                      location.pathname === "/coordinator/studentInformation"
+                      isActive && location.pathname === "/student/uploaded"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive &&
-                      location.pathname === "/coordinator/studentInformation"
+                      isActive && location.pathname === "/student/uploaded"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive &&
-                      location.pathname === "/coordinator/studentInformation"
+                      isActive && location.pathname === "/student/uploaded"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -199,66 +220,102 @@ const CareerPage = () => {
           {/* Burada */}
           <div
             style={{
-              textAlign: "center",
-              paddingTop: "2rem",
-              alignItems: "end",
-              justifyContent: "end",
-              width: "92vw",
-              position: "fixed",
-              left: "17%",
+              display: "flex",
             }}
           >
             <div
               style={{
-                display: "flex",
-                backgroundColor: "#FF8975",
-                alignItems: "center",
-                justifyContent: "start",
-                justifySelf: "center",
-                textJustify: "center",
-                width: "80%",
-                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                borderRadius:"10px"
+                height: "80vh",
+                width: "20vW",
+                textAlign: "center",
+                justifyContent: "space-between",
               }}
             >
-              {" "}
-              
-              
-              <p style={{fontSize:'1.5rem'}}><FontAwesomeIcon icon = {faBell}/> 2 new SGK Request</p>
+              <p
+                style={{
+                  textDecoration: "underline",
+                  marginTop: "4rem",
+                  fontSize: "2.5rem",
+                }}
+              >
+                My Messages
+              </p>
+              <NavLink to="/career/CareerInbox" style={{ color: "black" }}>
+                <p
+                  style={{
+                    marginTop: "2rem",
+                    fontSize: "20px",
+                  }}
+                >
+                  New Message
+                </p>
+              </NavLink>
+              <NavLink to="/career/CareerIncomingmessage" style={{ color: "black" }}>
+                <p
+                  style={{
+                    marginTop: "2rem",
+                    fontSize: "20px",
+                  }}
+                >
+                  Incoming Message
+                </p>
+              </NavLink>
+              <NavLink to="/career/CareerOutgoingMessage" style={{ color: "black" }}>
+                <p
+                  style={{
+                    marginTop: "2rem",
+                    fontSize: "20px",
+                  }}
+                >
+                  Outgoing Message
+                </p>
+              </NavLink>
             </div>
-            <div
-              style={{
-                marginTop:'1.5rem',
-                display: "flex",
-                backgroundColor: "#65B9A6",
-                alignItems: "center",
-                justifyContent: "start",
-                justifySelf: "center",
-                textJustify: "center",
-                width: "80%",
-                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                borderRadius:"10px"
-              }}
-            >
-              {" "}
-              
-              
-              <p style={{fontSize:'1.5rem'}}><FontAwesomeIcon icon={faTriangleExclamation}/> Please be sure that the student fill the Internship Report rightly and correct before you sent the SGK Document</p>
-            </div>
-            <div
-              style={{
-                marginTop: "1rem",
-                display: "flex",
-                backgroundColor: "rgba(63, 167, 144, 0.75)",
-                alignItems: "center",
-                justifyContent: "start",
-                justifySelf: "start",
-                textJustify: "start",
-                width: "80%",
-                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                
-              }}
-            >
+            <div>
+              <p style={{ fontSize: "2rem" }}>Outgoing Messages</p>
+              <input
+                style={{
+                  width: "60vw",
+                  height: "2rem",
+                  fontSize: "2rem",
+                }}
+                placeholder="Ara"
+              ></input>
+              <div style={{ height: "4rem" }}></div>
+         
+              {messages && messages.map((message,idx)=>(
+          
+          <div
+          style={{
+            display: "flex",
+            backgroundColor: "#8C949D",
+            justifyContent: "space-between",
+            width: "70vw",
+            marginBottom:"1rem"
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              backgroundColor: "#8C949D",
+              textAlign: "center",
+              alignItems:"center"
+            }}
+           
+          >
+            <FontAwesomeIcon
+              icon={faUser}
+              style={{ fontSize: "2.5rem" }}
+            />
+            <p style={{ fontSize: "1.5rem" }}>{user.data.name} {user.data.surname}</p>
+          </div>
+          <p style={{ fontSize: "1.5rem" }}>{message.subject}</p>
+        
+        </div>
+        
+        
+    ))}
+
 
             </div>
           </div>
@@ -272,4 +329,4 @@ const CareerPage = () => {
   );
 };
 
-export default CareerPage;
+export default CareerOutgoingmessage;

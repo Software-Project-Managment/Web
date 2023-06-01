@@ -18,7 +18,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useLogout } from '../../hooks/useLogout';
 
-const NewStudentInformation = () => {
+const CareerStudent = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const history = useNavigate();
   const location = useLocation();
@@ -48,7 +48,7 @@ const NewStudentInformation = () => {
           }}
         >
           <div style={{ marginLeft: '5vw' }}>
-            <NavLink to="/coordinator">
+            <NavLink to="/career">
               <img
                 src="../assets/logo.png"
                 style={{
@@ -108,7 +108,7 @@ const NewStudentInformation = () => {
             >
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <NavLink
-                  to="/coordinator"
+                  to="/career"
                   style={({ isActive }) => ({
                     cursor: 'pointer',
                     border: isActive && location.pathname === '/coordinator' ? '0px solid black' : '',
@@ -123,7 +123,7 @@ const NewStudentInformation = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/Coordinator/CoordinatorInbox"
+                  to="/career/CareerInbox"
                   style={({ isActive }) => ({
                     cursor: 'pointer',
                     border:
@@ -141,7 +141,7 @@ const NewStudentInformation = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/coordinator/NewStudentInformation"
+                  to="/career/CareerStudent"
                   style={({ isActive }) => ({
                     cursor: 'pointer',
                     border:
@@ -216,7 +216,7 @@ const NewStudentInformation = () => {
                  <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>Student Name</span>
                  <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>Student ID</span>
                 </div>
-                <div style={{ marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center',border:'1px solid gray',borderRadius:'20px' }}>
+                <div style={{ marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center',border:'1px solid gray',borderRadius:'20px',backgroundColor:'#FF8975' }}>
                 <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px'}}><FontAwesomeIcon icon ={faUserGraduate}/> Ulaş Beyaz</span>
                 <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>190209018</span>
   </div>
@@ -234,4 +234,4 @@ const NewStudentInformation = () => {
   );
 };
 
-export default NewStudentInformation;
+export default CareerStudent;
