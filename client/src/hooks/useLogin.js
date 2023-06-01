@@ -90,6 +90,31 @@ const history = useNavigate()
         }
       }
 
+      if(type==="admin"){
+        try {
+          const res = await axios.post('http://localhost:3000/api/auth/login',{
+            username,password,role
+          },{withCredentials: true})
+          if(res){
+            console.log(res.data);
+            //save the user to local storage
+            localStorage.setItem('user',JSON.stringify(res))
+
+            //update the auth context
+            dispatch({type:'LOGIN',payload:res})
+            
+            setIsLoading(false)
+            
+            history('/admin')
+          }
+         
+          
+        } catch (error) {
+          setError(error.response.data)
+          setIsLoading(false)
+          console.log(error.response.data);
+        }
+      }
 
       
 }

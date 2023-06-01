@@ -44,6 +44,9 @@ import CareerInbox from "./components/CareerCenter/CareerInbox";
 import CareerIncomingmessage from "./components/CareerCenter/CareerIncomingmessage";
 import CareerOutgoingmessage from "./components/CareerCenter/CareerOutgoingmessage";
 import CareerStudent from "./components/CareerCenter/CareerStudent";
+import AdminLoginPage from "./components/AdminLoginPage";
+import AdminDeneme from "./components/Admin/AdminDeneme";
+
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -83,7 +86,20 @@ function App() {
               />
             }
           />
+
         
+
+          <Route
+            path="/login/admin"
+            element={
+              <AdminLoginPage
+                type={"admin"}
+                FirstInput={"Username:"}
+                entry={"Admin Entry"}
+              />
+            }
+          />
+
           <Route path="/student" element={<NewStudent />} />
           <Route path="/student/downint" element={<DownloadInt />} />
           <Route path="/student/upint" element={<UploadInt />} />
@@ -95,7 +111,6 @@ function App() {
           <Route path="/student/incoming" element={<IncomingMessage />} />
           <Route path="/student/profile" element={<Profile />} />
           <Route path="/student/newMessage" element={<NewInbox />} />
-          
 
           <Route
             path="/student/outgoingMessage"
@@ -128,8 +143,14 @@ function App() {
             path="/coordinator/studentInformation"
             element={<StudentInformation />}
           />
-          <Route path="/coordinator/CoordinatorInbox" element={<CoordinatorInbox/>}/>
-          <Route path="/coordinator/NewStudentInformation" element={<NewStudentInformation/>}/>
+          <Route
+            path="/coordinator/CoordinatorInbox"
+            element={<CoordinatorInbox />}
+          />
+          <Route
+            path="/coordinator/NewStudentInformation"
+            element={<NewStudentInformation />}
+          />
           <Route
             path="/coordinator/studentsforms"
             element={<StudentsForms />}
@@ -138,10 +159,19 @@ function App() {
             path="/coordinator/uploadform"
             element={<CoordinatorUploadInt />}
           />
-          <Route path="/coordinator/NewStudentInformation1" element={<NewStudentInformation1/>}/>
-          
-          <Route path="/coordinator/incomingMessage" element={<CoordinatorincomingMessage/>}/>
-          <Route path="/coordinator/outgoingMessage" element={<Coordinatoroutgoingmessage/>}/>
+          <Route
+            path="/coordinator/NewStudentInformation1"
+            element={<NewStudentInformation1 />}
+          />
+
+          <Route
+            path="/coordinator/incomingMessage"
+            element={<CoordinatorincomingMessage />}
+          />
+          <Route
+            path="/coordinator/outgoingMessage"
+            element={<Coordinatoroutgoingmessage />}
+          />
           <Route
             path="/coordinator/viewtranscript"
             element={<ViewTranscript />}
@@ -153,11 +183,23 @@ function App() {
           />
           <Route path="/coordinator/profile" element={<CoordinatorProfile />} />
           <Route path="/career" element={<CareerPage />} />
-          <Route path="/career/CareerInbox" element={<CareerInbox/>}/>
-          <Route path="/career/CareerIncomingmessage" element={<CareerIncomingmessage/>}/>
-          <Route path="/career/CareerOutgoingmessage" element={<CareerOutgoingmessage/>}/>
-          <Route path="/career/CareerStudent" element={<CareerStudent/>}/>
+          <Route path="/career/CareerInbox" element={<CareerInbox />} />
+          <Route
+            path="/career/CareerIncomingmessage"
+            element={<CareerIncomingmessage />}
+          />
+          <Route
+            path="/career/CareerOutgoingmessage"
+            element={<CareerOutgoingmessage />}
+          />
+          <Route path="/career/CareerStudent" element={<CareerStudent />} />
           <Route path="/career/approvedforms" element={<ApprovedForms />} />
+
+
+          <Route path="/admin" element={<AdminDeneme/>} />
+
+
+
         </Routes>
       </Router>
 
@@ -171,7 +213,6 @@ function App() {
           newProp="value"
         />
       )} */}
-   
     </div>
   );
 }
