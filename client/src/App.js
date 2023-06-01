@@ -45,7 +45,7 @@ import CareerIncomingmessage from "./components/CareerCenter/CareerIncomingmessa
 import CareerOutgoingmessage from "./components/CareerCenter/CareerOutgoingmessage";
 import CareerStudent from "./components/CareerCenter/CareerStudent";
 import AdminLoginPage from "./components/AdminLoginPage";
-import AdminDeneme from "./components/Admin/AdminDeneme";
+import AdminHomepage from "./components/Admin/AdminHomepage";
 
 
 function App() {
@@ -196,7 +196,7 @@ function App() {
           <Route path="/career/approvedforms" element={<ApprovedForms />} />
 
 
-          <Route path="/admin" element={<AdminDeneme/>} />
+          <Route path="/admin" element={<AdminHomepage/>} />
 
 
 

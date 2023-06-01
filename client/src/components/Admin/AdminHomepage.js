@@ -39,7 +39,7 @@ const AdminDeneme = () => {
           }}
         >
           <div style={{ marginLeft: "5vw" }}>
-            <NavLink to="/student">
+            <NavLink to="/admin">
               <img
                 src="assets/logo.png"
                 style={{
@@ -100,19 +100,19 @@ const AdminDeneme = () => {
             >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <NavLink
-                  to="/student"
+                  to="/admin"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/admin"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/admin"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/admin"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -124,7 +124,7 @@ const AdminDeneme = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/student/newMessage"
+                  to="/admin"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
