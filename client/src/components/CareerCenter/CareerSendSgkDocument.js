@@ -20,7 +20,7 @@ import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
 
 import { useLogout } from "../../hooks/useLogout";
 
-const CareerViewSgkDocument = () => {
+const CareerSendSgkDocument = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
@@ -210,12 +210,13 @@ const CareerViewSgkDocument = () => {
           {/* buradan */}
           <div
             style={{
+              position: "relative",
               textAlign: "start",
               justifyContent: "center",
               marginLeft: "5%",
             }}
           >
-            <p>View SGK Documents</p>
+            <p>Career Center Student Information Pdf,jpg,zip</p>
             <div
               style={{
                 background: "#D9D9D9",
@@ -228,41 +229,25 @@ const CareerViewSgkDocument = () => {
                   display: "flex",
                   background: "grey",
                   alignItems: "center",
-                  justifyContent: "space-between",
-                  padding: "1rem",
+                  justifyContent: "center",
+                  padding: "4px",
                   borderRadius: "8px",
                 }}
               >
-                <p>Sgk Document 25.04.2023</p>
-                <div style={{ justifyContent: "center" }}>
-                  <NavLink>
-                    <button
-                      style={{
-                        backgroundColor: "yellow",
-                        height: "35px",
-                        borderRadius: "8px",
-                        width: "10rem",
-                      }}
-                    >
-                      View
-                    </button>
-                  </NavLink>
-                  <NavLink>
-                    <button
-                      style={{
-                        backgroundColor: "pink",
-                        marginLeft: "2.5rem",
-                        height: "35px",
-                        borderRadius: "8px",
-                        width: "10rem",
-                      }}
-                    >
-                      View
-                    </button>
-                  </NavLink>
-                </div>
+                <p style={{ fontSize: "20px" }}>Send SGK Document</p>
               </div>
             </div>
+            <div style={{ textAlign: "end" }}></div>
+            <button
+              style={{
+                height: "2rem",
+                width: "8rem",
+                marginTop: "2rem",
+                float: "none",
+              }}
+            >
+              Send
+            </button>
           </div>
 
           {/* buraya */}
@@ -276,4 +261,4 @@ const CareerViewSgkDocument = () => {
   );
 };
 
-export default CareerViewSgkDocument;
+export default CareerSendSgkDocument;

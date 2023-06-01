@@ -20,7 +20,7 @@ import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
 
 import { useLogout } from "../../hooks/useLogout";
 
-const CareerViewSgkDocument = () => {
+const CareerIntershipApplicationForm = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
@@ -215,7 +215,7 @@ const CareerViewSgkDocument = () => {
               marginLeft: "5%",
             }}
           >
-            <p>View SGK Documents</p>
+            <p>Intership Application Form</p>
             <div
               style={{
                 background: "#D9D9D9",
@@ -233,7 +233,7 @@ const CareerViewSgkDocument = () => {
                   borderRadius: "8px",
                 }}
               >
-                <p>Sgk Document 25.04.2023</p>
+                <p>Intership Application Form 25.04.2023</p>
                 <div style={{ justifyContent: "center" }}>
                   <NavLink>
                     <button
@@ -276,4 +276,4 @@ const CareerViewSgkDocument = () => {
   );
 };
 
-export default CareerViewSgkDocument;
+export default CareerIntershipApplicationForm;

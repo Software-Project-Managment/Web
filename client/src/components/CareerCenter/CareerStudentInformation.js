@@ -442,7 +442,7 @@ const CareerStudentInformation = () => {
                               View SGK Documents
                             </div>
                           </NavLink>
-                          <NavLink to="career/intershipCareerForm">
+                          <NavLink to="/career/intershipApplicationForm">
                             <div
                               style={{
                                 padding: "2rem",
@@ -464,7 +464,7 @@ const CareerStudentInformation = () => {
                               Intershit Application Form
                             </div>
                           </NavLink>
-                          <NavLink to="career/sendSgkDocument">
+                          <NavLink to="/career/sendSgkDocument">
                             <div
                               style={{
                                 padding: "2rem",
