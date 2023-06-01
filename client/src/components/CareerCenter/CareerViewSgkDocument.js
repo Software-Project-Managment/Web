@@ -16,9 +16,11 @@ import {
   faPerson,
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
+
 import { useLogout } from "../../hooks/useLogout";
 
-const CareerStudent = () => {
+const CareerViewSgkDocument = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
@@ -48,7 +50,7 @@ const CareerStudent = () => {
           }}
         >
           <div style={{ marginLeft: "5vw" }}>
-            <NavLink to="/career">
+            <NavLink to="/coordinator">
               <img
                 src="../assets/logo.png"
                 style={{
@@ -124,17 +126,15 @@ const CareerStudent = () => {
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/coordinator"
+                      isActive && location.pathname === "/career"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/coordinator"
+                      isActive && location.pathname === "/career"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/coordinator"
-                        ? "10px"
-                        : "",
+                      isActive && location.pathname === "/career" ? "10px" : "",
                     fontSize: "2.5rem",
                     marginTop: "50px",
                     color: "black",
@@ -148,18 +148,15 @@ const CareerStudent = () => {
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive &&
-                      location.pathname === "/Coordinator/CoordinatorInbox"
+                      isActive && location.pathname === "/career/CareerInbox"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive &&
-                      location.pathname === "/Coordinator/CoordinatorInbox"
+                      isActive && location.pathname === "/Career/CareerInbox"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive &&
-                      location.pathname === "/Coordinator/CoordinatorInbox"
+                      isActive && location.pathname === "/career/CareerInbox"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -176,17 +173,17 @@ const CareerStudent = () => {
                     cursor: "pointer",
                     border:
                       isActive &&
-                      location.pathname === "/coordinator/studentInformation"
+                      location.pathname === "/career/studentInformation"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
                       isActive &&
-                      location.pathname === "/coordinator/studentInformation"
+                      location.pathname === "/career/studentInformation"
                         ? "#8C949D"
                         : "",
                     borderRadius:
                       isActive &&
-                      location.pathname === "/coordinator/studentInformation"
+                      location.pathname === "/career/studentInformation"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -205,161 +202,73 @@ const CareerStudent = () => {
                   cursor: "pointer",
                   fontSize: "2.5rem",
                   color: "black",
-                  marginTop: "51px",
+                  marginTop: "50px",
                 }}
               />
             </div>
           </div>
+          {/* buradan */}
           <div
             style={{
-              textAlign: "center",
-              paddingTop: "2rem",
-              alignItems: "end",
-              justifyContent: "end",
-              width: "92vw",
-              position: "fixed",
-              left: "17%",
+              textAlign: "start",
+              justifyContent: "center",
+              marginLeft: "5%",
             }}
           >
+            <p>View SGK Documents</p>
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "0.5rem",
-                width: "40rem",
-                borderRadius: "4px",
-                justifyContent: "center",
-                position: "fixed",
-                top: "11%",
-                left: "57%",
-                transform: "translate(-50%, -50%)",
+                background: "#D9D9D9",
+                width: "80vw",
+                padding: "2rem",
               }}
             >
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search"
-                style={{ marginRight: "0.5rem", borderRadius: "1rem" }}
-              />
-              <FontAwesomeIcon
-                icon={faSearch}
-                onClick={() => handleSearch}
-                style={{ cursor: "pointer" }}
-              />
-            </div>
-            <NavLink to="/career/studentInformation">
               <div
                 style={{
-                  marginTop: "2rem",
                   display: "flex",
-                  backgroundColor: "#D9D9D9",
+                  background: "grey",
                   alignItems: "center",
-                  justifyContent: "start",
-                  justifySelf: "start",
-                  textJustify: "start",
-                  width: "85%",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                  justifyContent: "space-between",
+                  padding: "1rem",
+                  borderRadius: "8px",
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div
+                <p>Sgk Document 25.04.2023</p>
+                <div style={{ justifyContent: "center" }}>
+                  <NavLink>
+                    <button
                       style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        marginTop: "2rem",
+                        backgroundColor: "yellow",
+                        height: "35px",
+                        borderRadius: "8px",
+                        width: "10rem",
                       }}
                     >
-                      <div
-                        style={{
-                          width: "70rem",
-                          border: "1px solid #ccc",
-                          borderRadius: "4px",
-                          padding: "1rem",
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            marginBottom: "2rem",
-                            border: "2px solid black",
-                            borderRadius: "20px",
-                          }}
-                        >
-                          <span
-                            style={{
-                              flex: 1,
-                              fontFamily: "Montserrat",
-                              fontSize: "25px",
-                            }}
-                          >
-                            Student Name
-                          </span>
-                          <span
-                            style={{
-                              flex: 1,
-                              fontFamily: "Montserrat",
-                              fontSize: "25px",
-                            }}
-                          >
-                            Student ID
-                          </span>
-                        </div>
-                        <div
-                          style={{
-                            marginBottom: "0.5rem",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            border: "1px solid gray",
-                            borderRadius: "20px",
-                            backgroundColor: "#FF8975",
-                          }}
-                        >
-                          <span
-                            style={{
-                              flex: 1,
-                              fontFamily: "Montserrat",
-                              fontSize: "25px",
-                            }}
-                          >
-                            <FontAwesomeIcon icon={faUserGraduate} /> Ulaş Beyaz
-                          </span>
-                          <span
-                            style={{
-                              flex: 1,
-                              fontFamily: "Montserrat",
-                              fontSize: "25px",
-                            }}
-                          >
-                            190209018
-                          </span>
-                        </div>
-                        {/* Diğer öğrencilerin listesi */}
-                      </div>
-                    </div>
-                  </div>
+                      View
+                    </button>
+                  </NavLink>
+                  <NavLink>
+                    <button
+                      style={{
+                        backgroundColor: "pink",
+                        marginLeft: "2.5rem",
+                        height: "35px",
+                        borderRadius: "8px",
+                        width: "10rem",
+                      }}
+                    >
+                      View
+                    </button>
+                  </NavLink>
                 </div>
               </div>
-            </NavLink>
+            </div>
           </div>
+
+          {/* buraya */}
         </div>
       </div>
+
       <footer
         style={{ width: "100vw", height: "3vh", backgroundColor: "#8C949D" }}
       ></footer>
@@ -367,4 +276,4 @@ const CareerStudent = () => {
   );
 };
 
-export default CareerStudent;
+export default CareerViewSgkDocument;

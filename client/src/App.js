@@ -10,7 +10,6 @@ import UploadTranscript from "./components/Student/UploadTranscript";
 import Message from "./components/Student/Message";
 import Notification from "./components/Student/Notification";
 import Profile from "./components/Student/Profile";
-import CoordinatorPage from "./components/Coordinator/CoordinatorPage";
 import CoordinatorLoginPage from "./components/CoordinatorLoginPage";
 import StudentsForms from "./components/Coordinator/StudentsForms";
 import CoordinatorUploadInt from "./components/Coordinator/CoordinatorUploadInt";
@@ -45,6 +44,11 @@ import CareerIncomingmessage from "./components/CareerCenter/CareerIncomingmessa
 import CareerOutgoingmessage from "./components/CareerCenter/CareerOutgoingmessage";
 import CareerStudent from "./components/CareerCenter/CareerStudent";
 import AdminLoginPage from "./components/AdminLoginPage";
+import AdminDeneme from "./components/Admin/AdminDeneme";
+import CareerStudentInformation from "./components/CareerCenter/CareerStudentInformation";
+import CareerViewSgkDocument from "./components/CareerCenter/CareerViewSgkDocument";
+import CareerIntershipApplicationForm from "./components/CareerCenter/CareerIntershipApplicationForm";
+import CareerSendSgkDocument from "./components/CareerCenter/CareerSendSgkDocument";
 import AdminHomepage from "./components/Admin/AdminHomepage";
 import AdminCreate from "./components/Admin/AdminCreate";
 
@@ -87,8 +91,6 @@ function App() {
               />
             }
           />
-
-        
 
           <Route
             path="/login/admin"
@@ -195,7 +197,24 @@ function App() {
           />
           <Route path="/career/CareerStudent" element={<CareerStudent />} />
           <Route path="/career/approvedforms" element={<ApprovedForms />} />
+          <Route
+            path="/career/studentInformation"
+            element={<CareerStudentInformation />}
+          />
+          <Route
+            path="/career/viewSgkDocument"
+            element={<CareerViewSgkDocument />}
+          />
+          <Route
+            path="/career/intershipApplicationForm"
+            element={<CareerIntershipApplicationForm />}
+          />
+          <Route
+            path="/career/sendSgkDocument"
+            element={<CareerSendSgkDocument />}
+          />
 
+          <Route path="/admin" element={<AdminDeneme />} />
 
           <Route path="/admin" element={<AdminHomepage/>} />
           <Route path="/admin/admincreate" element={<AdminCreate/>}/>
