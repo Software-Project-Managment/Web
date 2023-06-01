@@ -44,7 +44,6 @@ import CareerIncomingmessage from "./components/CareerCenter/CareerIncomingmessa
 import CareerOutgoingmessage from "./components/CareerCenter/CareerOutgoingmessage";
 import CareerStudent from "./components/CareerCenter/CareerStudent";
 import AdminLoginPage from "./components/AdminLoginPage";
-import AdminDeneme from "./components/Admin/AdminDeneme";
 import CareerStudentInformation from "./components/CareerCenter/CareerStudentInformation";
 import CareerViewSgkDocument from "./components/CareerCenter/CareerViewSgkDocument";
 import CareerIntershipApplicationForm from "./components/CareerCenter/CareerIntershipApplicationForm";
@@ -214,7 +213,6 @@ function App() {
             element={<CareerSendSgkDocument />}
           />
 
-          <Route path="/admin" element={<AdminDeneme />} />
 
           <Route path="/admin" element={<AdminHomepage/>} />
           <Route path="/admin/admincreate" element={<AdminCreate/>}/>
