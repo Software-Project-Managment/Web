@@ -216,7 +216,7 @@ const NewStudent = () => {
             >
               {" "}
               <div>
-                <h3> {user.data.role ==='coordinator' ? 'Dear students, ADMİN ' : 'Dear students,'}</h3>
+                <h3> Dear students, </h3>
                 <p>
                   Intership regardless of your current education level or
                   desired career path: Is is very important for your
