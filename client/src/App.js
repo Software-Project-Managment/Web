@@ -50,7 +50,10 @@ import CareerIntershipApplicationForm from "./components/CareerCenter/CareerInte
 import CareerSendSgkDocument from "./components/CareerCenter/CareerSendSgkDocument";
 import AdminHomepage from "./components/Admin/AdminHomepage";
 import AdminCreate from "./components/Admin/AdminCreate";
-
+import AdminStudents from "./components/Admin/AdminStudents";
+import AdminCoordinators from "./components/Admin/AdminCoordinators";
+import AdminPreAddCoordinator from "./components/Admin/AdminPreAddCordinator";
+import AdminAddCoordinator from "./components/Admin/AdminAdddCoordinator";
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -213,12 +216,18 @@ function App() {
             element={<CareerSendSgkDocument />}
           />
 
-
-          <Route path="/admin" element={<AdminHomepage/>} />
-          <Route path="/admin/admincreate" element={<AdminCreate/>}/>
-
-
-
+          <Route path="/admin" element={<AdminHomepage />} />
+          <Route path="/admin/admincreate" element={<AdminCreate />} />
+          <Route path="/admin/students" element={<AdminStudents />} />
+          <Route path="/admin/coordinators" element={<AdminCoordinators />} />
+          <Route
+            path="/admin/preAddCoordinator"
+            element={<AdminPreAddCoordinator />}
+          />
+          <Route
+            path="/admin/addCoordinator"
+            element={<AdminAddCoordinator />}
+          />
         </Routes>
       </Router>
 

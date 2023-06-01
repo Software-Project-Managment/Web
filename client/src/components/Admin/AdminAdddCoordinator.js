@@ -15,7 +15,7 @@ import {
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-const AdminDeneme = () => {
+const AdminAddCoordinator = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
@@ -188,173 +188,47 @@ const AdminDeneme = () => {
           {/* Burada */}
           <div
             style={{
-              paddingTop: "2rem",
-              alignItems: "center",
+              marginLeft: "10rem",
+              marginTop: "6rem",
+              backgroundColor: "#F5F5F5",
+              padding: "2rem",
+              width: "70vw",
+              height: "50vh",
+              textAlign: "start",
               justifyContent: "center",
-              width: "92vw",
             }}
           >
+            <p style={{ fontSize: "1.5rem" }}>Department</p>
             <div
               style={{
-                paddingTop: "2rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                width: "60vw",
+                backgroundColor: "grey",
+                height: "2rem",
+                borderRadius: "8px",
               }}
-            >
-              <NavLink to="/admin/students">
-                <div
-                  style={{
-                    width: "300px",
-                    height: "30px",
-                    backgroundColor: "rgba(240, 212, 117, 0.75)",
-
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginRight: "5rem",
-                    padding: "4rem",
-                    borderRadius: "10PX",
-                    boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                    overflow: "hidden",
-                  }}
-                >
-                  {" "}
-                  <FontAwesomeIcon
-                    icon={faGear}
-                    style={{
-                      cursor: "pointer",
-                      fontSize: "2.5rem",
-                      color: "black",
-                    }}
-                  />{" "}
-                  Manage Students and Student Page
-                </div>
-              </NavLink>
-
-              <NavLink to="/admin/coordinators">
-                <div
-                  style={{
-                    padding: "4rem",
-                    alignItems: "center",
-                    marginRight: "5rem",
-                    width: "300px",
-                    height: "30px",
-                    backgroundColor: "rgba(101, 185, 166, 0.75)",
-                    display: "flex",
-                    justifyContent: "center",
-                    boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                    overflow: "hidden",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faGear}
-                    style={{
-                      cursor: "pointer",
-                      fontSize: "2.5rem",
-                      color: "black",
-                    }}
-                  />
-                  Manage Coordinators and Coordinator Page
-                </div>
-              </NavLink>
-              <NavLink to="/career">
-                <div
-                  style={{
-                    padding: "4rem",
-
-                    width: "300px",
-                    height: "30px",
-                    backgroundColor: "rgba(2, 149, 169, 0.75)",
-                    overflow: "hidden",
-                    display: "flex",
-                    borderRadius: "10px",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faGear}
-                    style={{
-                      cursor: "pointer",
-                      fontSize: "2.5rem",
-                      color: "black",
-                    }}
-                  />
-                  Manage Career Center
-                </div>
-              </NavLink>
-            </div>
+            ></div>
+            <p style={{ fontSize: "1.5rem" }}>Select Professor</p>
             <div
               style={{
-                display: "flex",
-                backgroundColor: "#DFE3E7",
-                alignItems: "center",
-                flexDirection: "column",
-                width: "86%",
-                height: "20rem",
-                boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25) inset",
-                borderRadius: "0.5rem",
-                marginLeft: "5.7rem",
-                marginTop: "3rem",
+                width: "60vw",
+                backgroundColor: "grey",
+                height: "2rem",
+                borderRadius: "8px",
+              }}
+            ></div>
+            <button
+              style={{
+                marginTop: "2rem",
+                textAlign: "end",
+                marginLeft: "65rem",
+                backgroundColor: "#65B9A6",
+                borderRadius: "8px",
+                fontSize: "20px",
+                padding: "0.5rem",
               }}
             >
-              <h3> Active Internships for Students </h3>
-              <Link to="https://www.ox.ac.uk">
-                <button
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "0.5rem",
-                    marginLeft: "1.5rem",
-                    backgroundColor: "#C8C8C5",
-                    color: "black",
-                    marginBottom: "1rem",
-                    marginTop: "1rem",
-                    width: "70rem",
-                    height: "4rem",
-                  }}
-                >
-                  Internship Application as Frontend Developer on Oxford
-                  https://www.ox.ac.uk
-                </button>
-              </Link>
-              <button
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: "0.5rem",
-                  marginLeft: "1.5rem",
-                  backgroundColor: "#C8C8C5",
-                  color: "black",
-                  marginBottom: "1rem",
-                  width: "70rem",
-                  height: "4rem",
-                }}
-              >
-                +
-              </button>
-              <button
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: "0.5rem",
-                  marginLeft: "1.5rem",
-                  backgroundColor: "#C8C8C5",
-                  color: "black",
-                  marginBottom: "1rem",
-                  width: "70rem",
-                  height: "4rem",
-                }}
-              >
-                +
-              </button>
-            </div>
+              Approve
+            </button>
           </div>
           {/* Buraya */}
         </div>
@@ -366,4 +240,4 @@ const AdminDeneme = () => {
   );
 };
 
-export default AdminDeneme;
+export default AdminAddCoordinator;
