@@ -171,7 +171,7 @@ const AdminStudents = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/admin/announcement"
+                  to="/admin/AdminStudentInformation"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:

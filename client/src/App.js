@@ -54,6 +54,7 @@ import AdminStudents from "./components/Admin/AdminStudents";
 import AdminCoordinators from "./components/Admin/AdminCoordinators";
 import AdminPreAddCoordinator from "./components/Admin/AdminPreAddCordinator";
 import AdminAddCoordinator from "./components/Admin/AdminAdddCoordinator";
+import AdminStudentInformation from "./components/Admin/AdminStudentInformation";
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -228,6 +229,7 @@ function App() {
             path="/admin/addCoordinator"
             element={<AdminAddCoordinator />}
           />
+          <Route path="admin/AdminStudentInformation" element={<AdminStudentInformation/>}/>
         </Routes>
       </Router>
 
