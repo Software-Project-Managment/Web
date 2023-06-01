@@ -10,7 +10,6 @@ import UploadTranscript from "./components/Student/UploadTranscript";
 import Message from "./components/Student/Message";
 import Notification from "./components/Student/Notification";
 import Profile from "./components/Student/Profile";
-import CoordinatorPage from "./components/Coordinator/CoordinatorPage";
 import CoordinatorLoginPage from "./components/CoordinatorLoginPage";
 import StudentsForms from "./components/Coordinator/StudentsForms";
 import CoordinatorUploadInt from "./components/Coordinator/CoordinatorUploadInt";
@@ -46,7 +45,8 @@ import CareerOutgoingmessage from "./components/CareerCenter/CareerOutgoingmessa
 import CareerStudent from "./components/CareerCenter/CareerStudent";
 import AdminLoginPage from "./components/AdminLoginPage";
 import AdminDeneme from "./components/Admin/AdminDeneme";
-
+import CareerStudentInformation from "./components/CareerCenter/CareerStudentInformation";
+import CareerViewSgkDocument from "./components/CareerCenter/CareerViewSgkDocument";
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -86,8 +86,6 @@ function App() {
               />
             }
           />
-
-        
 
           <Route
             path="/login/admin"
@@ -194,12 +192,16 @@ function App() {
           />
           <Route path="/career/CareerStudent" element={<CareerStudent />} />
           <Route path="/career/approvedforms" element={<ApprovedForms />} />
+          <Route
+            path="/career/studentInformation"
+            element={<CareerStudentInformation />}
+          />
+          <Route
+            path="/career/viewSgkDocument"
+            element={<CareerViewSgkDocument />}
+          />
 
-
-          <Route path="/admin" element={<AdminDeneme/>} />
-
-
-
+          <Route path="/admin" element={<AdminDeneme />} />
         </Routes>
       </Router>
 
