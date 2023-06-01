@@ -89,7 +89,7 @@ const NewUploaded = () => {
               </p>
             </div>
 
-            <FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" }} />
+            <NavLink to='/student/profile'><FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" , color:"black"}} /></NavLink>
           </div>
         </nav>
         <div style={{ display: "flex" }}>

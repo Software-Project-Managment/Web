@@ -62,7 +62,7 @@ const CoordinatoroutgoingMessage = () => {
           }}
         >
           <div style={{ marginLeft: "5vw" }}>
-            <NavLink to="/student">
+          <NavLink to="/coordinator">
               <img
                   src="../assets/logo.png"
                 style={{

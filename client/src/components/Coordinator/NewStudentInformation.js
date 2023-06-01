@@ -216,10 +216,13 @@ const NewStudentInformation = () => {
                  <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>Student Name</span>
                  <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>Student ID</span>
                 </div>
+                <NavLink to='/coordinator/NewStudentInformation1' style={{textDecoration:"none", color:"black"}}>
                 <div style={{ marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center',border:'1px solid gray',borderRadius:'20px' }}>
                 <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px'}}><FontAwesomeIcon icon ={faUserGraduate}/> Ulaş Beyaz</span>
                 <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>190209018</span>
   </div>
+                </NavLink>
+                
                       {/* Diğer öğrencilerin listesi */}
                     </div>
                   </div>
