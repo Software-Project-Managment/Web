@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, useLocation, NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -39,7 +39,7 @@ const AdminDeneme = () => {
           }}
         >
           <div style={{ marginLeft: "5vw" }}>
-            <NavLink to="/student">
+            <NavLink to="/admin">
               <img
                 src="assets/logo.png"
                 style={{
@@ -100,19 +100,19 @@ const AdminDeneme = () => {
             >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <NavLink
-                  to="/student"
+                  to="/admin"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/admin"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/admin"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/student"
+                      isActive && location.pathname === "/admin"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -124,7 +124,7 @@ const AdminDeneme = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/student/newMessage"
+                  to="/admin"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
@@ -296,8 +296,8 @@ const AdminDeneme = () => {
     marginTop: "3rem",
   }}
 >
-  <h3> Başlık </h3>
-  <div
+  <h3> Active Internships for Students </h3>
+  <Link to="https://www.ox.ac.uk"><button
     style={{
       display: "flex",
       alignItems: "center",
@@ -312,9 +312,9 @@ const AdminDeneme = () => {
       height: "4rem",
     }}
   >
-    elma
-  </div>
-  <div
+    Internship Application as Frontend Developer on Oxford https://www.ox.ac.uk
+  </button></Link>
+  <button
     style={{
       display: "flex",
       alignItems: "center",
@@ -328,9 +328,9 @@ const AdminDeneme = () => {
       height: "4rem",
     }}
   >
-    armut
-  </div>
-  <div
+    +
+  </button>
+  <button
     style={{
       display: "flex",
       alignItems: "center",
@@ -344,8 +344,8 @@ const AdminDeneme = () => {
       height: "4rem",
     }}
   >
-    karpuz
-  </div>
+    +
+  </button>
 </div>
 
 

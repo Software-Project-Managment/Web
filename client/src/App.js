@@ -49,6 +49,9 @@ import CareerStudentInformation from "./components/CareerCenter/CareerStudentInf
 import CareerViewSgkDocument from "./components/CareerCenter/CareerViewSgkDocument";
 import CareerIntershipApplicationForm from "./components/CareerCenter/CareerIntershipApplicationForm";
 import CareerSendSgkDocument from "./components/CareerCenter/CareerSendSgkDocument";
+import AdminHomepage from "./components/Admin/AdminHomepage";
+import AdminCreate from "./components/Admin/AdminCreate";
+
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -212,6 +215,12 @@ function App() {
           />
 
           <Route path="/admin" element={<AdminDeneme />} />
+
+          <Route path="/admin" element={<AdminHomepage/>} />
+          <Route path="/admin/admincreate" element={<AdminCreate/>}/>
+
+
+
         </Routes>
       </Router>
 
