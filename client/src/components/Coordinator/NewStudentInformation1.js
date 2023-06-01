@@ -196,7 +196,7 @@ const NewStudentInformation1 = () => {
                 textJustify: 'start',
                 width: '85%',
                 height: '25vh',
-                boxShadow: '0 4px 4px  0 rgba(0, 0, 0, 0.25) inset',
+                boxShadow: '0 4px 4px  0 rgba(0, 0, 0, 0.24) inset',
                 borderRadius:'20px'
               }}
             >
