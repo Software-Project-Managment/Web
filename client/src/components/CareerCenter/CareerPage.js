@@ -74,7 +74,7 @@ const CareerPage = () => {
             textTransform:"capitalize"
           }}
         >
-          {user.data.name} {user.data.surname}
+
            
         </p>
         <p style={{
@@ -85,7 +85,7 @@ const CareerPage = () => {
             
           }}>
 
-           {user.data.role==="student" && user.data.username}
+
         </p>
         
         

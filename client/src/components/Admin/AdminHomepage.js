@@ -205,7 +205,7 @@ const AdminDeneme = () => {
               <NavLink to="/admin/students">
                 <div
                   style={{
-                    width: "300px",
+                    width: "250px",
                     height: "30px",
                     backgroundColor: "rgba(240, 212, 117, 0.75)",
 
@@ -322,6 +322,26 @@ const AdminDeneme = () => {
                   https://www.ox.ac.uk
                 </button>
               </Link>
+              <NavLink to="/admin/AdminCreate">
+              <button
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "0.5rem",
+                  marginLeft: "1.5rem",
+                  backgroundColor: "#C8C8C5",
+                  color: "black",
+                  marginBottom: "1rem",
+                  width: "70rem",
+                  height: "4rem",
+                }}
+                
+              >
+                +
+              </button>
+              </NavLink>
+              <NavLink to="/admin/AdminCreate">
               <button
                 style={{
                   display: "flex",
@@ -338,22 +358,7 @@ const AdminDeneme = () => {
               >
                 +
               </button>
-              <button
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: "0.5rem",
-                  marginLeft: "1.5rem",
-                  backgroundColor: "#C8C8C5",
-                  color: "black",
-                  marginBottom: "1rem",
-                  width: "70rem",
-                  height: "4rem",
-                }}
-              >
-                +
-              </button>
+              </NavLink>
             </div>
           </div>
           {/* Buraya */}
