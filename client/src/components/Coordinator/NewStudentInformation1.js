@@ -15,7 +15,13 @@ import {
   faTriangleExclamation,
   faPerson,
   faUserGraduate,
+ 
 } from '@fortawesome/free-solid-svg-icons';
+import {
+
+  faCircleUser
+} from '@fortawesome/free-regular-svg-icons';
+
 import { useLogout } from '../../hooks/useLogout';
 
 const NewStudentInformation1 = () => {
@@ -189,39 +195,40 @@ const NewStudentInformation1 = () => {
                 justifySelf: 'start',
                 textJustify: 'start',
                 width: '85%',
-                height: '35vh',
+                height: '25vh',
                 boxShadow: '0 4px 4px  0 rgba(0, 0, 0, 0.25) inset',
                 borderRadius:'20px'
               }}
             >
+              <FontAwesomeIcon icon={faCircleUser}  style={{fontSize:"6rem",marginLeft:"2rem",fontWeight:"lighter"}} />
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'  }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem',}}>
 
-                  <div style={{width: '70rem', borderRadius: '4px', padding: '1rem',marginLeft:'3rem' }}>
-                 <div style={{ display: 'flex', justifyContent: 'flex-start',marginBottom:'1rem',marginLeft:'3rem',}}>
-                 <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px'}}>Student Name</span>
-                 <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>:Selin Bekar</span>
+                  <div style={{width: '70rem', borderRadius: '4px', padding: '1rem' }}>
+                 <div style={{ display: 'flex', justifyContent: 'flex-start',marginBottom:'0.2rem',marginLeft:'1rem',}}>
+                 <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'99px'}}>Student Name</span>
+                 <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'30px' }}>:Selin Bekar</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' ,marginBottom:'1rem',marginLeft:'3rem'}}>
-                <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>Student ID:</span>
-                <span style={{fontFamily:'Montserrat',fontSize:'25px', marginRight:'30px'}}>:2048044</span>
+                <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom:'0.2rem',alignItems: 'center' ,marginLeft:'1rem'}}>
+                <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'128px' }}>Student ID</span>
+                <span style={{fontFamily:'Montserrat',fontSize:'22px', marginRight:'30px'}}>:2048044</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '2rem',marginBottom:'1rem',marginLeft:'3rem'}}>
-                 <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px'}}>Department</span>{'   '}
-                 <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>:Software Engineering</span>
+                <div style={{ display: 'flex', justifyContent: 'flex-start',marginBottom:'0.2rem',marginLeft:'1rem'}}>
+                 <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'120px'}}>Department</span>{'   '}
+                 <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'30px' }}>:Software Engineering</span>
                  
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' ,marginBottom:'1rem',marginLeft:'3rem'}}>
-                <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>Compulsory Internship</span>
-                <span style={{fontFamily:'Montserrat',fontSize:'25px', marginRight:'30px'}}>:1/2</span>
+                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' ,marginBottom:'0.2rem',marginLeft:'1rem'}}>
+                <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'20px' }}>Compulsory Internship</span>
+                <span style={{fontFamily:'Montserrat',fontSize:'22px', marginRight:'30px'}}>:1/2</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' ,marginBottom:'1rem',marginLeft:'3rem'}}>
-                <span style={{fontFamily:'Montserrat',fontSize:'25px',marginRight:'30px' }}>Voluntarily Internship:</span>
-                <span style={{fontFamily:'Montserrat',fontSize:'25px', marginRight:'30px'}}>:0</span>
+                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' ,marginBottom:'1rem',marginLeft:'1rem'}}>
+                <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'30px' }}>Voluntarily Internship</span>
+                <span style={{fontFamily:'Montserrat',fontSize:'22px', marginRight:'30px'}}>:0</span>
                 </div>
                 
-                <div style={{position:'absolute', top:"100%", right:"0", }}>
+                <div style={{position:'absolute', top:"100%", right:"12%", }}>
                 <div
   style={{
     paddingTop: "2rem",
@@ -235,84 +242,93 @@ const NewStudentInformation1 = () => {
 >
   <div
     style={{
-      width: "70px",
+      width: "100px",
       height: "5px",
       backgroundColor: "rgba(240, 212, 117, 0.75)",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       marginRight: "5rem",
-      padding: "4rem",
+      padding: "2.2rem",
       borderRadius: "20px",
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       overflow: "hidden",
+      fontSize:"0.9rem"
     }}
   >
     View Transcript
   </div>
   <div
     style={{
-      padding: "4rem",
+      padding: "2rem",
       alignItems: "center",
       marginRight: "5rem",
-      width: "70px",
+      width: "100px",
       height: "5px",
-      backgroundColor: "rgba(101, 185, 166, 0.75)",
+      backgroundColor: "rgba(240, 212, 117, 0.75)",
       display: "flex",
       justifyContent: "center",
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       overflow: "hidden",
       borderRadius: "20px",
+      fontSize:"0.9rem"
+
     }}
   >
     View SGK
   </div>
   <div
     style={{
-      padding: "4rem",
+      padding: "2rem",
       alignItems: "center",
       marginRight: "5rem",
-      width: "70px",
+      width: "100px",
       height: "5px",
-      backgroundColor: "rgba(101, 185, 166, 0.75)",
+      backgroundColor: "rgba(240, 212, 117, 0.75)",
       display: "flex",
       justifyContent: "center",
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       overflow: "hidden",
       borderRadius: "20px",
+      fontSize:"0.9rem"
+
     }}
   >
     View Internship Formular
   </div>
   <div
     style={{
-      padding: "4rem",
+      padding: "2rem",
       alignItems: "center",
       marginRight: "5rem",
-      width: "70px",
+      width: "100px",
       height: "5px",
-      backgroundColor: "rgba(101, 185, 166, 0.75)",
+      backgroundColor: "rgba(240, 212, 117, 0.75)",
       display: "flex",
       justifyContent: "center",
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       overflow: "hidden",
       borderRadius: "20px",
+      fontSize:"0.9rem"
+
     }}
   >
     View Report Template
   </div>
   <div
     style={{
-      padding: "4rem",
-      width: "70px",
+      padding: "2rem",
+      width: "100px",
       height: "5px",
-      backgroundColor: "rgba(2, 149, 169, 0.75)",
+      backgroundColor: "rgba(240, 212, 117, 0.75)",
       overflow: "hidden",
       display: "flex",
       borderRadius: "20px",
       alignItems: "center",
       justifyContent: "center",
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+            fontSize:"0.9rem"
+
     }}
   >
     Send Request For SGK Document to Career Center
