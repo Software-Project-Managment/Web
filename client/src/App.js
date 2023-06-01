@@ -46,6 +46,7 @@ import CareerOutgoingmessage from "./components/CareerCenter/CareerOutgoingmessa
 import CareerStudent from "./components/CareerCenter/CareerStudent";
 import AdminLoginPage from "./components/AdminLoginPage";
 import AdminHomepage from "./components/Admin/AdminHomepage";
+import AdminCreate from "./components/Admin/AdminCreate";
 
 
 function App() {
@@ -197,6 +198,7 @@ function App() {
 
 
           <Route path="/admin" element={<AdminHomepage/>} />
+          <Route path="/admin/admincreate" element={<AdminCreate/>}/>
 
 
 
