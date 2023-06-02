@@ -13,11 +13,48 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
 const NewUploaded = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+
+  const handleOfficalLetterSubmit = (e)=>{
+    try {
+    const data =new FormData()
+   
+    const name = `${user.data.name} ${user.data.surname}`
+
+    data.append("name",user.data.name)
+    data.append("aliciID",'6450a8cf78e1c39f474b033a')
+    data.append("subject",'Offical Letter')
+
+    const obje = {
+      "name" : `${user.data.name} ${user.data.surname}`,
+      "aliciID" : "6450a8cf78e1c39f474b033a",
+      "subject" : "Offical Letter"
+    }
+ 
+
+     console.log(data);
+     const res =axios.post('http://localhost:3000/student/upload/notification',obje)
+  
+     
+
+     console.log(res);
+     alert('REQUEST SENT')
+
+
+   
+    } catch (error) {
+      console.log(error);
+    }
+    
+
+  }
+
+
 
   const handleClick = () => {
     logout();
@@ -359,8 +396,9 @@ const NewUploaded = () => {
                     fontSize: "18px",
                     cursor:"pointer"
                   }}
+                  onClick={handleOfficalLetterSubmit}
                 >
-                  Request
+                  Request 
                 </button>
               </NavLink>
             </div>

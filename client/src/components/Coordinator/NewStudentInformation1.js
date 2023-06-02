@@ -183,7 +183,7 @@ const NewStudentInformation1 = () => {
   const requestSGK = async (id)=>{
     try {
       const res = await axios.post(`http://localhost:3000/student/sgk/request/${id}` , {responseType:'blob'})
-      alert('SENDED REQUEST')
+      alert('REQUEST SENT')
      
       console.log('button clicked');
       console.log(res);
