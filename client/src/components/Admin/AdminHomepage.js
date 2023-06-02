@@ -169,7 +169,6 @@ const AdminDeneme = () => {
                     color: "black",
                   })}
                 >
-                  <FontAwesomeIcon icon={faBullhorn} />
                 </NavLink>
               </div>
 
@@ -205,7 +204,7 @@ const AdminDeneme = () => {
               <NavLink to="/admin/students">
                 <div
                   style={{
-                    width: "250px",
+                    width: "200px",
                     height: "30px",
                     backgroundColor: "rgba(240, 212, 117, 0.75)",
 
@@ -228,7 +227,7 @@ const AdminDeneme = () => {
                       color: "black",
                     }}
                   />{" "}
-                  Manage Students and Student Page
+                  <div style={{color:'black'}}>Manage Students and Student Page</div>
                 </div>
               </NavLink>
 
@@ -238,7 +237,7 @@ const AdminDeneme = () => {
                     padding: "4rem",
                     alignItems: "center",
                     marginRight: "5rem",
-                    width: "300px",
+                    width: "200px",
                     height: "30px",
                     backgroundColor: "rgba(101, 185, 166, 0.75)",
                     display: "flex",
@@ -256,7 +255,7 @@ const AdminDeneme = () => {
                       color: "black",
                     }}
                   />
-                  Manage Coordinators and Coordinator Page
+                  <div style={{color:'black'}}>Manage Coordinators and Coordinator Page</div>
                 </div>
               </NavLink>
               <NavLink to="/career">
@@ -264,7 +263,7 @@ const AdminDeneme = () => {
                   style={{
                     padding: "4rem",
 
-                    width: "300px",
+                    width: "200px",
                     height: "30px",
                     backgroundColor: "rgba(2, 149, 169, 0.75)",
                     overflow: "hidden",
@@ -283,7 +282,7 @@ const AdminDeneme = () => {
                       color: "black",
                     }}
                   />
-                  Manage Career Center
+                  <div style={{color:'black'}}>Manage Career Center</div>
                 </div>
               </NavLink>
             </div>
@@ -310,7 +309,7 @@ const AdminDeneme = () => {
                     justifyContent: "center",
                     borderRadius: "0.5rem",
                     marginLeft: "1.5rem",
-                    backgroundColor: "#C8C8C5",
+                    backgroundColor: "#E5E5E6",
                     color: "black",
                     marginBottom: "1rem",
                     marginTop: "1rem",
@@ -330,7 +329,7 @@ const AdminDeneme = () => {
                   justifyContent: "center",
                   borderRadius: "0.5rem",
                   marginLeft: "1.5rem",
-                  backgroundColor: "#C8C8C5",
+                  backgroundColor: "#E5E5E6",
                   color: "black",
                   marginBottom: "1rem",
                   width: "70rem",
@@ -349,7 +348,7 @@ const AdminDeneme = () => {
                   justifyContent: "center",
                   borderRadius: "0.5rem",
                   marginLeft: "1.5rem",
-                  backgroundColor: "#C8C8C5",
+                  backgroundColor: "#E5E5E6",
                   color: "black",
                   marginBottom: "1rem",
                   width: "70rem",

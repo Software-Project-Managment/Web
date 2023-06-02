@@ -16,9 +16,11 @@ import {
   faPerson,
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
+
 import { useLogout } from "../../hooks/useLogout";
 
-const AdminCoordinators = () => {
+const AdminCoordinatorInformation = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
@@ -48,7 +50,7 @@ const AdminCoordinators = () => {
           }}
         >
           <div style={{ marginLeft: "5vw" }}>
-            <NavLink to="/admin">
+            <NavLink to="/coordinator">
               <img
                 src="../assets/logo.png"
                 style={{
@@ -124,17 +126,15 @@ const AdminCoordinators = () => {
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
-                      isActive && location.pathname === "/coordinator"
+                      isActive && location.pathname === "/career"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
-                      isActive && location.pathname === "/coordinator"
+                      isActive && location.pathname === "/career"
                         ? "#8C949D"
                         : "",
                     borderRadius:
-                      isActive && location.pathname === "/coordinator"
-                        ? "10px"
-                        : "",
+                      isActive && location.pathname === "/career" ? "10px" : "",
                     fontSize: "2.5rem",
                     marginTop: "50px",
                     color: "black",
@@ -144,22 +144,46 @@ const AdminCoordinators = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/admin/announcement"
+                  to="/career/CareerInbox"
+                  style={({ isActive }) => ({
+                    cursor: "pointer",
+                    border:
+                      isActive && location.pathname === "/career/CareerInbox"
+                        ? "0px solid black"
+                        : "",
+                    backgroundColor:
+                      isActive && location.pathname === "/Career/CareerInbox"
+                        ? "#8C949D"
+                        : "",
+                    borderRadius:
+                      isActive && location.pathname === "/career/CareerInbox"
+                        ? "10px"
+                        : "",
+                    fontSize: "2.5rem",
+                    marginTop: "50px",
+                    color: "black",
+                  })}
+                >
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </NavLink>
+
+                <NavLink
+                  to="/career/CareerStudent"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
                       isActive &&
-                      location.pathname === "/coordinator/studentInformation"
+                      location.pathname === "/career/studentInformation"
                         ? "0px solid black"
                         : "",
                     backgroundColor:
                       isActive &&
-                      location.pathname === "/coordinator/studentInformation"
+                      location.pathname === "/career/studentInformation"
                         ? "#8C949D"
                         : "",
                     borderRadius:
                       isActive &&
-                      location.pathname === "/coordinator/studentInformation"
+                      location.pathname === "/career/studentInformation"
                         ? "10px"
                         : "",
                     fontSize: "2.5rem",
@@ -178,7 +202,7 @@ const AdminCoordinators = () => {
                   cursor: "pointer",
                   fontSize: "2.5rem",
                   color: "black",
-                  marginTop: "51px",
+                  marginTop: "50px",
                 }}
               />
             </div>
@@ -187,43 +211,13 @@ const AdminCoordinators = () => {
             style={{
               textAlign: "center",
               paddingTop: "2rem",
-              alignItems: "end",
-              justifyContent: "end",
               width: "92vw",
               position: "fixed",
-              left: "17%",
+              left: "9%",
             }}
           >
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "0.5rem",
-                width: "40rem",
-                borderRadius: "4px",
-                justifyContent: "center",
-                position: "fixed",
-                top: "11%",
-                left: "57%",
-                transform: "translate(-50%, -50%)",
-              }}
-            >
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search"
-                style={{ marginRight: "0.5rem", borderRadius: "1rem" }}
-              />
-              <FontAwesomeIcon
-                icon={faSearch}
-                onClick={() => handleSearch}
-                style={{ cursor: "pointer" }}
-              />
-            </div>
-            <div
-              style={{
-                marginTop: "2rem",
                 display: "flex",
                 backgroundColor: "#D9D9D9",
                 alignItems: "center",
@@ -231,9 +225,19 @@ const AdminCoordinators = () => {
                 justifySelf: "start",
                 textJustify: "start",
                 width: "85%",
-                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                height: "25vh",
+                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.24) inset",
+                borderRadius: "20px",
               }}
             >
+              <FontAwesomeIcon
+                icon={faCircleUser}
+                style={{
+                  fontSize: "6rem",
+                  marginLeft: "2rem",
+                  fontWeight: "lighter",
+                }}
+              />
               <div
                 style={{
                   display: "flex",
@@ -259,7 +263,6 @@ const AdminCoordinators = () => {
                     <div
                       style={{
                         width: "70rem",
-                        border: "1px solid #ccc",
                         borderRadius: "4px",
                         padding: "1rem",
                       }}
@@ -267,50 +270,151 @@ const AdminCoordinators = () => {
                       <div
                         style={{
                           display: "flex",
-                          justifyContent: "start",
-                          marginBottom: "2rem",
-                          border: "2px solid black",
-                          borderRadius: "20px",
-                          textAlign: "start",
-                          paddingLeft: "2rem",
+                          justifyContent: "flex-start",
+                          marginBottom: "0.2rem",
+                          marginLeft: "1rem",
                         }}
                       >
                         <span
                           style={{
-                            flex: 1,
                             fontFamily: "Montserrat",
-                            fontSize: "25px",
+                            fontSize: "22px",
+                            marginRight: "99px",
                           }}
                         >
-                          Coordinator Name
+                          Instructor Name
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "30px",
+                          }}
+                        >
+                          :Kristin Surpuhi Benli
                         </span>
                       </div>
-                      <NavLink
-                        to="/admin/AdminCoordinatorInformation"
-                        style={{ textDecoration: "none", color: "black" }}
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-start",
+                          marginBottom: "0.2rem",
+                          alignItems: "center",
+                          marginLeft: "1rem",
+                        }}
                       >
-                        <div
+                        <span
                           style={{
-                            display: "flex",
-                            justifyContent: "start",
-                            marginBottom: "2rem",
-                            border: "2px solid black",
-                            borderRadius: "20px",
-                            textAlign: "start",
-                            paddingLeft: "2rem",
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "128px",
                           }}
                         >
-                          <span
-                            style={{
-                              flex: 1,
-                              fontFamily: "Montserrat",
-                              fontSize: "25px",
-                            }}
-                          >
-                            <FontAwesomeIcon icon={faUserGraduate} />  Kristin Surpuhi Benli
-                          </span>
-                        </div>
-                      </NavLink>
+                          Instructor ID
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "30px",
+                          }}
+                        >
+                          :456543
+                        </span>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-start",
+                          marginBottom: "0.2rem",
+                          marginLeft: "1rem",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "120px",
+                          }}
+                        >
+                          Department
+                        </span>
+                        {"   "}
+                        <span
+                          style={{
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "30px",
+                          }}
+                        >
+                          :Software Engineering
+                        </span>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-start",
+                          alignItems: "center",
+                          marginBottom: "0.2rem",
+                          marginLeft: "1rem",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "20px",
+                          }}
+                        >
+                          Instructor Mail Adress
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "30px",
+                          }}
+                        >
+                        :...usku....tr
+                        </span>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-start",
+                          alignItems: "center",
+                          marginBottom: "1rem",
+                          marginLeft: "1rem",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "30px",
+                          }}
+                        >
+                          Students
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "30px",
+                          }}
+                        >
+                          :200
+                        </span>
+                      </div>
+
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "100%",
+                          right: "25%",
+                        }}
+                      >
+                      </div>
 
                       {/* Diğer öğrencilerin listesi */}
                     </div>
@@ -328,4 +432,4 @@ const AdminCoordinators = () => {
   );
 };
 
-export default AdminCoordinators;
+export default AdminCoordinatorInformation;

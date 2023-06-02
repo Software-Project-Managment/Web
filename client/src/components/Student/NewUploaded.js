@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { } from '@fortawesome/free-regular-svg-icons';
 import {
   faHome,
   faUsers,
@@ -261,7 +262,7 @@ const NewUploaded = () => {
                   to="/student"
                   style={{
                     backgroundColor: "#65B9A6",
-                    width: "240px",
+                    width: "120px",
                     height: "40px",
                     borderRadius: "32px",
                     border: "none",
@@ -293,7 +294,7 @@ const NewUploaded = () => {
                 <button
                   style={{
                     backgroundColor: "#65B9A6",
-                    width: "240px",
+                    width: "120px",
                     height: "40px",
                     borderRadius: "32px",
                     border: "none",
@@ -325,7 +326,7 @@ const NewUploaded = () => {
                 <button
                   style={{
                     backgroundColor: "#65B9A6",
-                    width: "240px",
+                    width: "120px",
                     height: "40px",
                     borderRadius: "32px",
                     border: "none",
@@ -357,7 +358,7 @@ const NewUploaded = () => {
                 <button
                   style={{
                     backgroundColor: "#65B9A6",
-                    width: "240px",
+                    width: "120px",
                     height: "40px",
                     borderRadius: "32px",
                     border: "none",
@@ -389,7 +390,7 @@ const NewUploaded = () => {
                 <button
                   style={{
                     backgroundColor: "#65B9A6",
-                    width: "240px",
+                    width: "120px",
                     height: "40px",
                     borderRadius: "32px",
                     border: "none",
@@ -421,7 +422,7 @@ const NewUploaded = () => {
                 <button
                   style={{
                     backgroundColor: "#65B9A6",
-                    width: "240px",
+                    width: "120px",
                     height: "40px",
                     borderRadius: "32px",
                     border: "none",

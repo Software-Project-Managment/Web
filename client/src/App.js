@@ -55,6 +55,8 @@ import AdminCoordinators from "./components/Admin/AdminCoordinators";
 import AdminPreAddCoordinator from "./components/Admin/AdminPreAddCordinator";
 import AdminAddCoordinator from "./components/Admin/AdminAdddCoordinator";
 import AdminStudentInformation from "./components/Admin/AdminStudentInformation";
+import AdminCoordinatorInformation from "./components/Admin/AdminCoordinatorInformation";
+import CoordinatorCreate from "./components/Coordinator/CoordinatorCreate";
 
 function App() {
   //const [showLoginPage, setShowLoginPage] = useState(false);
@@ -183,6 +185,7 @@ function App() {
             element={<ViewTranscript />}
           />
           <Route path="/coordinator/message" element={<CoordinatorMessage />} />
+          <Route path="/coordinator/CoordinatorCreate" element={<CoordinatorCreate/>}/>
           <Route
             path="/coordinator/notifications"
             element={<CoordinatorNotification />}
@@ -229,6 +232,7 @@ function App() {
             path="/admin/addCoordinator"
             element={<AdminAddCoordinator />}
           />
+          <Route path="admin/AdminCoordinatorInformation" element={<AdminCoordinatorInformation/>}/>
           <Route path="admin/AdminStudentInformation" element={<AdminStudentInformation/>}/>
         </Routes>
       </Router>

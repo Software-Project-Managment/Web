@@ -330,7 +330,7 @@ const AdminPreAddCoordinator = () => {
                         </span>
                       </div>
                       <NavLink
-                        to="/student"
+                        to="/coordinator"
                         style={{ textDecoration: "none", color: "black" }}
                       >
                         <div

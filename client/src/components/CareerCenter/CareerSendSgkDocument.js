@@ -227,7 +227,7 @@ const CareerSendSgkDocument = () => {
               <div
                 style={{
                   display: "flex",
-                  background: "grey",
+                  background: "#E5E5E6",
                   alignItems: "center",
                   justifyContent: "center",
                   padding: "4px",

@@ -426,7 +426,7 @@ const CareerStudentInformation = () => {
                             <div
                               style={{
                                 height: "5px",
-                                backgroundColor: "#36B64F",
+                                backgroundColor: "#65B9A6",
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
@@ -439,7 +439,7 @@ const CareerStudentInformation = () => {
                                 fontSize: "0.9rem",
                               }}
                             >
-                              View SGK Documents
+                              <div style={{color:'black'}}>View SGK Documents</div>
                             </div>
                           </NavLink>
                           <NavLink to="/career/intershipApplicationForm">
@@ -450,7 +450,7 @@ const CareerStudentInformation = () => {
                                 marginRight: "5rem",
 
                                 height: "5px",
-                                backgroundColor: "#36B64F",
+                                backgroundColor: "#65B9A6",
 
                                 display: "flex",
                                 justifyContent: "center",
@@ -461,7 +461,7 @@ const CareerStudentInformation = () => {
                                 fontSize: "0.9rem",
                               }}
                             >
-                              Intershit Application Form
+                              <div style={{color:'black'}}>Intershit Application Form</div>
                             </div>
                           </NavLink>
                           <NavLink to="/career/sendSgkDocument">
@@ -472,7 +472,7 @@ const CareerStudentInformation = () => {
                                 marginRight: "5rem",
 
                                 height: "5px",
-                                backgroundColor: "#36B64F",
+                                backgroundColor: "#65B9A6",
 
                                 display: "flex",
                                 justifyContent: "center",
@@ -483,7 +483,7 @@ const CareerStudentInformation = () => {
                                 fontSize: "0.9rem",
                               }}
                             >
-                              Send SGK Document
+                              <div style={{color:'black'}}>Send SGK Document</div>
                             </div>
                           </NavLink>
                         </div>

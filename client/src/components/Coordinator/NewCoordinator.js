@@ -1,5 +1,5 @@
 import {useState,useEffect} from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, useLocation, NavLink,Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -71,7 +71,7 @@ const NewCoordinator = () => {
                   marginTop: "0.5rem",
                 }}
               />
-            </NavLink>
+            </NavLink><div style={{position: "fixed",top: "0%",left: "12%",transform: "translate(-50%, 50%)"}}>2022/2023 Fall Semester</div>
           </div>
           <div style={{  display:"flex" , alignItems:"center",justifyContent:"space-around",width:"200px"}}>
             <FontAwesomeIcon
@@ -190,6 +190,83 @@ const NewCoordinator = () => {
                 />{" "}
                 Internship Coordinator: Kristin Surpuhi Benli
               </div>
+              <div
+              style={{
+                position: "fixed",
+                bottom: "30%",
+                left: "48%",
+                transform: "translate(-50%, 50%)",
+                display: "flex",
+                backgroundColor: "#DFE3E7",
+                alignItems: "center",
+                flexDirection: "column",
+                width: "86%",
+                height: "20rem",
+                boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25) inset",
+                borderRadius: "0.5rem",
+                marginLeft: "5.7rem",
+                marginTop: "3rem",
+              }}
+            >
+              <h3> Active Internships for Students </h3>
+              <Link to="https://www.ox.ac.uk">
+                <button
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: "0.5rem",
+                    marginLeft: "1.5rem",
+                    backgroundColor: "#E5E5E6",
+                    color: "black",
+                    marginBottom: "1rem",
+                    marginTop: "1rem",
+                    width: "70rem",
+                    height: "4rem",
+                  }}
+                >
+                  Internship Application as Frontend Developer on Oxford
+                  https://www.ox.ac.uk
+                </button>
+              </Link>
+              <NavLink to="/coordinator/CoordinatorCreate">
+              <button
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "0.5rem",
+                  marginLeft: "1.5rem",
+                  backgroundColor: "#E5E5E6",
+                  color: "black",
+                  marginBottom: "1rem",
+                  width: "70rem",
+                  height: "4rem",
+                }}
+                
+              >
+                +
+              </button>
+              </NavLink>
+              <NavLink to="/admin/AdminCreate">
+              <button
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "0.5rem",
+                  marginLeft: "1.5rem",
+                  backgroundColor: "#E5E5E6",
+                  color: "black",
+                  marginBottom: "1rem",
+                  width: "70rem",
+                  height: "4rem",
+                }}
+              >
+                +
+              </button>
+              </NavLink>
+            </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <NavLink
                   to="/coordinator"

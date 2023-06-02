@@ -144,33 +144,6 @@ const AdminStudents = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/admin/addCoordinator"
-                  style={({ isActive }) => ({
-                    cursor: "pointer",
-                    border:
-                      isActive &&
-                      location.pathname === "/Coordinator/CoordinatorInbox"
-                        ? "0px solid black"
-                        : "",
-                    backgroundColor:
-                      isActive &&
-                      location.pathname === "/Coordinator/CoordinatorInbox"
-                        ? "#8C949D"
-                        : "",
-                    borderRadius:
-                      isActive &&
-                      location.pathname === "/Coordinator/CoordinatorInbox"
-                        ? "10px"
-                        : "",
-                    fontSize: "2.5rem",
-                    marginTop: "50px",
-                    color: "black",
-                  })}
-                >
-                  <FontAwesomeIcon icon={faEnvelope} />
-                </NavLink>
-
-                <NavLink
                   to="/admin/AdminStudentInformation"
                   style={({ isActive }) => ({
                     cursor: "pointer",

@@ -220,7 +220,7 @@ const NewStudentInformation = () => {
               style={{
                 marginTop: '2rem',
                 display: 'flex',
-                backgroundColor: '#D9D9D9',
+                backgroundColor:'#E5E5E6',
                 alignItems: 'center',
                 justifyContent: 'start',
                 justifySelf: 'start',
@@ -229,20 +229,20 @@ const NewStudentInformation = () => {
                 boxShadow: '0 4px 4px  0 rgba(0, 0, 0, 0.25) inset',
               }}
             >
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' ,backgroundColor:'#E5E5E6'}}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' ,backgroundColor:'#E5E5E6'}}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem',backgroundColor:'#E5E5E6' }}>
 
-                  <div style={{width: '70rem', border: '1px solid #ccc', borderRadius: '4px', padding: '1rem' }}>
-                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem',border:'2px solid black',borderRadius:'20px' }}>
+                  <div style={{width: '70rem', border: '1px solid #ccc', borderRadius: '4px', padding: '1rem',backgroundColor:'#E5E5E6' }}>
+                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem',border:'2px solid black',borderRadius:'20px' ,backgroundColor:'#E5E5E6'}}>
                  <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>Student Name</span>
                  <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>Student ID</span>
                 </div>
               {students && students.map((student,idx)=>(
-                <NavLink to={`/coordinator/NewStudentInformation1/${student._id}`} style={{textDecoration:"none", color:"black"}}>
-                <div style={{ marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center',border:'1px solid gray',borderRadius:'20px' }}>
-                <div style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' , display:"flex" , textTransform:"capitalize" }}><FontAwesomeIcon icon ={faUserGraduate} style={{marginLeft:"13rem" , marginRight:"10px"}}/>{student.name} {student.surname}</div>
-                <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>190209018</span>
+                <NavLink to={`/coordinator/NewStudentInformation1/${student._id}`} style={{textDecoration:"none", color:"black",backgroundColor:'#E5E5E6'}}>
+                <div style={{ marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center',border:'1px solid gray',borderRadius:'20px',backgroundColor:'#E5E5E6' }}>
+                <div style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' , display:"flex" , textTransform:"capitalize",backgroundColor:'#E5E5E6' }}><FontAwesomeIcon icon ={faUserGraduate} style={{marginLeft:"13rem" , marginRight:"10px"}}/>{student.name} {student.surname}</div>
+                <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px',backgroundColor:'#E5E5E6' }}>190209018</span>
   </div>
                 </NavLink>
               ))}

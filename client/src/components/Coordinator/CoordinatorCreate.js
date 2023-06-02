@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation, NavLink,Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -16,8 +16,10 @@ import {
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
-const CareerPage = () => {
-  const user = JSON.parse(localStorage.getItem('user'))
+import axios from "axios";
+
+const CoordinatorCreate = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -26,6 +28,7 @@ const CareerPage = () => {
     logout();
     history("/");
   };
+
   return (
     <div>
       <div>
@@ -40,7 +43,7 @@ const CareerPage = () => {
           }}
         >
           <div style={{ marginLeft: "5vw" }}>
-            <NavLink to="/career">
+            <NavLink to="/admin">
               <img
                 src="../assets/logo.png"
                 style={{
@@ -49,7 +52,7 @@ const CareerPage = () => {
                   marginTop: "0.5rem",
                 }}
               />
-            </NavLink><div style={{position: "fixed",top: "0%",left: "12%",transform: "translate(-50%, 50%)"}}>2022/2023 Fall Semester</div>
+            </NavLink>
           </div>
           <div style={{  display:"flex" , alignItems:"center",justifyContent:"space-around",width:"200px"}}>
             <FontAwesomeIcon
@@ -74,7 +77,7 @@ const CareerPage = () => {
             textTransform:"capitalize"
           }}
         >
-
+          {user.data.name} {user.data.surname}
            
         </p>
         <p style={{
@@ -85,7 +88,7 @@ const CareerPage = () => {
             
           }}>
 
-
+           {user.data.role==="student" && user.data.username}
         </p>
         
         
@@ -107,9 +110,10 @@ const CareerPage = () => {
                 justifyContent: "space-between",
               }}
               >
+              
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <NavLink
-                  to="/career"
+                  to="/coordinator"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
@@ -133,7 +137,7 @@ const CareerPage = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/career/CareerIncomingmessage"
+                  to="/coordinator/CoordinatorInbox"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
@@ -157,7 +161,7 @@ const CareerPage = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/career/CareerStudent"
+                  to="/coordinator/NewStudentInformation"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
@@ -196,7 +200,7 @@ const CareerPage = () => {
               />
             </div>
           </div>
-          {/* Burada */}
+
           <div
             style={{
               textAlign: "center",
@@ -208,61 +212,112 @@ const CareerPage = () => {
               left: "17%",
             }}
           >
+            {/* Burada */}
             <div
-              style={{
-                display: "flex",
-                backgroundColor: "#FF8975",
-                alignItems: "center",
-                justifyContent: "start",
-                justifySelf: "center",
-                textJustify: "center",
-                width: "80%",
-                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                borderRadius:"10px"
-              }}
-            >
-              {" "}
-              
-              
-              <p style={{fontSize:'1.5rem'}}><FontAwesomeIcon icon = {faBell}/> 2 new SGK Request</p>
-            </div>
-            <div
-              style={{
-                marginTop:'1.5rem',
-                display: "flex",
-                backgroundColor: "#65B9A6",
-                alignItems: "center",
-                justifyContent: "start",
-                justifySelf: "center",
-                textJustify: "center",
-                width: "80%",
-                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                borderRadius:"10px"
-              }}
-            >
-              {" "}
-              
-              
-              <p style={{fontSize:'1.5rem'}}><FontAwesomeIcon icon={faTriangleExclamation}/> Please be sure that the student fill the Internship Report rightly and correct before you sent the SGK Document</p>
-            </div>
-            <div
-              style={{
-                marginTop: "1rem",
-                display: "flex",
-                backgroundColor: "rgba(63, 167, 144, 0.75)",
-                alignItems: "center",
-                justifyContent: "start",
-                justifySelf: "start",
-                textJustify: "start",
-                width: "80%",
-                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-                
-              }}
-            >
-
-            </div>
+  style={{
+    display: "flex",
+    backgroundColor: "#DFE3E7",
+    alignItems: "center",
+    flexDirection: "column", 
+    width: "82%",
+    height: "37rem",
+    boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25) inset",
+    borderRadius: "0.5rem",
+    marginLeft: "0.2rem",
+    display:'flex',
+    justifyContent:'flex-start',
+    alignItems:'flex-start'
+  }}
+>
+  <h3> Name of the Internship </h3>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: "0.5rem",
+      marginLeft: "0.5rem",
+      backgroundColor: "#C8C8C5",
+      color: "black",
+      marginBottom: "1rem", 
+      width: "60rem",
+      height: "3rem",
+    }}
+  >
+   
+  </div>
+  <h3> Position of the Internship </h3>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: "0.5rem",
+      marginLeft: "0.5rem",
+      backgroundColor: "#C8C8C5",
+      color: "black",
+      marginBottom: "1rem", 
+      width: "60rem",
+      height: "3rem",
+    }}
+  >
+    
+  </div>
+  <h3> How many students can apply </h3>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: "0.5rem",
+      marginLeft: "0.5rem",
+      backgroundColor: "#C8C8C5",
+      color: "black",
+      marginBottom: "1rem", 
+      width: "60rem",
+      height: "3rem",
+    }}
+  >
+    
+  </div>
+  <h3> Last application date </h3>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: "0.5rem",
+      marginLeft: "0.5rem",
+      backgroundColor: "#C8C8C5",
+      color: "black",
+      marginBottom: "1rem", 
+      width: "60rem",
+      height: "3rem",
+    }}
+  >
+    
+  </div>
+  <h3> Url link of the Internship</h3>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: "0.5rem",
+      marginLeft: "0.5rem",
+      backgroundColor: "#C8C8C5",
+      color: "black",
+      marginBottom: "1rem", 
+      width: "60rem",
+      height: "3rem",
+    }}
+  >
+    
+  </div>
+  <button style={{display:'flex',alignItems:'self-end',justifyContent:'right',marginLeft:'67rem',fontSize:'23px',borderRadius:'10px',backgroundColor:'#65B9A6'}}>Save</button>
+</div>
+            {/* Buraya */}
           </div>
-          {/* Buraya */}
         </div>
       </div>
       <footer
@@ -272,4 +327,4 @@ const CareerPage = () => {
   );
 };
 
-export default CareerPage;
+export default CoordinatorCreate;

@@ -267,8 +267,8 @@ const NewInbox = () => {
               <p
                 style={{
                   textDecoration: "underline",
-                  marginTop: "4rem",
-                  fontSize: "2.5rem",
+                  marginTop: "2rem",
+                  fontSize: "2rem",
                 }}
               >
                 My Messages
@@ -308,6 +308,7 @@ const NewInbox = () => {
               style={{
                 height: "80vh",
                 width: "60vW",
+                marginTop:'2rem'
               }}
             >
               <p>Contact (Search with Student ID)</p>

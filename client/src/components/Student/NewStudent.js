@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation, NavLink,Link} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { } from '@fortawesome/free-regular-svg-icons';
 import {
   faHome,
   faUsers,
@@ -47,7 +48,7 @@ const NewStudent = () => {
                   marginTop: "0.5rem",
                 }}
               />
-            </NavLink>
+            </NavLink> <div style={{position: "fixed",top: "0%",left: "12%",transform: "translate(-50%, 50%)"}}>2022/2023 Fall Semester</div> 
           </div>
           <div
             style={{
@@ -128,7 +129,7 @@ const NewStudent = () => {
                     color: "black",
                   })}
                 >
-                  <FontAwesomeIcon icon={faHouse}style={{fontSize:'2rem'}} />
+                  <FontAwesomeIcon icon={faHouse}style={{fontSize:'2rem',}} />
                 </NavLink>
 
                 <NavLink
@@ -323,10 +324,10 @@ const NewStudent = () => {
                 left: "45%",
                 transform: "translate(-50%, 50%)",
                 display: "flex",
-                backgroundColor: "#929AA3",
+                backgroundColor: "#D9D9D9",
                 alignItems: "center",
                 flexDirection: "column",
-                width: "86%",
+                width: "78.7%",
                 height: "20rem",
                 boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25) inset",
                 borderRadius: "0.5rem",
@@ -334,7 +335,7 @@ const NewStudent = () => {
                 marginTop: "3rem",
               }}
             >
-              <h3> Internship Options </h3>
+              <h3 style={{position: "fixed",bottom: "88%",left: "8%",transform: "translate(-50%, 50%)"}}> Internship Options </h3>
               <Link to="https://www.ox.ac.uk">
                 <button
                   style={{
@@ -343,16 +344,17 @@ const NewStudent = () => {
                     justifyContent: "center",
                     borderRadius: "0.5rem",
                     marginLeft: "1.5rem",
-                    backgroundColor: "#C8C8C5",
+                    backgroundColor: "#E5E5E6",
                     color: "black",
                     marginBottom: "1rem",
-                    marginTop: "1rem",
+                    marginTop: "2.5rem",
                     width: "70rem",
                     height: "4rem",
                   }}
                 >
                   Internship Application as Frontend Developer on Oxford
-                  https://www.ox.ac.uk
+                  Last Date for Application 07/05/2023
+                  
                 </button>
               </Link>
               
@@ -363,7 +365,7 @@ const NewStudent = () => {
                   justifyContent: "center",
                   borderRadius: "0.5rem",
                   marginLeft: "1.5rem",
-                  backgroundColor: "#C8C8C5",
+                  backgroundColor: "#E5E5E6",
                   color: "black",
                   marginBottom: "1rem",
                   width: "70rem",
@@ -382,7 +384,7 @@ const NewStudent = () => {
                   justifyContent: "center",
                   borderRadius: "0.5rem",
                   marginLeft: "1.5rem",
-                  backgroundColor: "#C8C8C5",
+                  backgroundColor: "#E5E5E6",
                   color: "black",
                   marginBottom: "1rem",
                   width: "70rem",

@@ -226,7 +226,7 @@ const CareerIntershipApplicationForm = () => {
               <div
                 style={{
                   display: "flex",
-                  background: "grey",
+                  background: "#E5E5E6",
                   alignItems: "center",
                   justifyContent: "space-between",
                   padding: "1rem",
@@ -238,7 +238,7 @@ const CareerIntershipApplicationForm = () => {
                   <NavLink>
                     <button
                       style={{
-                        backgroundColor: "yellow",
+                        backgroundColor: "#E5E5E6",
                         height: "35px",
                         borderRadius: "8px",
                         width: "10rem",
@@ -250,14 +250,14 @@ const CareerIntershipApplicationForm = () => {
                   <NavLink>
                     <button
                       style={{
-                        backgroundColor: "pink",
+                        backgroundColor: "#E5E5E6",
                         marginLeft: "2.5rem",
                         height: "35px",
                         borderRadius: "8px",
                         width: "10rem",
                       }}
                     >
-                      View
+                      Send Again
                     </button>
                   </NavLink>
                 </div>

@@ -41,7 +41,7 @@ const AdminAddCoordinator = () => {
           <div style={{ marginLeft: "5vw" }}>
             <NavLink to="/admin">
               <img
-                src="assets/logo.png"
+                src="../assets/logo.png"
                 style={{
                   width: "50px",
                   marginLeft: "-3.5rem",
@@ -169,7 +169,6 @@ const AdminAddCoordinator = () => {
                     color: "black",
                   })}
                 >
-                  <FontAwesomeIcon icon={faBullhorn} />
                 </NavLink>
               </div>
 
@@ -192,8 +191,8 @@ const AdminAddCoordinator = () => {
               marginTop: "6rem",
               backgroundColor: "#F5F5F5",
               padding: "2rem",
-              width: "70vw",
-              height: "50vh",
+              width: "60vw",
+              height: "37vh",
               textAlign: "start",
               justifyContent: "center",
             }}
@@ -202,7 +201,7 @@ const AdminAddCoordinator = () => {
             <div
               style={{
                 width: "60vw",
-                backgroundColor: "grey",
+                backgroundColor: "#E5E5E6",
                 height: "2rem",
                 borderRadius: "8px",
               }}
@@ -211,7 +210,7 @@ const AdminAddCoordinator = () => {
             <div
               style={{
                 width: "60vw",
-                backgroundColor: "grey",
+                backgroundColor: "#E5E5E6",
                 height: "2rem",
                 borderRadius: "8px",
               }}
@@ -220,7 +219,7 @@ const AdminAddCoordinator = () => {
               style={{
                 marginTop: "2rem",
                 textAlign: "end",
-                marginLeft: "65rem",
+                marginLeft: "50rem",
                 backgroundColor: "#65B9A6",
                 borderRadius: "8px",
                 fontSize: "20px",
