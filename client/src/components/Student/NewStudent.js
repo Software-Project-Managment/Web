@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, useLocation, NavLink,Link} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -11,6 +11,7 @@ import {
   faUpload,
   faBell,
   faUser,
+  faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
 const NewStudent = () => {
@@ -56,7 +57,7 @@ const NewStudent = () => {
               width: "200px",
             }}
           >
-            <FontAwesomeIcon icon={faBell} style={{ fontSize: "2.5rem" }} />
+            <FontAwesomeIcon icon={faBell} style={{ fontSize: "1.5rem" }} />
             <div
               style={{
                 fontFamily: "montserrat",
@@ -88,7 +89,7 @@ const NewStudent = () => {
                 {user.data.role === "student" && user.data.username}
               </p>
             </div>
-            <NavLink to='/student/profile'><FontAwesomeIcon icon={faUser} style={{ fontSize: "2.5rem" , color:"black"}} /></NavLink>
+            <NavLink to='/student/profile'><FontAwesomeIcon icon={faUser} style={{ fontSize: "1.5rem" , color:"black"}} /></NavLink>
             
           </div>
         </nav>
@@ -127,7 +128,7 @@ const NewStudent = () => {
                     color: "black",
                   })}
                 >
-                  <FontAwesomeIcon icon={faHome} />
+                  <FontAwesomeIcon icon={faHouse}style={{fontSize:'2rem'}} />
                 </NavLink>
 
                 <NavLink
@@ -151,7 +152,7 @@ const NewStudent = () => {
                     color: "black",
                   })}
                 >
-                  <FontAwesomeIcon icon={faEnvelope} />
+                  <FontAwesomeIcon icon={faEnvelope}style={{fontSize:'2rem'}} />
                 </NavLink>
 
                 <NavLink
@@ -175,7 +176,7 @@ const NewStudent = () => {
                     color: "black",
                   })}
                 >
-                  <FontAwesomeIcon icon={faUpload} />
+                  <FontAwesomeIcon icon={faUpload}style={{fontSize:'2rem'}} />
                 </NavLink>
               </div>
 
@@ -184,7 +185,7 @@ const NewStudent = () => {
                 onClick={handleClick}
                 style={{
                   cursor: "pointer",
-                  fontSize: "2.5rem",
+                  fontSize: "2rem",
                   color: "black",
                   marginTop: "50px",
                 }}
@@ -238,7 +239,7 @@ const NewStudent = () => {
               <div
                 style={{
                   width: "200px",
-                  height: "30px",
+                  height: "1px",
                   backgroundColor: "rgba(240, 212, 117, 0.75)",
 
                   display: "flex",
@@ -246,7 +247,7 @@ const NewStudent = () => {
                   justifyContent: "center",
                   marginRight: "5rem",
                   padding: "4rem",
-                  borderRadius: "20PX",
+                  borderRadius: "10PX",
                   boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
                   overflow: "hidden",
                 }}
@@ -256,7 +257,7 @@ const NewStudent = () => {
                   icon={faGraduationCap}
                   style={{
                     cursor: "pointer",
-                    fontSize: "2.5rem",
+                    fontSize: "2rem",
                     color: "black",
                   }}
                 />{" "}
@@ -269,13 +270,13 @@ const NewStudent = () => {
                   alignItems: "center",
                   marginRight: "5rem",
                   width: "200px",
-                  height: "30px",
+                  height: "1px",
                   backgroundColor: "rgba(101, 185, 166, 0.75)",
                   display: "flex",
                   justifyContent: "center",
                   boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
                   overflow: "hidden",
-                  borderRadius: "20px",
+                  borderRadius: "10px",
                 }}
               >
                 <FontAwesomeIcon
@@ -293,11 +294,11 @@ const NewStudent = () => {
                   padding: "4rem",
 
                   width: "200px",
-                  height: "30px",
+                  height: "1px",
                   backgroundColor: "rgba(2, 149, 169, 0.75)",
                   overflow: "hidden",
                   display: "flex",
-                  borderRadius: "20px",
+                  borderRadius: "10px",
                   alignItems: "center",
                   justifyContent: "center",
                   boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
@@ -315,7 +316,83 @@ const NewStudent = () => {
               </div>
             </div>
           </div>
-          {/* Buraya */}
+          <div
+              style={{
+                position: "fixed",
+                bottom: "27%",
+                left: "45%",
+                transform: "translate(-50%, 50%)",
+                display: "flex",
+                backgroundColor: "#929AA3",
+                alignItems: "center",
+                flexDirection: "column",
+                width: "86%",
+                height: "20rem",
+                boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25) inset",
+                borderRadius: "0.5rem",
+                marginLeft: "5.7rem",
+                marginTop: "3rem",
+              }}
+            >
+              <h3> Internship Options </h3>
+              <Link to="https://www.ox.ac.uk">
+                <button
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: "0.5rem",
+                    marginLeft: "1.5rem",
+                    backgroundColor: "#C8C8C5",
+                    color: "black",
+                    marginBottom: "1rem",
+                    marginTop: "1rem",
+                    width: "70rem",
+                    height: "4rem",
+                  }}
+                >
+                  Internship Application as Frontend Developer on Oxford
+                  https://www.ox.ac.uk
+                </button>
+              </Link>
+              
+              <button
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "0.5rem",
+                  marginLeft: "1.5rem",
+                  backgroundColor: "#C8C8C5",
+                  color: "black",
+                  marginBottom: "1rem",
+                  width: "70rem",
+                  height: "4rem",
+                }}
+                
+              >
+                +
+              </button>
+              
+              
+              <button
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "0.5rem",
+                  marginLeft: "1.5rem",
+                  backgroundColor: "#C8C8C5",
+                  color: "black",
+                  marginBottom: "1rem",
+                  width: "70rem",
+                  height: "4rem",
+                }}
+              >
+                +
+              </button>
+              
+            </div>
         </div>
       </div>
       <footer
