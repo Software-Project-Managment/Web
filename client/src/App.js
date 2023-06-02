@@ -160,7 +160,7 @@ function App() {
             element={<CoordinatorUploadInt />}
           />
           <Route
-            path="/coordinator/NewStudentInformation1"
+            path="/coordinator/NewStudentInformation1/:id"
             element={<NewStudentInformation1 />}
           />
 

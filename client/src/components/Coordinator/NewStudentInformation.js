@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -17,16 +17,38 @@ import {
   faUserGraduate,
 } from '@fortawesome/free-solid-svg-icons';
 import { useLogout } from '../../hooks/useLogout';
+import axios from 'axios'
 
 const NewStudentInformation = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [students,setStudents]=useState([])
+
+
+
+
+  const getStudents= async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/api/users/getstudents`)
+      
+      setStudents(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
   const handleClick = () => {
     logout();
     history('/');
   };
+
+  useEffect(()=>{
+    getStudents()
+  },[])
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -216,12 +238,15 @@ const NewStudentInformation = () => {
                  <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>Student Name</span>
                  <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>Student ID</span>
                 </div>
-                <NavLink to='/coordinator/NewStudentInformation1' style={{textDecoration:"none", color:"black"}}>
+              {students && students.map((student,idx)=>(
+                <NavLink to={`/coordinator/NewStudentInformation1/${student._id}`} style={{textDecoration:"none", color:"black"}}>
                 <div style={{ marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center',border:'1px solid gray',borderRadius:'20px' }}>
-                <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px'}}><FontAwesomeIcon icon ={faUserGraduate}/> Ulaş Beyaz</span>
+                <div style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' , display:"flex" , textTransform:"capitalize" }}><FontAwesomeIcon icon ={faUserGraduate} style={{marginLeft:"13rem" , marginRight:"10px"}}/>{student.name} {student.surname}</div>
                 <span style={{ flex: 1,fontFamily:'Montserrat',fontSize:'25px' }}>190209018</span>
   </div>
                 </NavLink>
+              ))}
+                
                 
                       {/* Diğer öğrencilerin listesi */}
                     </div>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation, NavLink } from 'react-router-dom';
+import React, { useState,useEffect } from 'react';
+import { useNavigate, useLocation, NavLink,useParams} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
@@ -23,22 +23,45 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 
 import { useLogout } from '../../hooks/useLogout';
+import axios from 'axios'
 
 const NewStudentInformation1 = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [student,setStudent] = useState([])
   const handleClick = () => {
     logout();
     history('/');
   };
+
+  
+  
+  const {id} = useParams()
 
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = () => {
     // Handle search functionality
   };
+
+  const getStudent= async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/api/users/${id}`)
+      
+      setStudent(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+  useEffect(()=>{
+    getStudent()
+  },[])
 
   return (
     <div>
@@ -56,7 +79,7 @@ const NewStudentInformation1 = () => {
           <div style={{ marginLeft: '5vw' }}>
             <NavLink to="/coordinator">
               <img
-                src="../assets/logo.png"
+                src="../../assets/logo.png"
                 style={{
                   width: '50px',
                   marginLeft: '-3.5rem',
@@ -208,11 +231,11 @@ const NewStudentInformation1 = () => {
                   <div style={{width: '70rem', borderRadius: '4px', padding: '1rem' }}>
                  <div style={{ display: 'flex', justifyContent: 'flex-start',marginBottom:'0.2rem',marginLeft:'1rem',}}>
                  <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'99px'}}>Student Name</span>
-                 <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'30px' }}>:Selin Bekar</span>
+                 <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'30px',textTransform:"uppercase" }}>:{student.name} {student.surname}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom:'0.2rem',alignItems: 'center' ,marginLeft:'1rem'}}>
                 <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'128px' }}>Student ID</span>
-                <span style={{fontFamily:'Montserrat',fontSize:'22px', marginRight:'30px'}}>:2048044</span>
+                <span style={{fontFamily:'Montserrat',fontSize:'22px', marginRight:'30px'}}>:{student.username}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'flex-start',marginBottom:'0.2rem',marginLeft:'1rem'}}>
                  <span style={{fontFamily:'Montserrat',fontSize:'22px',marginRight:'120px'}}>Department</span>{'   '}
@@ -330,6 +353,7 @@ const NewStudentInformation1 = () => {
             fontSize:"0.9rem"
 
     }}
+ 
   >
     Send Request For SGK Document to Career Center
   </div>             
