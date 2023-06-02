@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation, NavLink,useParams} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -17,6 +17,7 @@ import {
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
+import axios from 'axios'
 
 import { useLogout } from "../../hooks/useLogout";
 
@@ -25,6 +26,23 @@ const CareerStudentInformation = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [student,setStudent] = useState([])
+
+
+  const {id} = useParams()
+
+  const getStudent= async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/api/users/${id}`)
+      
+      setStudent(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
   const handleClick = () => {
     logout();
     history("/");
@@ -36,6 +54,9 @@ const CareerStudentInformation = () => {
     // Handle search functionality
   };
 
+  useEffect(()=>{
+    getStudent()
+  },[])
   return (
     <div>
       <div>
@@ -52,7 +73,7 @@ const CareerStudentInformation = () => {
           <div style={{ marginLeft: "5vw" }}>
             <NavLink to="/coordinator">
               <img
-                src="../assets/logo.png"
+                src="../../assets/logo.png"
                 style={{
                   width: "50px",
                   marginLeft: "-3.5rem",
@@ -291,7 +312,7 @@ const CareerStudentInformation = () => {
                             marginRight: "30px",
                           }}
                         >
-                          :Selin Bekar
+                          :{student.name} {student.surname}
                         </span>
                       </div>
                       <div
@@ -319,7 +340,7 @@ const CareerStudentInformation = () => {
                             marginRight: "30px",
                           }}
                         >
-                          :2048044
+                          :{student.username}
                         </span>
                       </div>
                       <div
@@ -383,7 +404,7 @@ const CareerStudentInformation = () => {
                           display: "flex",
                           justifyContent: "flex-start",
                           alignItems: "center",
-                          marginBottom: "1rem",
+                          marginBottom: "0.2rem",
                           marginLeft: "1rem",
                         }}
                       >
@@ -406,6 +427,34 @@ const CareerStudentInformation = () => {
                           :0
                         </span>
                       </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-start",
+                          alignItems: "center",
+                          marginBottom: "1rem",
+                          marginLeft: "1rem",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "22px",
+                          }}
+                        >
+                           Internship Coordinator
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: "Montserrat",
+                            fontSize: "22px",
+                            marginRight: "30px",
+                          }}
+                        >
+                          :Kristin Surpuhi BENLİ
+                        </span>
+                      </div>
 
                       <div
                         style={{
@@ -422,7 +471,7 @@ const CareerStudentInformation = () => {
                             justifyContent: "center",
                           }}
                         >
-                          <NavLink to="/career/viewSgkDocument">
+                          <NavLink to={`/career/viewSgkDocument/${student._id}`} style={{textDecoration:"none" , color:"black"}}>
                             <div
                               style={{
                                 height: "5px",
@@ -442,7 +491,7 @@ const CareerStudentInformation = () => {
                               View SGK Documents
                             </div>
                           </NavLink>
-                          <NavLink to="/career/intershipApplicationForm">
+                          <NavLink to={`/career/intershipApplicationForm/${student._id}`} style={{textDecoration:"none" , color:"black"}}>
                             <div
                               style={{
                                 padding: "2rem",
@@ -464,7 +513,7 @@ const CareerStudentInformation = () => {
                               Intershit Application Form
                             </div>
                           </NavLink>
-                          <NavLink to="/career/sendSgkDocument">
+                          <NavLink to={`/career/sendSgkDocument/${student._id}`} style={{textDecoration:"none" , color:"black"}}>
                             <div
                               style={{
                                 padding: "2rem",

@@ -12,6 +12,7 @@ import {
   faBell,
   faUser,
   faPerson,
+  faDownload
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
 import axios from 'axios'
@@ -26,6 +27,21 @@ const NewIncomingMessage = () => {
   const [sender,setSender] = useState('')
 
 
+  const downloadFile = async ()=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/student/message/download/645a8bea8c911f4677eca96c` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${messages[0].messageFileUrl}`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const getMessages = async ()=>{
     try {
@@ -319,7 +335,7 @@ const NewIncomingMessage = () => {
             />
             <p style={{ fontSize: "1.5rem" }}>{sender.name} {sender.surname}</p>
           </div>
-          <p style={{ fontSize: "1.5rem" }}>{message.subject}</p>
+          <p style={{ fontSize: "1.5rem" }}>{message.messageFileUrl && <FontAwesomeIcon icon={faDownload} style={{cursor:"pointer"}}   onClick={downloadFile}/>}<span style={{display:"inline-block",cursor:"pointer",marginLeft:"1rem",marginRight:"1rem"}} onClick={()=>console.log("calisti")}>{message.subject}</span></p>
         </div>
         
         

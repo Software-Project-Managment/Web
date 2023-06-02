@@ -257,9 +257,9 @@ const getGonderenMessages = async (req,res,next)=>{
 }
 
 const downloadMessageFile = async(req,res,next)=>{
-    const {gonderenID} = req.params
+    const {id} = req.params
     
-    const messageFile = await messageModel.findOne({gonderen:gonderenID})
+    const messageFile = await messageModel.findOne({gonderen:id})
     if(!messageFile){
         return next(createError(404,"No item found"))
     }

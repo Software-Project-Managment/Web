@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useState,useEffect} from "react";
+import { useNavigate, useLocation, NavLink,useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -17,24 +17,64 @@ import {
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
+import axios from 'axios'
 
 import { useLogout } from "../../hooks/useLogout";
+
+
 
 const CareerIntershipApplicationForm = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [internshipItems,setInternshipItems] = useState([])
+
+  const {id} = useParams()
+
+  const getInternshipItems= async (id)=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/internship/${id}`)
+      
+      setInternshipItems(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+  const downloadInternshipFile = async (id)=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/student/internship/download/${id}` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${internshipItems[0].studentName} ${internshipItems[0].studentSurname} Internship Form`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
+
   const handleClick = () => {
     logout();
     history("/");
   };
 
-  const [searchTerm, setSearchTerm] = useState("");
+  useEffect(()=>{
 
-  const handleSearch = () => {
-    // Handle search functionality
-  };
+    getInternshipItems(id)
+  
+   
+  },[])
 
   return (
     <div>
@@ -52,7 +92,7 @@ const CareerIntershipApplicationForm = () => {
           <div style={{ marginLeft: "5vw" }}>
             <NavLink to="/coordinator">
               <img
-                src="../assets/logo.png"
+                src="../../assets/logo.png"
                 style={{
                   width: "50px",
                   marginLeft: "-3.5rem",
@@ -243,6 +283,7 @@ const CareerIntershipApplicationForm = () => {
                         borderRadius: "8px",
                         width: "10rem",
                       }}
+                      onClick={()=>downloadInternshipFile(id)}
                     >
                       View
                     </button>
@@ -257,7 +298,7 @@ const CareerIntershipApplicationForm = () => {
                         width: "10rem",
                       }}
                     >
-                      View
+                      Send Again
                     </button>
                   </NavLink>
                 </div>

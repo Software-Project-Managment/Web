@@ -1,4 +1,4 @@
-import React from "react";
+import {useState,useEffect} from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,16 +16,38 @@ import {
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
 const CareerPage = () => {
   const user = JSON.parse(localStorage.getItem('user'))
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [student,setStudent] = useState([])
+
+
+  
+  const getRequstStudent= async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/api/users/getrequeststudents`)
+      
+      setStudent(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
 
   const handleClick = () => {
     logout();
     history("/");
   };
+
+  useEffect(()=>{
+    getRequstStudent()
+  },[])
+
   return (
     <div>
       <div>
@@ -224,7 +246,7 @@ const CareerPage = () => {
               {" "}
               
               
-              <p style={{fontSize:'1.5rem'}}><FontAwesomeIcon icon = {faBell}/> 2 new SGK Request</p>
+              <p style={{fontSize:'1.5rem'}}><FontAwesomeIcon icon = {faBell}/> {student.length} new SGK Request</p>
             </div>
             <div
               style={{

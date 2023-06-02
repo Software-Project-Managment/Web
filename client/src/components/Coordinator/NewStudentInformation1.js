@@ -464,7 +464,7 @@ const NewStudentInformation1 = () => {
     }}
     onClick={()=>downloadInternshipFile(id)}
   >
-    View Internship Formular 
+    View Internship Formular  
   </div>
   <div
     style={{

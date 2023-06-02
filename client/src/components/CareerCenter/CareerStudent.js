@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState,useEffect } from "react";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,16 +17,43 @@ import {
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
+
 
 const CareerStudent = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+
+  const [students,setStudent] = useState()
+
+
+  
+  const getRequstStudent= async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/api/users/getrequeststudents`)
+      
+      setStudent(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+
+
   const handleClick = () => {
     logout();
     history("/");
   };
+
+
+  useEffect(()=>{
+    getRequstStudent()
+  },[])
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -248,7 +275,7 @@ const CareerStudent = () => {
                 style={{ cursor: "pointer" }}
               />
             </div>
-            <NavLink to="/career/studentInformation">
+            
               <div
                 style={{
                   marginTop: "2rem",
@@ -260,6 +287,8 @@ const CareerStudent = () => {
                   textJustify: "start",
                   width: "85%",
                   boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+                  textDecoration:"none",
+                  color:"black"
                 }}
               >
                 <div
@@ -320,43 +349,51 @@ const CareerStudent = () => {
                             Student ID
                           </span>
                         </div>
-                        <div
-                          style={{
-                            marginBottom: "0.5rem",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            border: "1px solid gray",
-                            borderRadius: "20px",
-                            backgroundColor: "#FF8975",
-                          }}
-                        >
-                          <span
-                            style={{
-                              flex: 1,
-                              fontFamily: "Montserrat",
-                              fontSize: "25px",
-                            }}
-                          >
-                            <FontAwesomeIcon icon={faUserGraduate} /> Ulaş Beyaz
-                          </span>
-                          <span
-                            style={{
-                              flex: 1,
-                              fontFamily: "Montserrat",
-                              fontSize: "25px",
-                            }}
-                          >
-                            190209018
-                          </span>
-                        </div>
+
+                   
+                        {students && students.map((student)=>(
+                          <NavLink to={`/career/studentInformation/${student._id}`} style={{textDecoration:"none" , color:"black"}}>
+                           <div
+                           style={{
+                             marginBottom: "0.5rem",
+                             display: "flex",
+                             justifyContent: "space-between",
+                             alignItems: "center",
+                             border: "1px solid gray",
+                             borderRadius: "20px",
+                             backgroundColor: "#FF8975",
+                            
+                           }}
+                         >
+                           <span
+                             style={{
+                               flex: 1,
+                               fontFamily: "Montserrat",
+                               fontSize: "25px",
+                               
+                             }}
+                           >
+                             <FontAwesomeIcon icon={faUserGraduate} style={{textTransform:"capitalize"}} /> {student.name} {student.surname}
+                           </span>
+                           <span
+                             style={{
+                               flex: 1,
+                               fontFamily: "Montserrat",
+                               fontSize: "25px",
+                             }}
+                           >
+                             {student.username}
+                           </span>
+                         </div>
+                        </NavLink>
+                        ))}
                         {/* Diğer öğrencilerin listesi */}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </NavLink>
+        
           </div>
         </div>
       </div>
