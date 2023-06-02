@@ -257,7 +257,7 @@ const CareerSendSgkDocument = () => {
                 padding: "2rem",
               }}
             >
-<<<<<<< HEAD
+
               <div
                 style={{
                   display: "flex",
@@ -270,7 +270,6 @@ const CareerSendSgkDocument = () => {
               >
                 <p style={{ fontSize: "20px" }}>Send SGK Document</p>
               </div>
-=======
               <div style={{ height: "2.5rem",
                   width: "20%",
                   border: "none",
@@ -287,8 +286,6 @@ const CareerSendSgkDocument = () => {
   <label htmlFor="file-input" style={{  cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",width:"100%",height:"100%"}} className="btn">SGK Document</label>
   <input id="file-input" style={{visibility:"hidden"}} type="file" onChange={handleFileChange} />
 </div>
-              
->>>>>>> adb8fce8db1563768e8a35fe402b8918356a46fe
             </div>
             <div style={{ textAlign: "end" }}></div>
             <button
