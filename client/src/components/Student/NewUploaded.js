@@ -229,6 +229,8 @@ const NewUploaded = () => {
                     borderRadius: "32px",
                     border: "none",
                     fontSize: "18px",
+                    cursor:"pointer"
+
                   }}
                 >
                   File
@@ -259,6 +261,8 @@ const NewUploaded = () => {
                     borderRadius: "32px",
                     border: "none",
                     fontSize: "18px",
+                    cursor:"pointer"
+
                   }}
                 >
                   File
@@ -289,6 +293,8 @@ const NewUploaded = () => {
                     borderRadius: "32px",
                     border: "none",
                     fontSize: "18px",
+                    cursor:"pointer"
+
                   }}
                 >
                   File
@@ -319,9 +325,42 @@ const NewUploaded = () => {
                     borderRadius: "32px",
                     border: "none",
                     fontSize: "18px",
+                    cursor:"pointer"
+
                   }}
                 >
                   File
+                </button>
+              </NavLink>
+            </div>
+            <div
+              style={{
+                textAlign: "Center",
+                alignItems: "start",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <p
+                style={{
+                  textDecoration: "underline",
+                }}
+              >
+                Offical Letter
+              </p>
+              <NavLink to="">
+                <button
+                  style={{
+                    backgroundColor: "#65B9A6",
+                    width: "240px",
+                    height: "40px",
+                    borderRadius: "32px",
+                    border: "none",
+                    fontSize: "18px",
+                    cursor:"pointer"
+                  }}
+                >
+                  Request
                 </button>
               </NavLink>
             </div>
@@ -349,12 +388,15 @@ const NewUploaded = () => {
                     borderRadius: "32px",
                     border: "none",
                     fontSize: "18px",
+                    cursor:"pointer"
+
                   }}
                 >
                   File
                 </button>
               </NavLink>
             </div>
+          
           </div>
           {/* Buraya */}
         </div>

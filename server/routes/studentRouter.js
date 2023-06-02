@@ -14,17 +14,25 @@ const studentUploadMulter = require('../middleware/studentUploadedMulter')
 
 router.post('/upload/internship',upload.single('file'),studentController.upload)
 router.get('/internship',studentController.getFiles)
+router.get('/internship/:id',studentController.getInternshipbyID)
 router.post('/internship/approved/:id',studentController.updateApprove)
 router.get('/internship/approved',studentController.getApprovedFiles)
 router.get('/internship/download/:id',studentController.downloadFile)
 
+//STUDENT SGK REQUEST UPDATE
+router.post('/sgk/request/:id',studentController.updateStudentRequest)
+
+
+
 router.post('/upload/transcript',transcriptMulter.single('file'),studentController.uploadTranscript)
 router.get('/transcript',studentController.getTranscript)
+router.get('/transcript/:id',studentController.getTranscriptbyID)
 router.get('/transcript/download/:id',studentController.downloadTranscript)
 
 //REPORT TEMPLATE
 router.post('/upload/reporttemplate',reportTemplateMulter.single('file'),studentController.uploadReportTemplate)
 router.get('/reporttemplate',studentController.getReportTemplate)
+router.get('/reporttemplate/:id',studentController.getReportTemplatebyID)
 router.get('/reporttemplate/download/:id',studentController.downloadReportTemplate)
 
 //NOTIFICATONS

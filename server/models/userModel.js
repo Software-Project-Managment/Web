@@ -30,6 +30,10 @@ const userSchema = new Schema({
         type:String,
         required:false
     },
+    request:{
+        type:Boolean,
+        default:false
+    },
     role:{
         type:String,
         required:true,

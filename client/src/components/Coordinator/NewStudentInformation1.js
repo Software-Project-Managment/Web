@@ -31,6 +31,10 @@ const NewStudentInformation1 = () => {
   const location = useLocation();
   const { logout } = useLogout();
   const [student,setStudent] = useState([])
+  const [transcriptItems,setTranscriptItems] = useState([])
+  const [sgkItems,setSGKItems] = useState([])
+  const [reportItems,setReportItems] = useState([])
+  const [internshipItems,setInternshipItems] = useState([])
   const handleClick = () => {
     logout();
     history('/');
@@ -59,8 +63,143 @@ const NewStudentInformation1 = () => {
    
   }
 
+  
+  const getTranscriptItems= async (id)=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/transcript/${id}`)
+      
+      setTranscriptItems(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+  const getSGKItems= async (id)=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/sgk/${id}`)
+      
+      setSGKItems(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+  const getInternshipItems= async (id)=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/internship/${id}`)
+      
+      setInternshipItems(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+  const getReportItems= async (id)=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/reporttemplate/${id}`)
+      
+      setReportItems(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+  
+  const downloadTranscriptFile = async (id)=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/student/transcript/download/${id}` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${transcriptItems[0].studentName} ${transcriptItems[0].studentSurname} Transcript`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+    
+  const downloadSGKFile = async (id)=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/student/sgk/download/${id}` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${sgkItems[0].studentName} ${sgkItems[0].studentSurname} SGK`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const downloadInternshipFile = async (id)=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/student/internship/download/${id}` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${internshipItems[0].studentName} ${internshipItems[0].studentSurname} Internship Form`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const downloadReportFile = async (id)=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/student/reporttemplate/download/${id}` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${reportItems[0].studentName} ${reportItems[0].studentSurname} Report Template`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const requestSGK = async (id)=>{
+    try {
+      const res = await axios.post(`http://localhost:3000/student/sgk/request/${id}` , {responseType:'blob'})
+      alert('SENDED REQUEST')
+     
+      console.log('button clicked');
+      console.log(res);
+      
+   } catch (error) {
+     console.log(error);
+   }
+  }
+
   useEffect(()=>{
     getStudent()
+    getTranscriptItems(id)
+    getSGKItems(id)
+    getInternshipItems(id)
+    getReportItems(id)
+   
   },[])
 
   return (
@@ -276,8 +415,11 @@ const NewStudentInformation1 = () => {
       borderRadius: "20px",
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       overflow: "hidden",
-      fontSize:"0.9rem"
+      fontSize:"0.9rem",
+      cursor:"pointer"
     }}
+    onClick={()=>downloadTranscriptFile(id)}
+    
   >
     View Transcript
   </div>
@@ -294,11 +436,14 @@ const NewStudentInformation1 = () => {
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       overflow: "hidden",
       borderRadius: "20px",
-      fontSize:"0.9rem"
+      fontSize:"0.9rem",
+      cursor:"pointer"
 
     }}
+
+    onClick={()=>downloadSGKFile(id)}
   >
-    View SGK
+    View SGK  
   </div>
   <div
     style={{
@@ -313,11 +458,13 @@ const NewStudentInformation1 = () => {
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       overflow: "hidden",
       borderRadius: "20px",
-      fontSize:"0.9rem"
+      fontSize:"0.9rem",
+      cursor:"pointer"
 
     }}
+    onClick={()=>downloadInternshipFile(id)}
   >
-    View Internship Formular
+    View Internship Formular 
   </div>
   <div
     style={{
@@ -332,11 +479,14 @@ const NewStudentInformation1 = () => {
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
       overflow: "hidden",
       borderRadius: "20px",
-      fontSize:"0.9rem"
+      fontSize:"0.9rem",
+      cursor:"pointer"
 
     }}
+    onClick={()=>downloadReportFile(id)}
+
   >
-    View Report Template
+    View Report Template 
   </div>
   <div
     style={{
@@ -350,12 +500,13 @@ const NewStudentInformation1 = () => {
       alignItems: "center",
       justifyContent: "center",
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-            fontSize:"0.9rem"
+            fontSize:"0.9rem",
+            cursor:"pointer"
 
     }}
- 
+    onClick={()=>requestSGK(id)}
   >
-    Send Request For SGK Document to Career Center
+    Send Request For SGK Document to Career Center  
   </div>             
 </div>
             </div>

@@ -6,6 +6,7 @@ const reportTemplateModel = require('../models/reportTemplateModel')
 const notificaitonModel = require('../models/notificationModel')
 const studentUploadedModel = require('../models/studentUploadedModel')
 const counterModel = require('../models/counterModel')
+const User = require('../models/userModel')
 const path = require('path')
 const createError = require('../utils/createError')
 
@@ -37,6 +38,16 @@ const getFiles = async (req,res,next)=>{
     }
 
 }
+const getInternshipbyID = async (req,res,next)=>{
+    const {id} = req.params
+    try {
+        const files = await internshipFileModel.find({studentId:id})
+        res.status(200).json(files)
+    } catch (error) {
+        next(error)
+    }
+
+}
 
 const getFileByID = async (req,res,next)=>{
     const {id} = req.params
@@ -60,6 +71,18 @@ const updateApprove = async(req,res,next)=>{
         next(error)
     }
 }
+
+const updateStudentRequest = async(req,res,next)=>{
+    const {id} = req.params
+    try {
+        const file = await User.findByIdAndUpdate(id,{request:true})
+        await file.save()
+        res.status(200).json(file)
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 const getApprovedFiles = async (req,res,next)=>{
     
@@ -149,6 +172,17 @@ const getTranscript = async (req,res,next)=>{
     try {
         const transcripts = await transcriptModel.find()
         res.status(200).json(transcripts)
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+const getTranscriptbyID = async (req,res,next)=>{
+    const {id} =  req.params
+    try {
+        const transcript = await transcriptModel.find({studentId:id})
+        res.status(200).json(transcript)
     } catch (error) {
         next(error)
     }
@@ -263,6 +297,19 @@ const getReportTemplate = async (req,res,next)=>{
     }
 
 }
+
+const getReportTemplatebyID = async (req,res,next)=>{
+    const {id} = req.params
+
+    try {
+        const templates = await reportTemplateModel.find({studentId:id})
+        res.status(200).json(templates)
+    } catch (error) {
+        next(error)
+    }
+
+}
+
 
 const downloadReportTemplate = async(req,res,next)=>{
     const {id} = req.params
@@ -407,6 +454,10 @@ module.exports={
     uploadAllForms,
     getAllForms,
     downloadAllForms,
-    getGonderenMessages
+    getGonderenMessages,
+    getTranscriptbyID,
+    getReportTemplatebyID,
+    getInternshipbyID,
+    updateStudentRequest
 
 }

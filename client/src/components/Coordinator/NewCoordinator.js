@@ -22,15 +22,32 @@ const NewCoordinator = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [students,setStudents]=useState([])
 
 
- 
+
+  const getStudents= async ()=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/api/users/getstudents`)
+      
+      setStudents(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
 
   
   const handleClick = () => {
     logout();
     history("/");
   };
+
+  useEffect(()=>{
+    getStudents()
+  },[])
   return (
     <div>
       <div>
@@ -140,7 +157,7 @@ const NewCoordinator = () => {
                     color: "black",
                   }}
                 />{" "}
-                Active Students:200
+                Active Students:{students.length}
               </div>
               
               <div
