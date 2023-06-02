@@ -5,7 +5,7 @@ const messageSchema = new Schema({
   gonderen: { type: String, required: true },
   alici: { type: String, required: true },
   subject: { type: String, required: true },
-  message: { type: String, required: true },
+  message: { type: String },
   messageFileUrl: {type: String},
   
   date: { type: Date, default: Date.now }

@@ -201,7 +201,7 @@ const AdminDeneme = () => {
                 justifyContent: "center",
               }}
             >
-              <NavLink to="/admin/students">
+              <NavLink to="/admin/students" style={{textDecoration:"none" , color:"black"}}>
                 <div
                   style={{
                     width: "200px",
@@ -231,7 +231,7 @@ const AdminDeneme = () => {
                 </div>
               </NavLink>
 
-              <NavLink to="/admin/coordinators">
+              <NavLink to="/admin/coordinators" style={{textDecoration:"none" , color:"black"}}>
                 <div
                   style={{
                     padding: "4rem",
@@ -258,7 +258,7 @@ const AdminDeneme = () => {
                   <div style={{color:'black'}}>Manage Coordinators and Coordinator Page</div>
                 </div>
               </NavLink>
-              <NavLink to="/career">
+              <NavLink to="/career" style={{textDecoration:"none" , color:"black"}}>
                 <div
                   style={{
                     padding: "4rem",

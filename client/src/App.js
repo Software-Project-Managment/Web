@@ -204,19 +204,19 @@ function App() {
           <Route path="/career/CareerStudent" element={<CareerStudent />} />
           <Route path="/career/approvedforms" element={<ApprovedForms />} />
           <Route
-            path="/career/studentInformation"
+            path="/career/studentInformation/:id"
             element={<CareerStudentInformation />}
           />
           <Route
-            path="/career/viewSgkDocument"
+            path="/career/viewSgkDocument/:id"
             element={<CareerViewSgkDocument />}
           />
           <Route
-            path="/career/intershipApplicationForm"
+            path="/career/intershipApplicationForm/:id"
             element={<CareerIntershipApplicationForm />}
           />
           <Route
-            path="/career/sendSgkDocument"
+            path="/career/sendSgkDocument/:id"
             element={<CareerSendSgkDocument />}
           />
 

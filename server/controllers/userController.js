@@ -15,6 +15,11 @@ const allStudents = async (req,res,next)=>{
 
    res.json(users)
 }
+const allRequestStudent = async (req,res,next)=>{
+   const users = await User.find({request:true})
+
+   res.json(users)
+}
 const findUser = async(req,res,next)=>{
    const {id} = req.params
    const user = await User.findOne({_id:id})
@@ -76,5 +81,6 @@ module.exports={
     deleteUser,
     findUser,
     findCoordinators,
-    allStudents
+    allStudents,
+    allRequestStudent
 }

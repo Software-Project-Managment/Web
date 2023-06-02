@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import  { useState,useEffect } from "react";
+import { useNavigate, useLocation, NavLink,useParams} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -19,23 +19,56 @@ import {
 import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
 
 import { useLogout } from "../../hooks/useLogout";
+import axios from 'axios'
 
 const CareerViewSgkDocument = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [sgkItems,setSGKItems] = useState([])
+
   const handleClick = () => {
     logout();
     history("/");
   };
+  const {id} = useParams()
+  const getSGKItems= async (id)=>{
+    try {
+      const res = await axios.get(`http://localhost:3000/student/sgk/${id}`)
+      
+      setSGKItems(res.data)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const downloadSGKFile = async (id)=>{
+    try {
+       const res = await axios.get(`http://localhost:3000/student/sgk/download/${id}` , {responseType:'blob'})
+  
+       
+       console.log(res);
+       const blob = new Blob([res.data],{type:res.data.type})
+       const link = document.createElement('a')
+       link.href=window.URL.createObjectURL(blob)
+       link.download=`${sgkItems[0].studentName} ${sgkItems[0].studentSurname} SGK`
+       link.click()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+ 
 
-  const handleSearch = () => {
-    // Handle search functionality
-  };
-
+  useEffect(()=>{
+   
+    getSGKItems(id)
+   
+   
+  },[])
   return (
     <div>
       <div>
@@ -52,7 +85,7 @@ const CareerViewSgkDocument = () => {
           <div style={{ marginLeft: "5vw" }}>
             <NavLink to="/coordinator">
               <img
-                src="../assets/logo.png"
+                src="../../assets/logo.png"
                 style={{
                   width: "50px",
                   marginLeft: "-3.5rem",
@@ -216,6 +249,7 @@ const CareerViewSgkDocument = () => {
             }}
           >
             <p>View SGK Documents</p>
+          {sgkItems && sgkItems.map((sgkItem)=>(
             <div
               style={{
                 background: "#D9D9D9",
@@ -233,7 +267,7 @@ const CareerViewSgkDocument = () => {
                   borderRadius: "8px",
                 }}
               >
-                <p>Sgk Document 25.04.2023</p>
+                <p> SGK Documents 25.04.2023</p>
                 <div style={{ justifyContent: "center" }}>
                   <NavLink>
                     <button
@@ -242,7 +276,9 @@ const CareerViewSgkDocument = () => {
                         height: "35px",
                         borderRadius: "8px",
                         width: "10rem",
+                        cursor:"pointer"
                       }}
+                      onClick={()=>downloadSGKFile(id)}
                     >
                       View
                     </button>
@@ -263,8 +299,11 @@ const CareerViewSgkDocument = () => {
                 </div>
               </div>
             </div>
-          </div>
+          ))}
+            
 
+
+          </div>
           {/* buraya */}
         </div>
       </div>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import  { useState,useEffect } from "react";
+import { useNavigate, useLocation, NavLink,useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -17,6 +17,7 @@ import {
   faUserGraduate,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
+import axios from 'axios'
 
 import { useLogout } from "../../hooks/useLogout";
 
@@ -25,17 +26,49 @@ const CareerSendSgkDocument = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [file,setFile]=useState()
+
+  const {id} = useParams()
+
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+   
+  };
+
+
+  const handleSubmit = (e)=>{
+    try {
+    const data =new FormData()
+  
+    data.append("gonderenID",user.data._id)
+    data.append("aliciID",id)
+    data.append("subject","SGK")
+    data.append("file",file)
+    
+    
+  
+    
+     console.log(data);
+     const res =axios.post('http://localhost:3000/student/upload/message',data)
+     console.log(res);
+     alert('Message has been sent')
+   
+    } catch (error) {
+      console.log(error);
+    }
+    
+
+  }
+
+
+
   const handleClick = () => {
     logout();
     history("/");
   };
 
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const handleSearch = () => {
-    // Handle search functionality
-  };
-
+ 
   return (
     <div>
       <div>
@@ -224,6 +257,7 @@ const CareerSendSgkDocument = () => {
                 padding: "2rem",
               }}
             >
+<<<<<<< HEAD
               <div
                 style={{
                   display: "flex",
@@ -236,15 +270,42 @@ const CareerSendSgkDocument = () => {
               >
                 <p style={{ fontSize: "20px" }}>Send SGK Document</p>
               </div>
+=======
+              <div style={{ height: "2.5rem",
+                  width: "20%",
+                  border: "none",
+                  borderRadius: "2rem",
+                  backgroundColor: "#0295A9",
+                  fontSize: "22px",
+                  textAlign:"center",
+                
+                 
+                  
+
+
+                  }}>
+  <label htmlFor="file-input" style={{  cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",width:"100%",height:"100%"}} className="btn">SGK Document</label>
+  <input id="file-input" style={{visibility:"hidden"}} type="file" onChange={handleFileChange} />
+</div>
+              
+>>>>>>> adb8fce8db1563768e8a35fe402b8918356a46fe
             </div>
             <div style={{ textAlign: "end" }}></div>
             <button
               style={{
-                height: "2rem",
-                width: "8rem",
                 marginTop: "2rem",
-                float: "none",
-              }}
+                position: "fixed",
+                left: "95%",
+                transform: "translate(-100% ,-50%)",
+                height: "2.5rem",
+                width: "20%",
+                border: "none",
+                borderRadius: "2rem",
+                backgroundColor: "#65B9A6",
+                fontSize: "22px",
+                cursor:"pointer"
+              }} 
+              onClick={handleSubmit}
             >
               Send
             </button>

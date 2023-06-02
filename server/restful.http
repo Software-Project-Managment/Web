@@ -9,11 +9,12 @@ POST {{BASE_URL}}/api/users
 Content-Type: application/json
 
 {
-    "name":"İlayda",
-    "surname":"Dede",
-    "username":"190202015",
+    "name":"Muhammed Yusuf",
+    "surname":"Yalçın",
+    "username":"190203015",
     "password":"test1234",
-    "role":"student"
+    "role":"student",
+    "request":true
    
     
      
