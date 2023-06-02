@@ -39,6 +39,10 @@ router.get('/reporttemplate/download/:id',studentController.downloadReportTempla
 router.post('/upload/notification',studentController.uploadNotification)
 router.get('/notification/:aliciID',studentController.getNotifications)
 
+//JOB
+router.post('/upload/jobs',studentController.uploadJobs)
+router.get('/jobs',studentController.getJobs)
+
 //UPLOADEDS
 router.post('/upload/studentuploadeds',studentUploadMulter.single('file'),studentController.uploadAllForms)
 router.get('/uploadeds/:id',studentController.getAllForms)

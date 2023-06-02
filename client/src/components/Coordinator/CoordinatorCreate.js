@@ -23,7 +23,35 @@ const CoordinatorCreate = () => {
   const history = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
+  const [position,setPosition] = useState()
+  const [nameInternship,setNameInternship] = useState()
+  const [howStudent,setHowStudent] = useState()
+  const [lastDate,setLastDate] = useState()
+  const [url,setUrl] = useState()
 
+  const handleSubmit = (e)=>{
+    try {
+    const data =new FormData()
+  
+    data.append("name",nameInternship)
+    data.append("position",position)
+    data.append("students",howStudent)
+    data.append("date",lastDate)
+    data.append("url",url)
+    
+  
+    
+     console.log(nameInternship,position);
+     const res =axios.post('http://localhost:3000/student/upload/jobs',data)
+     console.log(res);
+     alert('Successful')
+   
+    } catch (error) {
+      console.log(error);
+    }
+    
+
+  }
   const handleClick = () => {
     logout();
     history("/");
@@ -229,8 +257,9 @@ const CoordinatorCreate = () => {
     alignItems:'flex-start'
   }}
 >
+  <form>
   <h3> Name of the Internship </h3>
-  <div
+  <input
     style={{
       display: "flex",
       alignItems: "center",
@@ -243,11 +272,11 @@ const CoordinatorCreate = () => {
       width: "60rem",
       height: "3rem",
     }}
-  >
-   
-  </div>
+    value={nameInternship}
+    onChange={(e)=>setNameInternship(e.target.value)}
+  />
   <h3> Position of the Internship </h3>
-  <div
+  <input
     style={{
       display: "flex",
       alignItems: "center",
@@ -260,11 +289,13 @@ const CoordinatorCreate = () => {
       width: "60rem",
       height: "3rem",
     }}
-  >
+    value={position}
+    onChange={(e)=>setPosition(e.target.value)}
+  />
     
-  </div>
+
   <h3> How many students can apply </h3>
-  <div
+  <input
     style={{
       display: "flex",
       alignItems: "center",
@@ -277,11 +308,11 @@ const CoordinatorCreate = () => {
       width: "60rem",
       height: "3rem",
     }}
-  >
-    
-  </div>
+    value={howStudent}
+    onChange={(e)=>setHowStudent(e.target.value)}
+  />
   <h3> Last application date </h3>
-  <div
+  <input
     style={{
       display: "flex",
       alignItems: "center",
@@ -294,11 +325,11 @@ const CoordinatorCreate = () => {
       width: "60rem",
       height: "3rem",
     }}
-  >
-    
-  </div>
+    value={lastDate}
+    onChange={(e)=>setLastDate(e.target.value)}
+  />
   <h3> Url link of the Internship</h3>
-  <div
+  <input
     style={{
       display: "flex",
       alignItems: "center",
@@ -311,10 +342,15 @@ const CoordinatorCreate = () => {
       width: "60rem",
       height: "3rem",
     }}
-  >
-    
-  </div>
-  <button style={{display:'flex',alignItems:'self-end',justifyContent:'right',marginLeft:'67rem',fontSize:'23px',borderRadius:'10px',backgroundColor:'#65B9A6'}}>Save</button>
+    value={url}
+    onChange={(e)=>setUrl(e.target.value)}
+  />
+
+<button style={{display:'flex',alignItems:'self-end',justifyContent:'right',marginLeft:'67rem',fontSize:'23px',borderRadius:'10px',backgroundColor:'#65B9A6'} } onClick={handleSubmit}>Save</button>
+  </form>
+  
+  
+  
 </div>
             {/* Buraya */}
           </div>

@@ -6,6 +6,7 @@ const reportTemplateModel = require('../models/reportTemplateModel')
 const notificaitonModel = require('../models/notificationModel')
 const studentUploadedModel = require('../models/studentUploadedModel')
 const counterModel = require('../models/counterModel')
+const jobModel = require('../models/jobModel')
 const User = require('../models/userModel')
 const path = require('path')
 const createError = require('../utils/createError')
@@ -408,6 +409,17 @@ const getNotifications = async (req,res,next)=>{
     }
 
 }
+//GET JOB
+const getJobs = async (req,res,next)=>{
+   
+    try {
+        const jobs = await jobModel.find()
+        res.status(200).json(jobs)
+    } catch (error) {
+        next(error)
+    }
+
+}
 
 //UPLOAD NOTIFICATION
 const uploadNotification =  async (req,res,next)=>{
@@ -423,6 +435,31 @@ const uploadNotification =  async (req,res,next)=>{
 
         await notification.save()
         res.status(200).json(notification)
+        
+        
+
+    } catch (error) {
+        next(error)
+    }
+}
+//UPLOAD JOB
+const uploadJobs =  async (req,res,next)=>{
+    try {
+        
+        const {name} = req.body
+        const {position} = req.body
+        const {students} = req.body
+        const {date} = req.body
+        const {url} = req.body
+
+     
+     
+      
+       
+        const jobs = await jobModel.create({NameofInternship:name,Position:position,HowManyStudents:students,LastDate:date,url:url});
+
+        await jobs.save()
+        res.status(200).json(jobs)
         
         
 
@@ -458,6 +495,8 @@ module.exports={
     getTranscriptbyID,
     getReportTemplatebyID,
     getInternshipbyID,
-    updateStudentRequest
+    updateStudentRequest,
+    getJobs,
+    uploadJobs
 
 }
