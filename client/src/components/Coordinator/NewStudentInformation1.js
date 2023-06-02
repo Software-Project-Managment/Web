@@ -422,7 +422,9 @@ const NewStudentInformation1 = () => {
     
   >
     View Transcript
+  
   </div>
+
   <div
     style={{
       padding: "2rem",
@@ -488,6 +490,7 @@ const NewStudentInformation1 = () => {
   >
     View Report Template 
   </div>
+
   <div
     style={{
       padding: "2rem",
@@ -500,14 +503,14 @@ const NewStudentInformation1 = () => {
       alignItems: "center",
       justifyContent: "center",
       boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
-            fontSize:"0.9rem",
-            cursor:"pointer"
+      fontSize:"0.9rem",
+      cursor:"pointer"
 
     }}
     onClick={()=>requestSGK(id)}
   >
     Send Request For SGK Document to Career Center  
-  </div>             
+  </div>          
 </div>
             </div>
             
