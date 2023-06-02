@@ -18,7 +18,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useLogout } from "../../hooks/useLogout";
 
-const CareerStudent = () => {
+const AdminStudents = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useNavigate();
   const location = useLocation();
@@ -48,7 +48,7 @@ const CareerStudent = () => {
           }}
         >
           <div style={{ marginLeft: "5vw" }}>
-            <NavLink to="/career">
+            <NavLink to="/admin">
               <img
                 src="../assets/logo.png"
                 style={{
@@ -120,7 +120,7 @@ const CareerStudent = () => {
             >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <NavLink
-                  to="/career"
+                  to="/admin"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
@@ -144,7 +144,7 @@ const CareerStudent = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/career/CareerInbox"
+                  to="/admin/addCoordinator"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
@@ -171,7 +171,7 @@ const CareerStudent = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/career/CareerStudent"
+                  to="/admin/AdminStudentInformation"
                   style={({ isActive }) => ({
                     cursor: "pointer",
                     border:
@@ -248,18 +248,24 @@ const CareerStudent = () => {
                 style={{ cursor: "pointer" }}
               />
             </div>
-            <NavLink to="/career/studentInformation">
+            <div
+              style={{
+                marginTop: "2rem",
+                display: "flex",
+                backgroundColor: "#D9D9D9",
+                alignItems: "center",
+                justifyContent: "start",
+                justifySelf: "start",
+                textJustify: "start",
+                width: "85%",
+                boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
+              }}
+            >
               <div
                 style={{
-                  marginTop: "2rem",
                   display: "flex",
-                  backgroundColor: "#D9D9D9",
+                  flexDirection: "column",
                   alignItems: "center",
-                  justifyContent: "start",
-                  justifySelf: "start",
-                  textJustify: "start",
-                  width: "85%",
-                  boxShadow: "0 4px 4px  0 rgba(0, 0, 0, 0.25) inset",
                 }}
               >
                 <div
@@ -274,52 +280,49 @@ const CareerStudent = () => {
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
+                      marginTop: "2rem",
                     }}
                   >
                     <div
                       style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        marginTop: "2rem",
+                        width: "70rem",
+                        border: "1px solid #ccc",
+                        borderRadius: "4px",
+                        padding: "1rem",
                       }}
                     >
                       <div
                         style={{
-                          width: "70rem",
-                          border: "1px solid #ccc",
-                          borderRadius: "4px",
-                          padding: "1rem",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          marginBottom: "2rem",
+                          border: "2px solid black",
+                          borderRadius: "20px",
                         }}
                       >
-                        <div
+                        <span
                           style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            marginBottom: "2rem",
-                            border: "2px solid black",
-                            borderRadius: "20px",
+                            flex: 1,
+                            fontFamily: "Montserrat",
+                            fontSize: "25px",
                           }}
                         >
-                          <span
-                            style={{
-                              flex: 1,
-                              fontFamily: "Montserrat",
-                              fontSize: "25px",
-                            }}
-                          >
-                            Student Name
-                          </span>
-                          <span
-                            style={{
-                              flex: 1,
-                              fontFamily: "Montserrat",
-                              fontSize: "25px",
-                            }}
-                          >
-                            Student ID
-                          </span>
-                        </div>
+                          Student Name
+                        </span>
+                        <span
+                          style={{
+                            flex: 1,
+                            fontFamily: "Montserrat",
+                            fontSize: "25px",
+                          }}
+                        >
+                          Student ID
+                        </span>
+                      </div>
+                      <NavLink
+                        to="/student"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
                         <div
                           style={{
                             marginBottom: "0.5rem",
@@ -328,7 +331,6 @@ const CareerStudent = () => {
                             alignItems: "center",
                             border: "1px solid gray",
                             borderRadius: "20px",
-                            backgroundColor: "#FF8975",
                           }}
                         >
                           <span
@@ -350,13 +352,14 @@ const CareerStudent = () => {
                             190209018
                           </span>
                         </div>
-                        {/* Diğer öğrencilerin listesi */}
-                      </div>
+                      </NavLink>
+
+                      {/* Diğer öğrencilerin listesi */}
                     </div>
                   </div>
                 </div>
               </div>
-            </NavLink>
+            </div>
           </div>
         </div>
       </div>
@@ -367,4 +370,4 @@ const CareerStudent = () => {
   );
 };
 
-export default CareerStudent;
+export default AdminStudents;

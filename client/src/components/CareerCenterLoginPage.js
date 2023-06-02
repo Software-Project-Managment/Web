@@ -1,24 +1,19 @@
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
-import { useLogin } from '../hooks/useLogin';
+import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useLogin } from "../hooks/useLogin";
 
-function CareerCenterLoginPage({FirstInput,entry,type}) {
-  const [username,setName]=useState("")
-  const [password,setPassword]=useState("")
+function CareerCenterLoginPage({ FirstInput, entry, type }) {
+  const [username, setName] = useState("");
+  const [password, setPassword] = useState("");
   //const logBy = window.location.pathname.split("/").slice(-1)[0];
-  const role="career"
+  const role = "career";
 
-  const {login,isLoading,error} = useLogin()
-  
-  const handleSubmit = async (e)=>{
-    e.preventDefault()
-    await login(username,password,type,role)
-   
-    
-  }
+  const { login, isLoading, error } = useLogin();
 
-
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login(username, password, type, role);
+  };
 
   // const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");
@@ -87,35 +82,43 @@ function CareerCenterLoginPage({FirstInput,entry,type}) {
             alt="Uskudar University Logo"
             style={{ width: "50px", marginRight: "1rem" }}
           />
-          <h1 style={{color: "black",
+          <h1
+            style={{
+              color: "black",
               fontFamily: "montserrat",
               margin: 0,
-              fontSize: "18px", }}>Üsküdar University</h1>
+              fontSize: "18px",
+            }}
+          >
+            Üsküdar University
+          </h1>
         </div>
         <div
-        style={{
-            display: "flex",
-            flexDirection: "column"
-        }}>
-        <p
           style={{
-            margin: 0,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <p
+            style={{
+              margin: 0,
               fontSize: "18px",
               fontWeight: "bold",
               color: "black",
-          }}
-        >
-          Automated Internship Application System
-          
-        </p>
-        <p style={{
-            margin: 0,
-            fontSize: "18px",
-            fontWeight: "bold",
-            color: "black",
-          }}>
+            }}
+          >
+            Automated Internship Application System
+          </p>
+          <p
+            style={{
+              margin: 0,
+              fontSize: "18px",
+              fontWeight: "bold",
+              color: "black",
+            }}
+          >
             {entry}
-        </p>
+          </p>
         </div>
       </div>
       <div
@@ -130,36 +133,62 @@ function CareerCenterLoginPage({FirstInput,entry,type}) {
         }}
       >
         <h2>Login</h2>
-        {error && <p style={{fontSize: "24px", fontWeight: "initial"}}>{error}</p>}
+        {error && (
+          <p style={{ fontSize: "24px", fontWeight: "initial" }}>{error}</p>
+        )}
         <form onSubmit={handleSubmit}>
-          <label style={{ fontSize: "15px", fontWeight: "normal",marginBottom:'0px',display:'block' }}>
-        
+          <label
+            style={{
+              fontSize: "15px",
+              fontWeight: "normal",
+              marginBottom: "0px",
+              display: "block",
+            }}
+          >
             {FirstInput}
             <input
               type="text"
               value={username}
-              onChange={e=>setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
           </label>
           <br />
-          <label style={{ fontSize: "15px" ,marginTop:'7px',display:'block',marginBottom:'0rem' }}>
+          <label
+            style={{
+              fontSize: "15px",
+              marginTop: "7px",
+              display: "block",
+              marginBottom: "0rem",
+            }}
+          >
             Password:
             <input
               type="password"
               value={password}
-              onChange={e=>setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
           <br />
           <Link
-  style={{ color: "black", textDecoration: "none", cursor: "pointer",marginTop:'0px'}}
-  to="https://teksifre.uskudar.edu.tr/"
->
-  <span style={{  }}>Forgot Password?</span>
-</Link>
+            style={{
+              color: "black",
+              textDecoration: "none",
+              cursor: "pointer",
+              marginTop: "0px",
+            }}
+            to="https://teksifre.uskudar.edu.tr/"
+          >
+            <span style={{}}>Forgot Password?</span>
+          </Link>
           <button
-
-            style={{ justifyContent: "flex-end",marginLeft:'24rem',fontSize:'20px',backgroundColor:'#0e7f94',borderRadius:'40px',width:'125px', }}
+            style={{
+              justifyContent: "flex-end",
+              marginLeft: "24rem",
+              fontSize: "20px",
+              backgroundColor: "#0e7f94",
+              borderRadius: "40px",
+              width: "125px",
+            }}
             type="submit"
             disabled={isLoading}
           >
