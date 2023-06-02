@@ -146,7 +146,7 @@ const CoordinatorCreate = () => {
                     cursor: "pointer",
                     border:
                       isActive && location.pathname === "/coordinator"
-                        ? "0px solid black"
+                        ? "0px solid red"
                         : "",
                     backgroundColor:
                       isActive && location.pathname === "/coordinator"
